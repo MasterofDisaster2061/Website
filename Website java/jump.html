@@ -1,0 +1,220 @@
+<html>
+<head>
+  <title>Doodle Jump</title>
+  <meta charset="UTF-8">
+  <meta name="author" content="Rimesh">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<style>
+  html, body {
+    height: 100%;
+    margin: 0;
+  }
+
+  body {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+	background-image:url('v.jpg');
+  }
+
+  canvas {
+    border: 2px solid white;
+	background:url('paper.jpg');
+	background-size:375px 667px;
+  }
+  
+.animate
+{
+background-image: linear-gradient(
+    -225deg,
+    #231557 0%,
+    #44107a 29%,
+    #ff1361 67%,
+    #fff800 100%
+  );
+  background-size: auto auto;
+  background-clip: border-box;
+  background-size: 200% auto;
+  color: #fff;
+  background-clip: text;
+  text-fill-color: transparent;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: textclip 1s linear infinite;
+  display: inline-block;
+  font-size: 190px;
+}
+
+@keyframes textclip 
+{
+to 
+{
+ background-position:200% center;
+}
+}
+
+button
+{
+box-shadow:0px 2px black;
+cursor:pointer;
+}
+button:active
+{
+box-shadow:0px .5px black;
+transform:translateY(2px);
+cursor:pointer;
+}
+
+</style>
+</head>
+<body>
+<div style="display:none;" id="doodlegameview">
+<canvas width="375" height="667" id="game"></canvas>
+
+<div style="position:absolute;top:150px;left:260px;height:400px;width:190px;background-color:black;opacity:30%;border:white 2px solid;">
+</div>
+<p style="position:absolute;top:150px;left:267px;color:white;font-size:26px;text-shadow:1px 1px white;">DOODLE JUMP</p>
+<p id="scoredoodle" style="position:absolute;top:200px;left:272px;color:white;font-size:34px;">Score- 0</p>
+<p id="timedoodle" style="position:absolute;top:260px;left:272px;color:white;font-size:34px;">Time- 00:00</p>
+<button style="border-radius:100%;border:2px solid black;left:322px;top:450px;position:absolute;background-color:orange;filter:brightness(1.15);font-size:45px;padding-bottom:10px;padding-left:15px;padding-right:15px;color:black;" id="replaygame" onclick="replaygamedisp()" title="Restart Game">⮌</button>
+<button style="border-radius:100%;border:2px solid black;background-image:url('home.png');background-size:63px 60px;left:325px;top:365px;position:absolute;" onclick="doodlehomedisp()" id="doodlehome100" title="Home"><p style="height:35px;width:50px;"></p></button>
+
+<div id="homedisp" style="left:429px;top:200px;display:none;position:absolute;background-color:#949494;width:500px;border:5px double;z-index:1;opacity:80%;">
+<p style="font-size:60px;text-align:center;margin-top:10px;">Go Home</p>
+<p style="font-size:30px;margin-left:20px;margin-top:-20px;">Are you sure want to quit the game?</p>
+<button style="color:white;font-size:30px;background-color:red;margin-left:138px;margin-top:0px;margin-bottom:20px;padding-left:20px;padding-right:20px;" onclick="doodlehome();">Yes</button>
+<button style="color:white;font-size:30px;background-color:green;margin-left:10px;margin-top:0px;margin-bottom:30px;padding-left:10px;padding-right:10px;" onclick="gameback();">Cancel</button>
+</div>
+
+<div id="replaygame2" style="left:429px;top:200px;display:none;position:absolute;background-color:#949494;width:500px;border:5px double;z-index:1;opacity:80%;">
+<p style="font-size:60px;text-align:center;margin-top:10px;">Restart Game</p>
+<p style="font-size:30px;margin-left:20px;margin-top:-20px;">Are you sure want to restart the game?</p>
+<button style="color:white;font-size:30px;background-color:red;margin-left:138px;margin-top:0px;margin-bottom:20px;padding-left:20px;padding-right:20px;" onclick="restartgame();">Yes</button>
+<button style="color:white;font-size:30px;background-color:green;margin-left:10px;margin-top:0px;margin-bottom:30px;padding-left:10px;padding-right:10px;" onclick="gameback();">Cancel</button>
+</div>
+
+<div id="powerup">
+<div style="position:absolute;top:100px;left:915px;height:495px;width:120px;background-color:black;opacity:30%;border:white 2px solid;">
+</div>
+<p style="position:absolute;top:105px;left:922px;color:white;font-size:20px;text-shadow:1px 1px white;">POWER UPS</p>
+<button id="jetjump" style="position:absolute;top:180px;left:940px;height:80px;width:80px;background:url('jetjump2.jpg');background-size:70px 79px;border-radius:50%;border:gray solid 2px;" onclick="jetjump()" title="Jet Jump"></button>
+<button id="antigravity" style="position:absolute;top:290px;left:940px;height:80px;width:80px;background:url('antigravity2.jpg');background-size:78px 76px;border-radius:50%;border:gray solid 2px;" onclick="antigravity()" title="Anti Gravity"></button>
+<button id="supersneakers" style="position:absolute;top:400px;left:940px;height:80px;width:80px;background:url('supersneakers2.jpg');background-size:80px 76px;border-radius:50%;border:gray solid 2px;" onclick="supersneakers()" title="Super Sneakers"></button>
+<button style="position:absolute;top:510px;left:947px;height:60px;width:60px;border-radius:50%;border:solid 2px;background-color:orange;font-size:50px;" onclick="powerupsdescription()">?</button>
+<p class="animate" style="top:-10px;left:595px;font-size:50px;display:none;position:absolute" id="jetjumpshow">Jet Jump</p>
+<p class="animate" style="top:-10px;left:557px;font-size:50px;display:none;position:absolute" id="antigravityshow">Anti Gravity</p>
+<p class="animate" style="top:-10px;left:529px;font-size:50px;display:none;position:absolute" id="supersneakersshow">Super Sneakers</p>
+
+<div id="powerupshints" style="left:1100px;top:20px;position:absolute;background-color:#949494;width:200px;border:5px double;opacity:80%;display:none;">
+<p style="font-size:25px;margin-left:10px;margin-top:20px;"><b>Power ups Hint:</b></p>
+<p style="font-size:20px;margin-left:10px;margin-top:-10px;">1.Jet Jump: Provides temporary Jet boost. Recharges every 30s.</p>
+<p style="font-size:20px;margin-left:10px;margin-top:10px;">2.Anti Gravity: Reduces Gravity Significantly. Recharges every 45s.</p>
+<p style="font-size:20px;margin-left:10px;margin-top:10px;">3.Super Sneakers: Provides jump boost for short period. Recharges every 60s.</p>
+<p style="font-size:25px;margin-left:10px;margin-top:20px;"><b>Shortcut Keys:</b></p>
+<p style="font-size:20px;margin-left:10px;margin-top:-10px;">1.Jet Jump: ↑ up arrow</p>
+<p style="font-size:20px;margin-left:10px;margin-top:10px;">2.Anti Gravity: ↓ down arrow</p>
+<p style="font-size:20px;margin-left:10px;margin-top:10px;">3.Super Sneakers: Space Bar</p>
+<button style="color:white;font-size:25px;background-color:red;margin-left:45px;margin-top:0px;margin-bottom:20px;padding-left:20px;padding-right:20px;" onclick="hintsclose()">Close</button>
+</div>
+</div>
+</div>
+
+<div style="border:solid 4px;height:640px;width:600px;border-radius:5%;background:url('doodle.jpg');background-size:600px 728px;" id="doodleview">
+<button style="border-radius:100%;color:white;font-size:45px;background-color:green;margin-left:16.2%;margin-top:19.5%;padding-left:20px;padding-right:20px;position:absolute;background-image:url('playbutton.jpg');height:150px;width:150px;background-size:155px 147px;" onclick="startgame();startCount();" title="Play!"></button>
+<button style="border-radius:10%;color:white;font-size:32px;background-color:transparent;margin-left:25%;margin-top:39.3%;width:220px;position:absolute;border:none;box-shadow:none;" onclick="dispdoodlestats();showHighScores();">Stats</button>
+<button style="border-radius:10%;color:white;font-size:28px;background-color:transparent;margin-left:3%;margin-top:35.6%;width:220px;position:absolute;border:none;box-shadow:none;" onclick="dispdoodlesettings()">⚙️</button>
+</div>
+
+<div id="gameover" style="margin-right:0px;margin-top:-100px;display:none;position:absolute;z-index:2;background-color:#949494;width:500px;border:5px double;opacity:80%;">
+<p style="font-size:50px;margin-left:90px;margin-top:10px;">GAME OVER!</p>
+<p style="font-size:35px;margin-left:20px;margin-top:0px;" id="gameoverscore"></p>
+<p style="font-size:35px;margin-left:20px;margin-top:-15px;" id="gameovertime"></p>
+<hr style="margin-left:10px;width:477px;margin-top:-10px;" color="black">
+<p style="font-size:35px;margin-left:20px;margin-top:20px;" id="highscore"></p>
+<button style="color:white;font-size:30px;background-color:green;margin-left:85px;margin-top:0px;margin-bottom:20px;padding-left:20px;padding-right:20px;" onclick="restartgame()">Play Again</button>
+<button style="color:white;font-size:30px;background-color:red;margin-left:10px;margin-top:0px;margin-bottom:20px;padding-left:20px;padding-right:20px;" onclick="doodlehome()">Home</button>
+</div>
+
+<div id="doodlestats" style="display:none;border:solid 2px white;height:640px;width:600px;background-image:url('sky3.jpg');background-size:600px 640px;border-radius:5%;">
+<p style="font-size:70px;margin-left:32px;margin-top:30px;position:absolute;text-shadow:3px 3px black;">Doodle Jump Stats</p>
+<button style="color:white;font-size:28px;background-color:green;margin-left:25px;margin-top:140px;padding-left:10px;padding-right:10px;position:absolute;" onclick="doodlestatsback()"><i>< </i>Back</button>
+<ol id="highScoresd" style="font-size:35px;margin-left:40px;margin-top:200px;"></ol>
+</div>
+
+<div id="dispdoodlesettings" style="display:none;border:solid 2px white;height:640px;width:600px;background-image:url('woody.jpg');background-size:600px 640px;border-radius:5%;">
+<p style="color:white;font-size:65px;margin-left:12px;margin-top:30px;position:absolute;text-shadow:2px 2px white;">Doodle Jump Settings</p>
+<button style="color:white;font-size:28px;background-color:green;margin-left:25px;margin-top:115px;padding-left:10px;padding-right:10px;position:absolute;" onclick="dispsettingsback()"><i>< </i>Back</button>
+
+<fieldset style="border:5px white double;margin-top:170px;margin-left:20px;margin-right:20px;width:238px;">
+<legend style="font-size:20px;color:white;">Movement Speed</legend>
+<button style="background-color:lime;border:white 2px solid;color:white;font-size:33px;padding-left:9px;padding-right:9px;margin-left:8px;margin-top:4px;" onclick="tss1()" id="tss1">1</button>
+<button style="background-color:green;border:black 2px solid;color:white;font-size:33px;padding-left:9px;padding-right:9px;margin-left:1px;" onclick="tss2()" id="tss2">2</button>
+<button style="background-color:green;border:black 2px solid;color:white;font-size:33px;padding-left:9px;padding-right:9px;margin-left:1px;" onclick="tss3()" id="tss3">3</button>
+<button style="background-color:green;border:black 2px solid;color:white;font-size:33px;padding-left:9px;padding-right:9px;margin-left:1px;" onclick="tss4()" id="tss4">4</button>
+<button style="background-color:green;border:black 2px solid;color:white;font-size:33px;padding-left:9px;padding-right:9px;margin-left:1px;margin-bottom:8px;" onclick="tss5()" id="tss5">5</button>
+</fieldset>
+
+<fieldset style="border:5px white double;margin-top:-99px;margin-left:308px;margin-right:20px;width:238px;">
+<legend style="font-size:20px;color:white;">Gravity Intensity</legend>
+<button style="background-color:lime;border:white 2px solid;color:white;font-size:33px;padding-left:9px;padding-right:9px;margin-left:8px;margin-top:3px;" onclick="g1()" id="g1">1</button>
+<button style="background-color:green;border:black 2px solid;color:white;font-size:33px;padding-left:9px;padding-right:9px;margin-left:1px;" onclick="g2()" id="g2">2</button>
+<button style="background-color:green;border:black 2px solid;color:white;font-size:33px;padding-left:9px;padding-right:9px;margin-left:1px;" onclick="g3()" id="g3">3</button>
+<button style="background-color:green;border:black 2px solid;color:white;font-size:33px;padding-left:9px;padding-right:9px;margin-left:1px;" onclick="g4()" id="g4">4</button>
+<button style="background-color:green;border:black 2px solid;color:white;font-size:33px;padding-left:9px;padding-right:9px;margin-left:1px;margin-bottom:8px;" onclick="g5()" id="g5">5</button>
+</fieldset>
+
+<fieldset style="border:5px white double;margin-top:10px;margin-left:20px;margin-right:20px;width:238px;">
+<legend style="font-size:20px;color:white;">Platform Gap</legend>
+<button style="background-color:lime;border:white 2px solid;color:white;font-size:33px;padding-left:9px;padding-right:9px;margin-left:8px;margin-top:3px;" onclick="pg1()" id="pg1">1</button>
+<button style="background-color:green;border:black 2px solid;color:white;font-size:33px;padding-left:9px;padding-right:9px;margin-left:1px;" onclick="pg2()" id="pg2">2</button>
+<button style="background-color:green;border:black 2px solid;color:white;font-size:33px;padding-left:9px;padding-right:9px;margin-left:1px;" onclick="pg3()" id="pg3">3</button>
+<button style="background-color:green;border:black 2px solid;color:white;font-size:33px;padding-left:9px;padding-right:9px;margin-left:1px;" onclick="pg4()" id="pg4">4</button>
+<button style="background-color:green;border:black 2px solid;color:white;font-size:33px;padding-left:9px;padding-right:9px;margin-left:1px;margin-bottom:8px;" onclick="pg5()" id="pg5">5</button>
+</fieldset>
+
+<fieldset style="border:5px white double;margin-top:-98px;margin-left:308px;width:80px;height:63px;font-size:25px;color:white;">
+<legend style="color:white;font-size:20px;">Sound</legend>
+<div style="margin-top:-5px">
+<input type="radio" checked name="sound" style="margin-left:13px;accent-color:black;" onclick="soundon()" id="soundon">On
+<input type="radio" name="sound" style="margin-left:13px;accent-color:black;" onclick="soundoff()" id="soundoff">Off
+</div>
+</fieldset>
+
+<fieldset style="border:5px white double;margin-top:-97px;margin-left:450px;width:82px;height:63px;font-size:25px;color:white;">
+<legend style="color:white;font-size:18px;">Power-ups</legend>
+<div style="margin-top:-4px">
+<input type="radio" checked name="powerups" style="margin-left:13px;accent-color:black;" onclick="poweron()" id="poweron">Yes
+<input type="radio" name="powerups" style="margin-left:13px;accent-color:black;" onclick="poweroff()" id="poweroff">No
+</div>
+</fieldset>
+
+<fieldset style="border:5px white double;margin-top:10px;margin-left:20px;width:311px;">
+<legend style="font-size:20px;color:white;">Background</legend>
+<button style="border:lime 2px solid;color:white;font-size:33px;margin-left:7px;background:url('paper.jpg');background-size:220px 420px;height:80px;width:70px;box-shadow:none;" onclick="bgpaper()" id="bgpaper"></button>
+<button style="border:black 2px solid;color:white;font-size:33px;margin-left:2px;background:url('sky3.jpg');background-size:100px 100px;height:80px;width:70px;box-shadow:none;" onclick="bgsky()" id="bgsky"></button>
+<button style="border:black 2px solid;color:white;font-size:33px;margin-left:2px;background:url('cloud4.gif');background-size:100px 100px;height:80px;width:70px;box-shadow:none;" onclick="bgcloud()" id="bgcloud"></button>
+<button style="border:black 2px solid;color:white;font-size:33px;margin-left:2px;background:url('comet2.gif');background-size:70px 120px;height:80px;width:70px;box-shadow:none;" onclick="bgcomet()" id="bgcomet"></button>
+</fieldset>
+
+<fieldset style="border:5px white double;margin-top:-125px;margin-left:385px;width:160px;">
+<legend style="font-size:20px;color:white;">Doodle</legend>
+<button style="border:lime 2px solid;color:white;font-size:33px;margin-left:7px;background:url('doodle3.png');background-size:70px 80px;height:80px;width:70px;box-shadow:none;background-color:white;" onclick="doodle1()" id="doodle1"></button>
+<button style="border:black 2px solid;color:white;font-size:33px;margin-left:2px;background:url('doodle2.gif');background-size:65px 90px;height:80px;width:70px;box-shadow:none;background-color:white;" onclick="doodle2()" id="doodle2"></button>
+<button style="border:black 2px solid;color:white;font-size:33px;margin-left:7px;height:80px;width:70px;box-shadow:none;margin-top:12px;background-color:white;" onclick="ball()" id="ball"><img src="ball.png" height=80 width=69 style="margin-top:8px;margin-left:-7px;"></button>
+<button style="border:black 2px solid;color:white;font-size:33px;margin-left:2px;background:url('jelly2.gif');background-size:66px 80px;height:80px;width:70px;box-shadow:none;background-color:white;margin-top:12px;margin-left:6px;position:absolute;" onclick="jelly()" id="jelly"></button>
+</fieldset>
+
+<fieldset style="border:5px white double;margin-top:-84px;margin-left:20px;width:311px;">
+<legend style="font-size:20px;color:white;">Platform</legend>
+<button style="border:lime 2px solid;color:white;font-size:33px;margin-left:6px;background:url('black3.jpg');background-size:55px 40px;height:40px;width:55px;box-shadow:none;background-color:white;" onclick="blackp()" id="blackp"></button>
+<button style="border:black 2px solid;color:white;font-size:33px;margin-left:2px;background:url('ground2.png');background-size:51px 36px;height:40px;width:55px;box-shadow:none;background-color:white;" onclick="groundp()" id="groundp"></button>
+<button style="border:black 2px solid;color:white;font-size:33px;margin-left:2px;background:url('cloud3.gif');background-size:51px 36px;height:40px;width:55px;box-shadow:none;background-color:#309AF1;" onclick="cloudp()" id="cloudp"></button>
+<button style="border:black 2px solid;color:white;font-size:33px;margin-left:2px;background:url('Brick2.jpg');background-size:105px 38px;height:40px;width:55px;box-shadow:none;background-color:white;" onclick="brickp()" id="brickp"></button>
+<button style="border:black 2px solid;color:white;font-size:33px;margin-left:2px;background:url('skull.png');background-size:51px 36px;height:40px;width:55px;box-shadow:none;background-color:orange;" onclick="skullp()" id="skullp"></button>
+</fieldset>
+</div>
+
+<script src="jump.js">
+</script>
+</body>
+</html>

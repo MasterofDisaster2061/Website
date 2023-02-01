@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Website</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="indexcss.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <style>
+    body, h1,h2,h3,h4,h5,h6 {font-family: "Montserrat", sans-serif}
+    .w3-row-padding img {margin-bottom: 12px}
+    /* Set the width of the sidebar to 120px */
+    .w3-sidebar {width: 120px;background: #222;}
+    /* Add a left margin to the "page content" that matches the width of the sidebar (120px) */
+    #main {margin-left: 120px}
+    /* Remove margins from "page content" on small screens */
+    @media only screen and (max-width: 600px) {#main {margin-left: 0}}
+	
+	@import url('https://fonts.googleapis.com/css2?family=Alfa+Slab+One&display=swap');
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+.waviy {
+  position: relative;
+  font-size: 60px;
+}
+.waviy span {
+  font-family: 'Alfa Slab One', cursive;
+  position: relative;
+  display: inline-block;
+  color: #fff;
+  text-transform: uppercase;
+  animation: waviy 3s infinite;
+  animation-delay: calc(.1s * var(--i));
+  
+}
+@keyframes waviy {
+  0%,40%,100% {
+    transform: translateY(0)
+  }
+  20% {
+    transform: translateY(-20px)
+  }
+}
+
+.animate-charcter
+{
+  background-image: linear-gradient(
+    -225deg,
+    lime 0%,
+    orange 29%,
+    #ff1361 67%,
+    #fff800 100%
+  );
+  background-size: auto auto;
+  background-clip: border-box;
+  background-size: 200% auto;
+  color: #fff;
+  background-clip: text;
+  text-fill-color: transparent;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: textclip 5s linear infinite;
+  display: inline-block;
+  font-size: 25px;
+  margin-top:50px;
+}
+
+@keyframes textclip {
+  to {
+    background-position: 200% center;
+  }
+}
+
+.iconbutton:hover
+{
+filter:brightness(1.15);
+}
+.iconbutton:active
+{
+filter:brightness(1.5);
+}
+.iconbutton
+{
+filter:brightness(.9);
+}
+
+    </style>
+  </head>
+<body class="w3-black">
+
+<!-- Icon Bar (Sidebar - hidden on small screens) -->
+<nav class="w3-sidebar w3-bar-block w3-small w3-hide-small w3-center">
+  <!-- Avatar image in top left corner -->
+  <img src="Website java/dra.jfif" style="width:100%">
+  <a href="#" class="w3-bar-item w3-button w3-padding-large w3-hover-black">
+    <i class="fa fa-home w3-xxlarge"></i>
+    <p>HOME</p>
+  </a>
+  <a href="#apps" class="w3-bar-item w3-button w3-padding-large w3-hover-black">
+    <img src="Website java/app.png" style="height:50px;width:50px;">
+    <p>APPS</p>
+  </a>
+  <a href="#games" class="w3-bar-item w3-button w3-padding-large w3-hover-black">
+    <img src="Website java/game.gif" style="height:40px;width:50px;">
+    <p>GAMES</p>
+  </a>
+  <a href="#about" class="w3-bar-item w3-button w3-padding-large w3-hover-black">
+    <i class="fa fa-user w3-xxlarge"></i>
+    <p>ABOUT</p>
+  </a>
+  <a href="#contact" class="w3-bar-item w3-button w3-padding-large w3-hover-black">
+    <i class="fa fa-envelope w3-xxlarge"></i>
+    <p>CONTACT</p>
+  </a>
+</nav>
+
+<!-- Navbar on small screens (Hidden on medium and large screens) -->
+<div class="w3-top w3-hide-large w3-hide-medium" id="myNavbar">
+  <div class="w3-bar w3-black w3-opacity w3-hover-opacity-off w3-center w3-small">
+    <a href="#" class="w3-bar-item w3-button" style="width:25% !important">HOME</a>
+    <a href="#apps" class="w3-bar-item w3-button" style="width:25% !important">APPS</a>
+    <a href="#games" class="w3-bar-item w3-button" style="width:25% !important">GAMES</a>
+	<a href="#about" class="w3-bar-item w3-button" style="width:25% !important">ABOUT</a>
+    <a href="#contact" class="w3-bar-item w3-button" style="width:25% !important">CONTACT</a>
+  </div>
+</div>
+
+<!-- Page Content -->
+<div class="w3-padding-large" id="main">
+  <!-- Header/Home -->
+  <header class="w3-container w3-padding-32 w3-center w3-black" id="home">
+   
+   <div class="waviy">
+   <span style="--i:1">W</span>
+   <span style="--i:2">E</span>
+   <span style="--i:3">L</span>
+   <span style="--i:4">C</span>
+   <span style="--i:5">O</span>
+   <span style="--i:6">M</span>
+   <span style="--i:7">E</span>
+   <span style="--i:8"> </span>
+   <span style="--i:9">T</span>
+   <span style="--i:10">O</span>
+   <span style="--i:11"> </span>
+   <span style="--i:12">M</span>
+    <span style="--i:13">Y</span>
+   <span style="--i:14"> </span>
+    <span style="--i:15">W</span>
+   <span style="--i:16">E</span>
+    <span style="--i:17">B</span>
+   <span style="--i:18">S</span>
+    <span style="--i:19">I</span>
+   <span style="--i:20">T</span>
+    <span style="--i:21">E</span>
+
+  </div>
+   
+    <div class="container">
+  <div class="row">
+    <div class="col-md-12 text-center">
+      <h3 class="animate-charcter">I'm Baraboombaa, Web and Game Developer.</h3>
+    </div>
+  </div>
+</div>
+    <img src="Website java/chessback.jfif" class="w3-image" width="600" height="600">
+  </header>
+  
+  <br><br><br><br><br><br>
+  <!-- applications -->
+  <div class="w3-padding-64 w3-content" id="apps">
+    <h2 class="w3-text-light-grey">Applications</h2>
+    <hr style="width:200px" class="w3-opacity">
+
+    <div style="margin-top:5%;">
+	<a href="Website java/calculator gang.html"><button class="iconbutton" style="height:100px;width:100px;border-radius:10%;border:3px solid gray;background:url('Website java/simcalc.jpg');background-size:94px 95px;margin-left:1.59%;"></button></a>
+	<a href="Website java/scicalc.html"><button class="iconbutton" style="height:100px;width:100px;border-radius:10%;border:3px solid gray;background:url('Website java/scicalc.jpg');background-size:94px 94px;margin-left:8%;"></button></a>
+	<a href="Website java/converter gang.html"><button class="iconbutton" style="height:100px;width:100px;border-radius:10%;border:3px solid gray;background:url('Website java/convert.png');background-size:95px 94px;margin-left:8%;"></button></a>
+	<a href="Website java/time gang.html"><button class="iconbutton" style="height:100px;width:100px;border-radius:10%;border:3px solid gray;background:url('Website java/clockicon.jpg');background-size:94px 95px;margin-left:8%;"></button></a>
+	<a href="Website java/regis.html"><button class="iconbutton" style="height:100px;width:100px;border-radius:10%;border:3px solid gray;background:url('Website java/regis.jpg');background-size:96px 94px;margin-left:8%;"></button><br></a>
+	<b>Simple Calculator</b>
+	<b style="margin-left:3.75%;">Scientific Calculator</b>
+	<b style="margin-left:5.1%;">Unit Converter</b>
+	<b style="margin-left:10.5%;">Clock</b>
+	<b style="margin-left:9.1%;">Registration Form</b>
+	</div>
+	
+  </div>
+  
+   <!-- games -->
+  <div class="w3-padding-64 w3-content" id="games">
+    <h2 class="w3-text-light-grey">Games</h2>
+    <hr style="width:200px" class="w3-opacity">
+	
+    <div style="margin-top:5%;">
+	<a href="Website java/tic tac.html"><button class="iconbutton" style="height:100px;width:100px;border-radius:10%;border:3px solid gray;background:url('Website java/tictac.jpg');background-size:94px 95px;margin-left:1.59%;"></button></a>
+	<a href="Website java/tetris.html"><button class="iconbutton" style="height:100px;width:100px;border-radius:10%;border:3px solid gray;background:url('Website java/tetris.png');background-size:94px 94px;margin-left:8%;"></button></a>
+	<a href="Website java/snake.html"><button class="iconbutton" style="height:100px;width:100px;border-radius:10%;border:3px solid gray;background:url('Website java/snakeio.jpg');background-size:95px 94px;margin-left:8%;"></button></a><br>
+	
+	<b style="margin-left:2.55%;">Tic Tac Toe</b>
+	<b style="margin-left:12%;">Tetris</b>
+	<b style="margin-left:11.4%;">Snake Game</b>
+	
+	<div style="margin-top:5%;">
+	<a href="Website java/heli.html"><button class="iconbutton" style="height:100px;width:100px;border-radius:10%;border:3px solid gray;background:url('Website java/heliicon.jpg');background-size:94px 95px;margin-left:1.59%;"></button></a>
+	<a href="Website java/jump.html"><button class="iconbutton" style="height:100px;width:100px;border-radius:10%;border:3px solid gray;background:url('Website java/doodleicon.jpg');background-size:95px 95px;margin-left:8%;"></button></a>
+	<a href="Website java/Chess.html"><button class="iconbutton" style="height:100px;width:100px;border-radius:10%;border:3px solid gray;background:url('Website java/chessicon.jpg');background-size:95px 94px;margin-left:8%;"></button></a><br>
+	
+	<b style="margin-left:0.1%;">Helicopter Game</b>
+	<b style="margin-left:6.6%;">Doodle Jump</b>
+	<b style="margin-left:10.6%;">Chess</b>
+	</div> 
+  </div>
+  
+  <!-- About Section -->
+  <div class="w3-content w3-justify w3-text-grey w3-padding-64" id="about">
+    <h2 class="w3-text-light-grey">About</h2>
+    <hr style="width:200px" class="w3-opacity">
+    <p>
+	Hello everyone! It's me Baraboombaa. Here you can find some simple applications and games. Hope you like it!
+    </p>
+    <h3 class="w3-padding-16 w3-text-light-grey">My Skills</h3>
+    
+    <p class="w3-wide">Web Design</p>
+    <div class="w3-white">
+      <div class="w3-dark-grey" style="height:28px;width:50%"></div>
+    </div>
+	
+	<p class="w3-wide">Java and C++</p>
+    <div class="w3-white">
+      <div class="w3-dark-grey" style="height:28px;width:35%"></div>
+    </div>
+	
+    <p class="w3-wide">Photoshop</p>
+    <div class="w3-white">
+      <div class="w3-dark-grey" style="height:28px;width:30%"></div>
+    </div><br>
+    
+    <div class="w3-row w3-center w3-padding-16 w3-section w3-light-grey">
+      <div class="w3-quarter w3-section">
+        <span class="w3-xlarge">Independent</span><br>
+        Developer
+      </div>
+      <div class="w3-quarter w3-section">
+        <span class="w3-xlarge">20+</span><br>
+        Projects Done
+      </div>
+      <div class="w3-quarter w3-section">
+        <span class="w3-xlarge">8+</span><br>
+        Games Developed
+      </div>
+      <div class="w3-quarter w3-section">
+        <span class="w3-xlarge">10+</span><br>
+        Apps Developed
+      </div>
+    </div>
+    
+    <!-- Grid for creation -->
+    <h3 class="w3-padding-16 w3-text-light-grey">My Creation</h3>
+    <div class="w3-row-padding" style="margin:0 -16px">
+      <div class="w3-half w3-margin-bottom">
+        <ul class="w3-ul w3-white w3-center w3-opacity w3-hover-opacity-off">
+          <li class="w3-dark-grey w3-xlarge w3-padding-32">Applications</li>
+          <li class="w3-padding-16">Simple Calculator</li>
+          <li class="w3-padding-16">Scientific Calculator</li>
+          <li class="w3-padding-16">Clock</li>
+		  <li class="w3-padding-16">Alarm Timer & Stopwatch</li>
+          <li class="w3-padding-16">Unit Converter</li>
+		  <li class="w3-padding-16">Registration Form</li>
+         
+          <li class="w3-light-grey w3-padding-24">
+            <a href="#apps"><button class="w3-button w3-white w3-padding-large w3-hover-black" >Visit</button></a>
+          </li>
+        </ul>
+      </div>
+
+      <div class="w3-half">
+        <ul class="w3-ul w3-white w3-center w3-opacity w3-hover-opacity-off">
+          <li class="w3-dark-grey w3-xlarge w3-padding-32">Games</li>
+          <li class="w3-padding-16">Tetris</li>
+          <li class="w3-padding-16">Tic-Tac-Toe</li>
+          <li class="w3-padding-16">Doodle Jump</li>
+          <li class="w3-padding-16">Snake Game</li>
+         <li class="w3-padding-16">Helicopter Game</li>
+		 <li class="w3-padding-16">Chess</li>
+		 
+          <li class="w3-light-grey w3-padding-24">
+            <a href="#games"><button class="w3-button w3-white w3-padding-large w3-hover-black">Visit</button></a>
+          </li>
+        </ul>
+      </div>
+    <!-- End Grid -->
+    </div>
+  
+  <!-- End About Section -->
+  </div>
+
+  <!-- Contact Section -->
+  <div class="w3-padding-64 w3-content w3-text-grey" id="contact">
+    <h2 class="w3-text-light-grey">Contact Me</h2>
+    <hr style="width:200px" class="w3-opacity">
+
+    <div class="w3-section">
+      <p><i class="fa fa-map-marker fa-fw w3-text-white w3-xxlarge w3-margin-right"></i> Kathmandu, Nepal</p>
+      <p><i class="fa fa-phone fa-fw w3-text-white w3-xxlarge w3-margin-right"></i> Phone: 9823779720</p>
+      <p><i class="fa fa-envelope fa-fw w3-text-white w3-xxlarge w3-margin-right"> </i> Email: rbsingh061@gmail.com</p>
+    </div><br>
+    <p>I would be glad if you provide me feedbacks! Send me a message:</p>
+
+    <form action="/action_page.php" target="_blank">
+      <p><input class="w3-input w3-padding-16" type="text" placeholder="Name" required name="Name"></p>
+      <p><input class="w3-input w3-padding-16" type="text" placeholder="Email" required name="Email"></p>
+      <p><input class="w3-input w3-padding-16" type="text" placeholder="Subject" required name="Subject"></p>
+      <p><input class="w3-input w3-padding-16" type="text" placeholder="Message" required name="Message"></p>
+      <p>
+        <button class="w3-button w3-light-grey w3-padding-large" type="submit">
+          <i class="fa fa-paper-plane"></i> SEND MESSAGE
+        </button>
+      </p>
+    </form>
+  <!-- End Contact Section -->
+  </div>
+  
+<!-- Footer -->
+<footer class="w3-content w3-padding-64 w3-text-grey w3-xlarge">
+  <i class="fa fa-facebook-official w3-hover-opacity"></i>
+  <i class="fa fa-instagram w3-hover-opacity"></i>
+  <i class="fa fa-snapchat w3-hover-opacity"></i>
+  <i class="fa fa-pinterest-p w3-hover-opacity"></i>
+  <i class="fa fa-twitter w3-hover-opacity"></i>
+  <i class="fa fa-linkedin w3-hover-opacity"></i>
+ <!-- End footer -->
+</footer>
+
+<!-- END PAGE CONTENT -->
+</div>
+
+</body>
+</html>
