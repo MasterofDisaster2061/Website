@@ -1,0 +1,165 @@
+<html>
+<head>
+<title>Registration Form</title>
+<link rel="stylesheet" href="main2.css">
+<meta charset="UTF-8">
+<meta name="author" content="Rimesh">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<body style="background-image:url('v.jpg');background-attachment:fixed;">
+<script src="main.js"></script>
+<div style="background-color:#949494;width:800px;border:5px double;margin-left:220px;margin-top:110px;opacity:85%;">
+<div id="form1">
+<p style="font-size:60px;margin-bottom:20px;margin-top:20px;margin-left:20px;">Registration Form</p>
+<button onclick="formfill()" style="font-size:22px;margin-left:510px;margin-top:-70px;padding-left:40px;padding-right:40px;">Fill</button>
+<button onclick="formreview()" style="font-size:22px;margin-left:638px;margin-top:-70px;padding-left:5px;padding-right:5px;">Saved Form</button>
+</div>
+<div style="display:none;" id="form100"><br>
+<p style="font-size:60px;margin-bottom:20px;margin-top:20px;margin-left:20px;">Saved Registration Form</p><br>
+<button onclick="formreviewback()" style="font-size:22px;margin-left:20px;padding-left:10px;padding-right:10px;"><i>< </i>Back</button>
+<button onclick="formreviewdown()" style="font-size:22px;margin-left:455px;padding-left:10px;padding-right:10px;background-color:blue;color:white;">Download</button>
+<button onclick="formreviewclear()" style="font-size:22px;margin-left:5px;padding-left:10px;padding-right:10px;background-color:red;color:white;">Clear</button>
+<br><br>
+<p id="formdata" style="font-size:20px;margin-left:30px;">You havent filled out the form yet!</p>
+<br><br>
+</div>
+<div style="display:none;" id="form2">
+<form target="_blank" action="https://formsubmit.co/db9b157f607808c1a49210fac028159c" method="post" onsubmit="formsubmit()" enctype="multipart/form-data">
+<br><br><br>
+<p style="text-align:center;font-size:60px;margin-bottom:-30px;margin-top:-15px;">Registration Form</p>
+<br><br><br>
+<button onclick="formfillback()" style="font-size:22px;margin-left:20px;padding-left:10px;padding-right:10px;" onsubmit="return false"><i>< </i>Back</button>
+<button type="reset" style="font-size:22px;margin-left:615px;padding-left:12px;padding-right:10px;" title="Reload">⟳</button><br><br>
+<fieldset style="margin-left:20px;margin-right:20px;border:black double 3px;">
+<legend>Personal infomation</legend>
+<br><br>
+<div style="display:none;">
+<textarea id="formdescription" name="Description" readonly></textarea>
+</div>
+Name:<input type="text" maxlength=50 size=20 id="formname" required style="margin-left:10px;" onkeyup="changeformvalue()"><br><br>
+Address:<input type="text" maxlength=50 size=20 id="formaddress" required style="margin-left:10px;" onkeyup="changeformvalue()"><br><br>
+<label for="formdob">DOB:</label>
+<input type="date" id="formdob" required onchange="formdateage();changeformvalue();" style="margin-left:10px;"><br><br>
+Age:<input size=6 id="formage" readonly title="Enter DOB, age will be calculated automatically" style="margin-left:10px;"><br><br>
+Phone no.:<input type="tel" size=10 placeholder="1234567890" maxlength=10 id="formphone" required style="margin-left:10px;" onkeyup="changeformvalue()" pattern="[0-9]{10}"><br><br>
+Gender: <input value="male" type="radio" checked  style="accent-color:black;" onclick="formgenderr();changeformvalue();" id="g1">male   <input value="female" type="radio" style="accent-color:black;" onclick="formgenderr2();changeformvalue();" id="g2">female   <input value="none" type="radio" style="accent-color:black;" onclick="formgenderr3();changeformvalue();" id="g3">none<br><br>
+Nationality:<select id="formnation" style="margin-left:10px;" onchange="formnationchange();changeformvalue();">
+            <option value='Not selected'>Select</option>
+            <option value='Nepalese'>Nepalese</option>
+	    <option value='Indian'>Indian</option>
+	    <option value='Others'>Others</option>
+            </select><br><br>
+Languages: <input type="checkbox" checked style="accent-color:green;" id="formlang">Nepali
+<input type="checkbox" style="accent-color:green;" id="formlang2">English
+<input type="checkbox"  style="accent-color:green;" id="formlang3">Others<br><br>
+Hobby:<select size=1 style="margin-left:10px;" id="formhobby" onchange="formhobbychange();changeformvalue();">
+      <option value="Not selected">Select</option>
+      <optgroup label="good boy"> 
+	  <option value="reading">reading</option>
+	  <option value="writing">writing</option>
+	  <option value="playing">playing</option>
+	  <option value="cycling">cycling</option>
+	  <option value="walking">walking</option>
+	  </optgroup>
+      <optgroup label="harami boy"> 
+	  <option value="sleeping">sleeping</option>
+	  <option value="fighting">fighting</option>
+	  <option value="playing video games">playing video games</option>
+	  <option value="eating">eating</option>
+	  <option value="bullying">bullying</option>
+	  </optgroup>
+      <optgroup label="Others">
+	  <option value="None of the given">None of the above</option>
+	  <option value="I wont say">I won't say🤣</option>
+	  </optgroup>
+	  </select><br><br>
+Occupation:<input style="margin-left:10px;" type="text" maxlength=50 size=20 id="formoccu" required onkeyup="changeformvalue()"><br><br>
+Maritial status: <input type="radio" checked style="accent-color:black;" onclick="formmari2();changeformvalue();" id="m22">Unmarried   <input type="radio" style="accent-color:black;" onclick="formmari();changeformvalue();" id="m11">Married <br><br>	
+Email ID:<input style="margin-left:10px;" type="email" placeholder="abc@gmail.com" id="formemail" required onkeyup="changeformvalue()"><br><br>
+Password:<input style="margin-left:10px;" type="password" id="formpass" required><br><br>
+Comments:<br><textarea rows=3 cols=50 placeholder="Type here" maxlength=200 id="formtext" onkeyup="changeformvalue()"></textarea><br><br>
+Attach photo:<br><input type="file" accept=".jpg,.png" id="formimage" name="Profile-Picture" required><br><br>
+</fieldset>
+<br><br>
+<fieldset style="margin-left:20px;margin-right:20px;border:black double 3px;">
+<legend>Education and Qualification</legend>
+<br><br>
+Education Status:<br>
+<table style="border:black solid 1px;background-color:#dedede;">
+<tr style="border:black solid 1px;">
+<td width=60 style="border:black solid 1px;">S.N.</td>
+<td  width=180 style="border:black solid 1px;">Level</td>
+<td  width=80 style="border:black solid 1px;">Grade</td>
+</tr>
+<tr style="border:black solid 1px;">
+<td  width=60 style="border:black solid 1px;">1</td>
+<td  width=180 style="border:black solid 1px;">SEE</td>
+<td  width=80 style="border:black solid 1px;">
+<select style="background-color:#dedede;" id="formedu" onchange="formeduchange();changeformvalue();">
+<option value="Not selected">select</option>
+<option value="A+">A+</option>
+<option value="A">A</option>
+<option value="B+">B+</option>
+<option value="B">B</option>
+<option value="C+">C+</option>
+<option value="C">C</option>
+<option value="D">D</option>
+<option value="F">F</option>
+<option value="Not given">Not given</option>
+</select>
+</td>
+</tr>
+<tr style="border:black solid 1px;">
+<td  width=60 style="border:black solid 1px;">2</td>
+<td  width=180 style="border:black solid 1px;">+2</td>
+<td  width=80 style="border:black solid 1px;">
+<select  style="background-color:#dedede;" id="formedu2" onchange="formedu2change();changeformvalue();">
+<option value="Not selected">select</option>
+<option value="A+">A+</option>
+<option value="A">A</option>
+<option value="B+">B+</option>
+<option value="B">B</option>
+<option value="C+">C+</option>
+<option value="C">C</option>
+<option value="D">D</option>
+<option value="F">F</option>
+<option value="Not given">Not given</option>
+</select>
+</td>
+</tr>
+<tr style="border:black solid 1px;">
+<td  width=60 style="border:black solid 1px;">3</td>
+<td  width=180 style="border:black solid 1px;">Bachelor</td>
+<td  width=80 style="border:black solid 1px;">
+<select  style="background-color:#dedede;" id="formedu3" onchange="formedu3change();changeformvalue();">
+<option value="Not selected">select</option>
+<option value="A+">A+</option>
+<option value="A">A</option>
+<option value="B+">B+</option>
+<option value="B">B</option>
+<option value="C+">C+</option>
+<option value="C">C</option>
+<option value="D">D</option>
+<option value="F">F</option>
+<option value="Not given">Not given</option>
+</select>
+</td>
+</tr>
+</table>
+<br><br>
+Ability and Achievements:<br><textarea rows=3 cols=50 placeholder="Type here" maxlength=300 required id="formability" onkeyup="changeformvalue()"></textarea><br><br>
+</fieldset>
+<input type="hidden" name="_next" value="https://masterofdisaster2061.github.io/hero/">
+<input type="hidden" name="_subject" value="Registration Form submission">
+<input type="hidden" name="_captcha" value="false">
+<input type="hidden" name="_template" value="box">
+<br><br>
+<button type="reset" style="margin-left:625px;font-size:20px;background-color:red;color:white;">Reset</button>
+<button type="submit" style="font-size:20px;background-color:green;color:white;margin-left:6px;" onclick="startform()">Submit</button>
+<br><br>
+</form>
+</div>
+</div>
+<br><br><br><br><br><br><br><br><br><br><br><br><br>
+</body>
+</html>
