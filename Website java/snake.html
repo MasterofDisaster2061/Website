@@ -1,0 +1,200 @@
+<html>
+<head>
+  <title>Snake Game</title>
+  <meta charset="UTF-8">
+  <meta name="author" content="Rimesh">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+  html, body {
+    height: 100%;
+    margin: 0;
+  }
+  body {
+    background: url('v.jpg');
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  canvas {
+    border: 2px solid white;
+	background-image:url('grass.jpg');
+	background-size:800px 592px;
+  }
+ 
+  #score
+  {
+    color:yellow;
+    position:absolute;
+	left:155px;
+	top:10px;
+  }
+ 
+button
+{
+box-shadow:0px 2px black;
+cursor:pointer;
+}
+button:active
+{
+box-shadow:0px .5px black;
+transform:translateY(2px);
+cursor:pointer;
+}
+
+.animate
+{
+background-image: linear-gradient(
+    -225deg,
+    #231557 0%,
+    #44107a 29%,
+    #ff1361 67%,
+    #fff800 100%
+  );
+  background-size: auto auto;
+  background-clip: border-box;
+  background-size: 200% auto;
+  color: #fff;
+  background-clip: text;
+  text-fill-color: transparent;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: textclip 2s linear infinite;
+  display: inline-block;
+  font-size: 190px;
+}
+
+@keyframes textclip 
+{
+to 
+{
+ background-position:200% center;
+}
+}
+</style>
+</head>
+<body>
+
+<div style="display:none;margin-top:1%;" id="snakegame">
+<canvas width="800" height="592" id="game"></canvas>
+<div style="background-color:black;border:2px white solid;position:absolute;margin-left:-16%;margin-top:-34%;width:200px;height:290px;">
+<p style="color:white;font-size:35px;margin-left:5%;margin-top:7%;">Snake Game</p>
+<p style="color:white;font-size:30px;margin-left:10%;margin-top:5%;">Score-</p>
+<p id="score" style="color:white;font-size:30px;margin-left:-25%;margin-top:40%;"></p>
+<p style="color:white;font-size:30px;margin-left:10%;margin-top:10%;">Time-</p>
+<p id="timescore" style="color:white;font-size:30px;margin-left:49%;margin-top:-31.5%;">00:00</p>
+<p style="color:white;font-size:30px;margin-left:10%;margin-top:15%;">Speed-</p>
+<p id="speedscore" style="color:white;font-size:30px;margin-left:54%;margin-top:-31.5%;">1</p>
+</div>
+<div style="margin-left:60%;margin-top:-43.5%;position:absolute;background-color:gray;height:590px;width:180px;opacity:50%;">
+</div>
+<div style="margin-left:27.7%;margin-top:-5%;position:absolute;">
+<button style="border-radius:100%;border:2px solid black;background-image:url('home.png');background-size:63px 60px;margin-left:498px;margin-top:-510px;position:absolute;" onclick="snakehomedisp()" id="snakehome100" title="Home"><p style="height:35px;width:50px;"></p></button>
+<button style="border-radius:100%;border:2px solid black;background-image:url('pause.jpg');background-size:63px 63px;margin-left:500px;margin-top:-420px;margin-bottom:132px;position:absolute;" onclick="pausegame();stopCount();" id="pausegame" title="Pause Game"><p style="height:35px;width:50px;"></p></button>
+<button style="border-radius:100%;border:2px solid black;background-image:url('resume.jpg');background-size:66px 66px;margin-left:500px;margin-top:-420px;margin-bottom:132px;display:none;position:absolute;" onclick="resumegame();startCount();" id="resumegame" title="Resume Game"><p style="height:35px;width:50px;"></p></button>
+<button style="border-radius:100%;border:2px solid black;background-image:url('up.jpg');background-size:62px 62px;margin-left:500px;margin-top:-286px;position:absolute;" onclick="upgame()" id="upgame"><p style="height:35px;width:50px;"></p></button>
+<button style="border-radius:100%;border:2px solid black;background-image:url('left.jpg');background-size:55px 59px;margin-left:468px;margin-top:-220px;position:absolute;" onclick="leftgame()" id="leftgame"><p style="height:30px;width:45px;"></p></button>
+<button style="border-radius:100%;border:2px solid black;background-image:url('right.jpg');background-size:60px 59px;margin-left:536px;margin-top:-220px;position:absolute;" onclick="rightgame()" id="rightgame"><p style="height:30px;width:45px;"></p></button>
+<button style="border-radius:100%;border:2px solid black;background-image:url('down.jpg');background-size:63px 70px;margin-left:500px;margin-top:-160px;position:absolute;" onclick="downgame()" id="downgame"><p style="height:35px;width:50px;"></p></button>
+<button style="border-radius:100%;border:2px solid black;margin-left:496px;margin-top:-30px;position:absolute;background-color:orange;font-size:20px;filter:brightness(1.15);font-size:45px;padding-bottom:10px;padding-left:15px;padding-right:15px;color:black;" id="replaygame" onclick="replaygamedisp()" title="Restart Game">⮌</button>
+<p style="font-size:100px;margin-top:-340px;margin-left:-100px;display:none;position:absolute;" class="animate" id="gamepaused">Game</p>
+<p style="font-size:100px;margin-top:-250px;margin-left:-120px;display:none;position:absolute;" class="animate" id="gamepaused2">Paused</p>
+</div>
+</div>
+
+<div style="border:solid 4px;height:640px;width:600px;border-radius:5%;background:url('snake.jpg');background-size:600px 640px;" id="snakeview">
+<h1 style="font-size:80px;margin-left:13%;margin-top:12%;">SNAKE</h1>
+<h1 style="font-size:80px;margin-left:22%;margin-top:-10%;">GAME</h1>
+<button style="border-radius:100%;color:white;font-size:45px;background-color:green;margin-left:16.2%;margin-top:-3%;padding-left:20px;padding-right:20px;position:absolute;background-image:url('playbutton.jpg');height:150px;width:150px;background-size:155px 147px;" onclick="startgame2();startCount();" title="Play!"></button>
+<button style="border-radius:10%;color:white;font-size:32px;background-color:#ff2400;margin-left:28.7%;margin-top:15%;padding-left:20px;padding-right:20px;position:absolute;" onclick="dispsnakestats();showHighScores();">Stats</button>
+<button style="border-radius:10%;color:white;font-size:28px;background-color:#ff2800;margin-left:7%;margin-top:15%;padding-left:35px;padding-right:35px;position:absolute;" onclick="dispsnakesettings()">⚙️</button>
+</div>
+
+<div id="restartgame" style="margin-right:0px;margin-top:-100px;display:none;position:absolute;z-index:2;background-color:#949494;width:500px;border:5px double;opacity:80%;">
+<p style="font-size:50px;margin-left:90px;margin-top:10px;">GAME OVER!</p>
+<p style="font-size:35px;margin-left:20px;margin-top:0px;" id="gameoverscore"></p>
+<p style="font-size:35px;margin-left:20px;margin-top:-15px;" id="gameovertime"></p>
+<hr style="margin-left:10px;width:477px;margin-top:-10px;" color="black">
+<p style="font-size:35px;margin-left:20px;margin-top:20px;" id="highscore"></p>
+<button style="color:white;font-size:30px;background-color:green;margin-left:85px;margin-top:0px;margin-bottom:20px;padding-left:20px;padding-right:20px;" onclick="startgame()">Play Again</button>
+<button style="color:white;font-size:30px;background-color:red;margin-left:10px;margin-top:0px;margin-bottom:20px;padding-left:20px;padding-right:20px;" onclick="snakehome()">Home</button>
+</div>
+<div id="replaygame2" style="margin-right:0px;margin-top:-100px;display:none;position:absolute;background-color:#949494;width:500px;border:5px double;z-index:1;opacity:80%;">
+<p style="font-size:60px;text-align:center;margin-top:10px;">Restart Game</p>
+<p style="font-size:30px;margin-left:20px;margin-top:-20px;">Are you sure want to restart the game?</p>
+<button style="color:white;font-size:30px;background-color:red;margin-left:138px;margin-top:0px;margin-bottom:20px;padding-left:20px;padding-right:20px;" onclick="startgame();">Yes</button>
+<button style="color:white;font-size:30px;background-color:green;margin-left:10px;margin-top:0px;margin-bottom:30px;padding-left:10px;padding-right:10px;" onclick="snakegameback2();">Cancel</button>
+</div>
+<div id="snakehomedisp" style="margin-right:0px;margin-top:-100px;display:none;position:absolute;background-color:#949494;width:500px;border:5px double;z-index:1;opacity:80%;">
+<p style="font-size:60px;text-align:center;margin-top:10px;">Go Home</p>
+<p style="font-size:30px;margin-left:20px;margin-top:-20px;">Are you sure want to quit the game?</p>
+<button style="color:white;font-size:30px;background-color:red;margin-left:138px;margin-top:0px;margin-bottom:20px;padding-left:20px;padding-right:20px;" onclick="snakehome();">Yes</button>
+<button style="color:white;font-size:30px;background-color:green;margin-left:10px;margin-top:0px;margin-bottom:30px;padding-left:10px;padding-right:10px;" onclick="snakegameback();">Cancel</button>
+</div>
+
+<div id="dispsnakestat" style="display:none;border:solid 2px white;height:640px;width:600px;background-image:url('grass.jpg');background-size:600px 640px;border-radius:5%;">
+<p style="color:white;font-size:70px;margin-left:43px;margin-top:30px;position:absolute;text-shadow:3px 3px black;">Snake Game Stats</p>
+<button style="color:white;font-size:28px;background-color:blue;margin-left:25px;margin-top:140px;padding-left:10px;padding-right:10px;position:absolute;" onclick="dispsnakestatsback()"><i>< </i>Back</button>
+<ol id="highScoress" style="color:white;font-size:35px;margin-left:40px;margin-top:200px;"></ol>
+</div>
+
+<div id="dispsnakesetting" style="display:none;border:solid 2px white;height:640px;width:600px;background-image:url('snakebg.jpg');background-size:600px 640px;border-radius:5%;">
+<p style="color:white;font-size:65px;margin-left:20px;margin-top:30px;position:absolute;text-shadow:3px 3px black;">Snake Game Settings</p>
+<button style="color:white;font-size:28px;background-color:blue;margin-left:25px;margin-top:130px;padding-left:10px;padding-right:10px;position:absolute;" onclick="dispsettingsback()"><i>< </i>Back</button>
+<fieldset style="border:5px white double;margin-top:190px;margin-left:20px;margin-right:20px;">
+<legend style="color:white;font-size:20px;">Snake Speed</legend>
+<button style="background-color:lime;border:white 2px solid;color:white;font-size:33px;padding-left:12px;padding-right:12px;margin-left:8px;margin-top:4px;" onclick="tss1()" id="tss1">1</button>
+<button style="background-color:green;border:black 2px solid;color:white;font-size:33px;padding-left:12px;padding-right:12px;margin-left:1px;" onclick="tss2()" id="tss2">2</button>
+<button style="background-color:green;border:black 2px solid;color:white;font-size:33px;padding-left:12px;padding-right:12px;margin-left:1px;" onclick="tss3()" id="tss3">3</button>
+<button style="background-color:green;border:black 2px solid;color:white;font-size:33px;padding-left:12px;padding-right:12px;margin-left:1px;" onclick="tss4()" id="tss4">4</button>
+<button style="background-color:green;border:black 2px solid;color:white;font-size:33px;padding-left:12px;padding-right:12px;margin-left:1px;" onclick="tss5()" id="tss5">5</button>
+<button style="background-color:green;border:black 2px solid;color:white;font-size:33px;padding-left:12px;padding-right:12px;margin-left:2px;" onclick="tss6()" id="tss6">6</button>
+<button style="background-color:green;border:black 2px solid;color:white;font-size:33px;padding-left:12px;padding-right:12px;margin-left:1px;" onclick="tss7()" id="tss7">7</button>
+<button style="background-color:green;border:black 2px solid;color:white;font-size:33px;padding-left:12px;padding-right:12px;margin-left:1px;" onclick="tss8()" id="tss8">8</button>
+<button style="background-color:green;border:black 2px solid;color:white;font-size:33px;padding-left:12px;padding-right:12px;margin-left:1px;" onclick="tss9()" id="tss9">9</button>
+<button style="background-color:green;border:black 2px solid;color:white;font-size:33px;padding-left:1px;padding-right:3px;margin-left:1px;margin-bottom:8px;" onclick="tss10()" id="tss10">10</button>
+</fieldset>
+<fieldset style="border:5px white double;margin-top:10px;margin-left:20px;width:100px;">
+<legend style="color:white;font-size:20px;">Snake color</legend>
+<button style="border:lime 2px solid;color:white;font-size:33px;padding-left:12px;padding-right:12px;margin-left:3px;margin-top:2px;background-color:white;height:25px;width:20px;box-shadow:none;" onclick="scwhite()" id="scwhite"></button>
+<button style="border:black 2px solid;color:white;font-size:33px;padding-left:12px;padding-right:12px;margin-left:1px;background-color:red;height:25px;width:20px;box-shadow:none;" onclick="scred()" id="scred"></button>
+<button style="border:black 2px solid;color:white;font-size:33px;padding-left:12px;padding-right:12px;margin-left:1px;background-color:yellow;height:25px;width:20px;box-shadow:none;" onclick="scyellow()" id="scyellow"></button>
+<button style="border:black 2px solid;color:white;font-size:33px;padding-left:12px;padding-right:12px;margin-left:3px;margin-top:5px;background-color:blue;height:25px;width:20px;box-shadow:none;" onclick="scblue()" id="scblue"></button>
+<button style="border:black 2px solid;color:white;font-size:33px;padding-left:12px;padding-right:12px;margin-left:1px;background-color:gray;height:25px;width:20px;box-shadow:none;" onclick="scgray()" id="scgray"></button>
+<button style="border:black 2px solid;color:white;font-size:33px;padding-left:12px;padding-right:12px;margin-left:1px;background-color:#2bc203;height:25px;width:20px;box-shadow:none;filter:brightness(1.1);" onclick="sclime()" id="sclime"></button>
+</fieldset>
+<fieldset style="border:5px white double;margin-top:-103px;margin-left:180px;width:366px;">
+<legend style="color:white;font-size:20px;">Background</legend>
+<button style="border:lime 2px solid;color:white;font-size:33px;margin-left:14px;margin-top:3px;background:url('grass.jpg');background-size:200px 200px;height:80px;width:100px;box-shadow:none;" onclick="bggrass()" id="bggrass"></button>
+<button style="border:black 2px solid;color:white;font-size:33px;margin-left:15px;background:url('dark.jpg');background-size:600px 400px;height:80px;width:100px;box-shadow:none;" onclick="bgdark()" id="bgdark"></button>
+<button style="border:black 2px solid;color:white;font-size:33px;margin-left:15px;background:url('brick.jpg');background-size:400px 300px;height:80px;width:100px;box-shadow:none;" onclick="bgbrick()" id="bgbrick"></button>
+<button style="border:black 2px solid;color:white;font-size:33px;margin-left:14px;margin-top:15px;background:url('ground.jpg');background-size:200px 200px;height:80px;width:100px;box-shadow:none;" onclick="bgground()" id="bgground"></button>
+<button style="border:black 2px solid;color:white;font-size:33px;margin-left:15px;background:url('woody.jpg');background-size:200px 200px;height:80px;width:100px;box-shadow:none;" onclick="bgwoody()" id="bgwoody"></button>
+<button style="border:black 2px solid;color:white;font-size:33px;margin-left:15px;background:url('cool.jpg');background-size:200px 200px;height:80px;width:100px;box-shadow:none;" onclick="bgcool()" id="bgcool"></button>
+</fieldset>
+<fieldset style="border:5px white double;margin-top:-105px;margin-left:20px;width:100px;height:70px;font-size:25px;color:white;">
+<legend style="color:white;font-size:20px;">Teleport</legend>
+<input type="radio" name="tele" style="margin-left:20px;accent-color:black;" onclick="teleon()" id="teleon">On<br>
+<input type="radio" checked name="tele" style="margin-left:20px;accent-color:black;" onclick="teleoff()" id="teleoff">Off
+</fieldset>
+<fieldset style="border:5px white double;margin-top:15px;margin-left:20px;width:278px;height:30px;font-size:25px;color:white;">
+<legend style="color:white;font-size:20px;">Food</legend>
+<div style="margin-top:-12px;margin-left:-19px;">
+<input type="radio" checked name="food" style="margin-left:20px;accent-color:black;" onclick="applefood()" id="applefood">🍎
+<input type="radio" name="food" style="margin-left:20px;accent-color:black;" onclick="gapplefood()" id="gapplefood">🍏 
+<input type="radio" name="food" style="margin-left:20px;accent-color:black;" onclick="meatfood()" id="meatfood">🥩
+<input type="radio" name="food" style="margin-left:20px;accent-color:black;" onclick="meat2food()" id="meat2food">🍖 
+</div>
+</fieldset>
+<fieldset style="border:5px white double;margin-top:-64px;margin-left:360px;width:172px;height:30px;font-size:25px;color:white;">
+<legend style="color:white;font-size:20px;">Sound</legend>
+<div style="margin-top:-9px">
+<input type="radio" checked name="sound" style="margin-left:15px;accent-color:black;" onclick="soundon()" id="soundon">On
+<input type="radio" name="sound" style="margin-left:38px;accent-color:black;" onclick="soundoff()" id="soundoff">Off
+</div>
+</fieldset>
+</div>
+
+<script src="snake.js">
+</script>
+</body>
+</html>

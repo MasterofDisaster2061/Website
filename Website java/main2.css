@@ -1,0 +1,190 @@
+.input:hover
+{
+background-color:black;
+color:white;
+border:white 2px solid;
+}
+.button:hover
+{
+background-color:#BF0000;
+color:white;
+cursor:pointer;
+}
+.button:active
+{
+background-color:#FF0000;
+color:white;
+cursor:pointer;
+}
+.buttonc:hover
+{
+background-color:black;
+color:white;
+border:white 2px solid;
+cursor:pointer;
+}
+input[type="button"]
+{
+box-shadow:0px 2px black;
+cursor:pointer;
+}
+input[type="button"]:active
+{
+box-shadow:0px .5px black;
+transform:translateY(2px);
+cursor:pointer;
+}
+button
+{
+box-shadow:0px 2px black;
+cursor:pointer;
+}
+button:active
+{
+box-shadow:0px .5px black;
+transform:translateY(2px);
+cursor:pointer;
+}
+#marquee
+{
+animation-name:marqueewebsite;
+animation-duration:20s;
+animation-delay:3s;
+animation-iteration-count:infinite;
+}
+@keyframes marqueewebsite
+{
+0% {background-color:red;}
+25% {background-color:#4c00b0;}
+50% {background-color:orange;}
+75% {background-color:green;}
+100% {background-color:red;}
+}
+canvas 
+{
+border: 2px solid white;
+background-color:black;
+margin-left:138px;
+margin-top:-2px;
+}
+.tetris
+{
+display: flex;
+align-items: center;
+justify-content: center;
+height: 100%;
+margin: 0;
+}
+
+.animate-charcter
+{
+text-transform: uppercase;
+background-image: linear-gradient(
+    -225deg,
+    #231557 0%,
+    #44107a 29%,
+    #ff1361 67%,
+    #fff800 100%
+  );
+  background-size: auto auto;
+  background-clip: border-box;
+  background-size: 200% auto;
+  color: #fff;
+  background-clip: text;
+  text-fill-color: transparent;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: textclip 2s linear infinite;
+  display: inline-block;
+  font-size: 190px;
+}
+
+@keyframes textclip 
+{
+to 
+{
+ background-position:200% center;
+}
+}
+
+
+#clockContainer 
+{
+position: relative;
+margin: auto;
+height: 40vw;
+width: 40vw;
+background: url(clock.jpg) no-repeat;
+background-size: 428px 428px;
+margin-top:-20px;
+}
+  
+#hour100,
+#minute100
+{
+position: absolute;
+background:black;
+border-radius: 10px;
+transform-origin: bottom;
+}
+#second100 
+{
+position: absolute;
+background: red;
+border-radius: 10px;
+transform-origin: bottom;
+}
+  
+#hour100 
+{
+    width: 2.5%;
+    height: 27%;
+    top: 12.5%;
+    left: 37.5%;
+    opacity: 0.65;
+	z-index:2;
+} 
+#minute100 
+{
+    width: 1.8%;
+    height: 31%;
+    top: 8.7%;
+    left: 37.9%;
+    opacity: 0.65;
+	z-index:3;
+}
+#second100 
+{
+    width: 1%;
+    height: 33%;
+    top: 6.8%;
+    left: 38.9%;
+    opacity: 0.8;
+	z-index:4;
+}
+
+.circle 
+{
+ height: 30px;
+ width: 30px;
+ background-color:black;
+ border-radius: 50%;
+ position:relative;
+ top:-346px;
+ left:200px;
+ z-index:10;
+}
+
+.timesupalert
+{
+display:none;
+background-image:url('alarmgif.gif');
+background-size:350px 300px;
+position:fixed;
+z-index:100;
+width:700px;
+height:250px;
+border:8px double;
+left:300px;
+top:200px;
+}

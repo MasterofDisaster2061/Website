@@ -1,0 +1,120 @@
+<html>
+<head>
+<title>Scientific Calculator</title>
+<link rel="stylesheet" href="main2.css">
+<meta charset="UTF-8">
+<meta name="author" content="Rimesh">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<body style="background-image:url('v.jpg');background-attachment:fixed;">
+<script src="main.js"></script>
+<div style="background-image:url('wood2.jpg');width:428px;height:464px;border:3px solid;margin-left:130px;margin-top:100px;border-radius:5%;">
+<p style="text-align:center;font-size:12px;font-weight:bold;">SCIENTIFIC CALCULATOR</p>
+<p style="margin-left:395px;transform:translateY(-20px);font-size:9px;position:absolute;"><span style="background-color:black;padding-left:3px;padding-right:3px;color:#d4d4d4;" id="degrad">Rad</span></p>
+<p style="margin-left:360px;transform:translateY(-20px);font-size:9px;position:absolute;"><span style="background-color:black;padding-left:3px;padding-right:3px;color:#d4d4d4;" id="con">MATH</span></p>
+<div style="display:none;margin-bottom:-187px;" id="base">
+<p style="margin-left:50px;font-size:18px;">First value:</p>
+<p style="margin-left:276px;font-size:18px;transform:translateY(-39px);">Second value: </p>
+<p style="margin-left:182px;font-size:18px;transform:translateY(-79px);">Operator: </p>
+<input id="fir" onclick="fir()" size=16 style="color:white;margin-left:10px;border:double 3px white;font-size:16px;transform:translateY(-94px);background-color:black;">
+<select onchange="basenoperatorselecter()" id="basenoperatorselecter" style="text-align:center;color:white;margin-left:5px;border:double 3px white;font-size:16px;transform:translateY(-94px);background-color:black;">
+<option title="Addition">+</option>
+<option title="Subtraction">-</option>
+<option title="Multiplication">*</option>
+<option title="Division">/</option>
+<option title="Remainder">%</option>
+</select>
+<input id="sec" onclick="sec()" size=16 style="color:white;margin-left:245px;border:double 3px white;font-size:16px;transform:translateY(-120px);background-color:black;">
+</div>
+<input type="text" id="disp" style="display:block;height:60px;width:408px;margin-left:10px;font-size:20px;background-color:black;color:white;border:solid white 1px;position:absolute;" placeholder="0" >
+<table style="margin-left:8px;margin-top:69px;">
+<tr><td style="height:40px;width:404px;font-size:25px;background-color:black;color:white;border:solid white 1px;text-align:right;padding-top:2px;" id="dispans"></td></tr>
+</table>
+<br>
+<input type="button" id="com1" value="(" onclick="diss('(')" style="font-size:20px;padding-left:32px;padding-right:32px;margin-left:10px;border-radius:15%;background-color:#2b2d2f;color:white;">
+<input type="button" id="com2" value=")" onclick="diss(')')" style="font-size:20px;padding-left:32px;padding-right:32px;margin-left:4px;border-radius:15%;background-color:#2b2d2f;color:white;">
+<input type="button" value="sin" id="sin" onclick="sine()" style="font-size:20px;padding-left:23px;padding-right:23px;margin-left:4px;border-radius:15%;background-color:#2b2d2f;color:white;">
+<input type="button" value="cos" id="cos" onclick="cose()" style="font-size:20px;padding-left:21px;padding-right:20px;margin-left:4px;border-radius:15%;background-color:#2b2d2f;color:white;">
+<input type="button" value="tan" id="tan" onclick="tane()" style="font-size:20px;padding-left:22px;padding-right:21px;margin-left:4px;border-radius:15%;background-color:#2b2d2f;color:white;"><br>
+<input type="button" value="log" id="log" onclick="log()" style="font-size:20px;padding-left:22px;padding-right:22px;margin-left:10px;border-radius:15%;margin-top:7px;background-color:#2b2d2f;color:white;">
+<input type="button" value="ln" id="ln" onclick="ln()" style="font-size:20px;padding-left:28px;padding-right:28px;margin-left:4px;border-radius:15%;background-color:#2b2d2f;color:white;">
+<button onclick="sinei()" id="sini" style="font-size:15.2px;padding-left:20px;padding-right:20px;margin-left:4px;border-radius:15%;background-color:#2b2d2f;color:white;">sin<sup>-1</sup></button>
+<button onclick="cosei()" id="cosi" style="font-size:15.2px;padding-left:19px;padding-right:19px;margin-left:4px;border-radius:15%;background-color:#2b2d2f;color:white;">cos<sup>-1</sup></button>
+<button onclick="tanei()" id="tani" style="font-size:15.2px;padding-left:19px;padding-right:19px;margin-left:4px;border-radius:15%;background-color:#2b2d2f;color:white;">tan<sup>-1</sup></button>
+<div id="div4" style="display:none;">
+<input type="button" value="A" onclick="disph('A')" id="a" style="font-size:20px;padding-left:21px;padding-right:21px;margin-left:10px;border-radius:15%;margin-top:8px;background-color:#ff6600;color:white;">
+<input type="button"  value="B" onclick="disph('B')" id="b" style="font-size:20px;padding-left:21px;padding-right:21px;margin-left:6px;border-radius:15%;background-color:#ff6600;color:white;">
+<input type="button" value="C" id="c" onclick="disph('C')" style="font-size:20px;padding-left:21px;padding-right:21px;margin-left:6px;border-radius:15%;background-color:#ff6600;color:white;">
+<input type="button" value="D" id="d" onclick="disph('D')" style="font-size:20px;padding-left:21px;padding-right:21px;margin-left:7px;background-color:#ff6600;color:white;border-radius:15%;">
+<input type="button" value="E" id="e" onclick="disph('E')" style="font-size:20px;padding-left:21px;padding-right:21px;margin-left:6px;background-color:#ff6600;color:white;border-radius:15%;">
+<input type="button" value="F" id="f" onclick="disph('F')" style="font-size:20px;padding-left:21px;padding-right:21px;margin-left:6px;background-color:#ff6600;color:white;border-radius:15%;"><br>
+</div>
+<div id="div3">
+<input type="button" value="√" onclick="sqr()" id="sqr" style="font-size:16.5px;padding-left:31px;padding-top:5px;padding-right:31px;margin-left:10px;border-radius:15%;margin-top:6px;background-color:#2b2d2f;color:white;">
+<button onclick="tenpow()" id="tenpow" style="font-size:15.2px;padding-left:17px;padding-right:17px;margin-left:4px;border-radius:15%;margin-top:6px;background-color:#2b2d2f;color:white;">×10<sup>☐</sup></button>
+<input type="button" value="^" id="pow" onclick="pow()" style="font-size:20px;padding-left:30px;padding-right:31px;margin-left:5px;border-radius:15%;background-color:#2b2d2f;color:white;" title="power(constant , power of constant)">
+<input type="button" value="," id="comma" onclick="diss(',')" style="font-size:20px;padding-left:34px;padding-right:34px;margin-left:4px;background-color:#2b2d2f;color:white;border-radius:15%;">
+<input type="button" value="e" id="exp" onclick="exp()" style="font-size:20px;padding-left:29px;padding-right:29px;margin-left:4px;background-color:#2b2d2f;color:white;border-radius:15%;"><br>
+</div>
+<div id="div1">
+<input type="button" value="Deci" onclick="decic()" style="font-size:15px;padding-left:20px;padding-right:21px;margin-left:10px;border-radius:15%;background-color:#013220;color:white;margin-top:8px;">
+<input type="button" value="Bin" onclick="binc()" style="font-size:15px;padding-left:25px;padding-right:25px;margin-left:4px;border-radius:15%;background-color:#013220;color:white;">
+<input type="button" value="Oct" onclick="octc()" style="font-size:15px;padding-left:25px;padding-right:25px;margin-left:4px;border-radius:15%;background-color:#013220;color:white;">
+<input type="button" value="Hex" onclick="hexc()" style="font-size:15px;padding-left:22px;padding-right:21px;margin-left:4px;border-radius:15%;background-color:#013220;color:white;">
+<button onclick="set()" style="font-size:13px;padding-left:25px;padding-right:25px;margin-left:6px;border-radius:15%;background-color:#013220;color:white;">⚙️</button><br>
+</div>
+<div id="div2" style="display:none;">
+<input type="button" id="decicc" value="Deci" onclick="decicc()" style="font-size:15px;padding-left:20px;padding-right:21px;margin-left:10px;border-radius:15%;background-color:#00ff00;color:white;margin-top:8px;">
+<input type="button" id="bincc" value="Bin" onclick="bincc()" style="font-size:15px;padding-left:25px;padding-right:25px;margin-left:4px;border-radius:15%;background-color:#013220;color:white;">
+<input type="button" id="octcc" value="Oct" onclick="octcc()" style="font-size:15px;padding-left:25px;padding-right:25px;margin-left:4px;border-radius:15%;background-color:#013220;color:white;">
+<input type="button" id="hexcc" value="Hex" onclick="hexcc()" style="font-size:15px;padding-left:22px;padding-right:21px;margin-left:4px;border-radius:15%;background-color:#013220;color:white;">
+<button onclick="set()" style="font-size:13px;padding-left:25px;padding-right:25px;margin-left:6px;border-radius:15%;background-color:#013220;color:white;">⚙️</button><br>
+</div>
+<input type="button" id="sev" value="7" onclick="dis('7')" style="font-size:20px;padding-left:30px;padding-right:30px;margin-left:10px;border-radius:15%;margin-top:15px;">
+<input type="button" id="eig" value="8" onclick="dis('8')" style="font-size:20px;padding-left:30px;padding-right:30px;margin-left:4px;border-radius:15%;">
+<input type="button" id="nin" value="9" onclick="dis('9')" style="font-size:20px;padding-left:30px;padding-right:30px;margin-left:4px;border-radius:15%;">
+<input type="button" value="DEL" onclick="del()" style="font-size:20px;padding-left:17px;padding-right:16px;margin-left:4px;background-color:red;border-radius:15%;">
+<input type="button" value="AC" onclick="clearok()" style="font-size:20px;padding-left:21px;padding-right:22px;margin-left:4px;background-color:red;border-radius:15%;"><br>
+<input type="button" id="fou" value="4" onclick="dis('4')" style="font-size:20px;padding-left:30px;padding-right:30px;margin-left:10px;border-radius:15%;margin-top:6px;">
+<input type="button" id="fiv" value="5" onclick="dis('5')" style="font-size:20px;padding-left:30px;padding-right:30px;margin-left:4px;border-radius:15%;">
+<input type="button" id="six" value="6" onclick="dis('6')" style="font-size:20px;padding-left:30px;padding-right:30px;margin-left:4px;border-radius:15%;">
+<input type="button" value="×" onclick="diss('*')" style="font-size:20px;padding-left:30px;padding-right:30px;margin-left:4px;background-color:#ff6600;border-radius:15%;">
+<input type="button" value="÷" onclick="diss('/')" style="font-size:20px;padding-left:30px;padding-right:30px;margin-left:4px;background-color:#ff6600;border-radius:15%;"><br>
+<input type="button" value="1" onclick="dis('1')" style="font-size:20px;padding-left:30px;padding-right:30px;margin-left:10px;border-radius:15%;margin-top:6px;">
+<input type="button" id="two" value="2" onclick="dis('2')" style="font-size:20px;padding-left:30px;padding-right:30px;margin-left:4px;border-radius:15%;">
+<input type="button" id="thr" value="3" onclick="dis('3')" style="font-size:20px;padding-left:30px;padding-right:30px;margin-left:4px;border-radius:15%;">
+<input type="button" value="+" onclick="diss('+')" style="font-size:20px;padding-left:30px;padding-right:30px;margin-left:4px;background-color:#ff6600;border-radius:15%;">
+<input type="button" value="-" onclick="diss('-')" style="font-size:20px;padding-left:32px;padding-right:32px;margin-left:4px;background-color:#ff6600;border-radius:15%;"><br>
+<input type="button" value="0" onclick="dis('0')" style="font-size:20px;padding-left:30px;padding-right:30px;margin-left:10px;border-radius:15%;margin-top:6px;">
+<input type="button" id="point" value="." onclick="diss('.')" style="font-size:20px;padding-left:32.5px;padding-right:32.5px;margin-left:4px;border-radius:15%;">
+<input type="button" value="π" id="pie" onclick="pie()" style="font-size:20px;padding-left:28px;padding-right:29px;margin-left:4px;border-radius:15%;">
+<input type="button" value="Ans" onclick="ans()" style="font-size:20px;padding-left:19px;padding-right:19px;margin-left:4px;background-color:#ff6600;border-radius:15%;">
+<input type="button" value="=" onclick="calc()" style="font-size:20px;padding-left:30px;padding-right:30px;margin-left:4px;background-color:#013220;color:white;border-radius:15%;">
+</div>
+<div style="background-image:url('wood2.jpg');width:428px;height:464px;border:3px solid;margin-left:600px;border-radius:5%;transform:translateY(-470px);display:none;position:absolute;" id="setting">
+<h1 style="font-size:40px;margin-left:10px;margin-top:15px;text-align:center;">Calculator Settings</h1>
+<fieldset style="border:double 3px black;margin-left:10px;margin-right:10px;"><legend>Rad/Deg</legend>
+<button onclick="rad()" id="rad" style="margin-left:10px;font-size:20px;background-color:#00FF00;">Radian</button>
+<button onclick="deg()" id="deg" style="margin-left:10px;font-size:20px;background-color:white;">Degree</button>
+</fieldset>
+<br>
+<fieldset style="border:double 3px black;margin-left:10px;margin-right:10px;"><legend>Mode</legend>
+<button onclick="math()" id="math" style="margin-left:10px;font-size:20px;background-color:#00FF00;">Math</button>
+<button onclick="basen()" id="basen" style="margin-left:10px;font-size:20px;background-color:white;">Base-N</button>
+</fieldset>
+<br>
+<fieldset style="border:double 3px black;margin-left:10px;margin-right:10px;"><legend>Decimal place</legend>
+<button onclick="def()" id="def" style="margin-left:10px;font-size:20px;background-color:#00FF00;" title="Applicable only in MATH mode">Default</button>
+<button onclick="zero()" id="zero" style="margin-left:10px;font-size:20px;background-color:white;" title="Applicable only in MATH mode">0</button>
+<button onclick="one()" id="one" style="margin-left:10px;font-size:20px;background-color:white;" title="Applicable only in MATH mode">1</button>
+<button onclick="twoo()" id="twoo" style="margin-left:10px;font-size:20px;background-color:white;" title="Applicable only in MATH mode">2</button>
+<button onclick="three()" id="three" style="margin-left:10px;font-size:20px;background-color:white;" title="Applicable only in MATH mode">3</button>
+<button onclick="four()" id="four" style="margin-left:10px;font-size:20px;background-color:white;" title="Applicable only in MATH mode">5</button>
+<button onclick="five()" id="five" style="margin-left:10px;font-size:20px;background-color:white;" title="Applicable only in MATH mode">10</button>
+</fieldset>
+<br>
+<button onclick="closedd()" style="margin-left:345px;font-size:20px;color:white;background-color:red;">Close</button>
+</div>
+<br><br><br><br><br>
+</body>
+</html>
