@@ -1,0 +1,179 @@
+<html>
+<head>
+  <title>Tetris</title>
+  <meta charset="UTF-8">
+  <meta name="author" content="Rimesh">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+  html, body 
+  {
+    height: 100%;
+    margin: 0;
+  }
+
+  body 
+  {
+    background-image:url('v.jpg');
+	background-attachment:fixed;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  canvas 
+  {
+    border: 2px solid white;
+	background-color:black;
+	margin-left:138px;
+	margin-top:-2px;
+  }
+  
+  button
+  {
+    box-shadow:0px 2px black;
+    cursor:pointer;
+  }
+  
+  button:active
+  {
+    box-shadow:0px .5px black;
+    transform:translateY(2px);
+    cursor:pointer;
+  }
+  </style>
+</head>
+<body>
+<div id="restartgame" style="margin-right:0px;margin-top:-100px;display:none;position:absolute;z-index:2;background-color:#949494;width:500px;border:5px double;opacity:80%;">
+<p style="font-size:50px;margin-left:90px;margin-top:10px;">GAME OVER!</p>
+<p style="font-size:35px;margin-left:20px;margin-top:0px;" id="gameoverscore"></p>
+<p style="font-size:35px;margin-left:20px;margin-top:-20px;" id="gameoverline"></p>
+<p style="font-size:35px;margin-left:20px;margin-top:-15px;" id="gameovertime"></p>
+<hr style="margin-left:10px;width:477px;margin-top:-10px;" color="black">
+<p style="font-size:35px;margin-left:20px;margin-top:20px;" id="highscore"></p>
+<p style="font-size:35px;margin-left:20px;margin-top:20px;" id="mostlines"></p>
+<button style="color:white;font-size:30px;background-color:green;margin-left:85px;margin-top:0px;margin-bottom:20px;padding-left:20px;padding-right:20px;" onclick="startgame2();">Play Again</button>
+<button style="color:white;font-size:30px;background-color:red;margin-left:10px;margin-top:0px;margin-bottom:20px;padding-left:20px;padding-right:20px;" onclick="tetrishome();">Home</button>
+</div>
+<div id="quithome" style="margin-right:0px;margin-top:-100px;display:none;position:absolute;background-color:#949494;width:500px;border:5px double;z-index:1;opacity:80%;">
+<p style="font-size:60px;text-align:center;margin-top:10px;">Go Home</p>
+<p style="font-size:30px;margin-left:20px;margin-top:-20px;">Are you sure want to quit the game?</p>
+<button style="color:white;font-size:30px;background-color:red;margin-left:138px;margin-top:0px;margin-bottom:20px;padding-left:20px;padding-right:20px;" onclick="tetrishome();">Yes</button>
+<button style="color:white;font-size:30px;background-color:green;margin-left:10px;margin-top:0px;margin-bottom:30px;padding-left:10px;padding-right:10px;" onclick="tetrisgameback();">Cancel</button>
+</div>
+<div id="replaygame2" style="margin-right:0px;margin-top:-100px;display:none;position:absolute;background-color:#949494;width:500px;border:5px double;z-index:1;opacity:80%;">
+<p style="font-size:60px;text-align:center;margin-top:10px;">Restart Game</p>
+<p style="font-size:30px;margin-left:20px;margin-top:-20px;">Are you sure want to restart the game?</p>
+<button style="color:white;font-size:30px;background-color:red;margin-left:138px;margin-top:0px;margin-bottom:20px;padding-left:20px;padding-right:20px;" onclick="startgame2();">Yes</button>
+<button style="color:white;font-size:30px;background-color:green;margin-left:10px;margin-top:0px;margin-bottom:30px;padding-left:10px;padding-right:10px;" onclick="tetrisgameback2();">Cancel</button>
+</div>
+<div style="border:solid 2px white;height:640px;width:600px;background-image:url('TetrisItems/tetris.jpg');background-size:600px 640px;border-radius:5%;" id="tetrisview">
+<p style="font-size:140px;text-shadow:4px 4px black;margin-left:62px;margin-top:55px;color:white;">TETRIS</p>
+<button style="border-radius:100%;color:white;font-size:45px;background-color:green;margin-left:221px;margin-top:-30px;padding-left:20px;padding-right:20px;position:absolute;background-image:url('TetrisItems/playbutton.jpg');height:150px;width:150px;background-size:155px 147px;filter:brightness(2);" onclick="startgame2();startCount();" title="Play!"></button>
+<button style="border-radius:10%;color:white;font-size:32px;background-color:#ff2400;margin-left:380px;margin-top:121px;padding-left:20px;padding-right:20px;position:absolute;" onclick="disptetrisstats();showHighScores();">Stats</button>
+<button style="border-radius:10%;color:white;font-size:28px;background-color:#ff2800;margin-left:111px;margin-top:121px;padding-left:30px;padding-right:30px;position:absolute;" onclick="disptetrissettings()">⚙️</button>
+</div>
+<div id="disptetrisstat" style="display:none;border:solid 2px white;height:640px;width:600px;background-image:url('TetrisItems/tetris.jpg');background-size:600px 640px;border-radius:5%;">
+<p style="color:white;font-size:80px;margin-left:110px;margin-top:30px;position:absolute;text-shadow:3px 3px black;">Tetris Stats</p>
+<button style="color:white;font-size:28px;background-color:green;margin-left:25px;margin-top:140px;padding-left:10px;padding-right:10px;position:absolute;" onclick="disptetrisstatsback()"><i>< </i>Back</button>
+<ol id="highScores" style="color:white;font-size:35px;margin-left:40px;margin-top:200px;"></ol>
+</div>
+<div style="border:solid 2px white;height:640px;width:600px;background-image:url('TetrisItems/tetris.jpg');background-size:600px 640px;border-radius:5%;display:none;" id="customtypeview">
+<p style="font-size:55px;text-shadow:4px 4px black;margin-left:30px;margin-top:32px;color:white;position:absolute;">Custom Tetromino Type</p>
+<img src="TetrisItems/tetrissquare.jpg" width="100" height="100" style="margin-top:130px;margin-left:12px;border:white 2px solid;">
+<input type="checkbox" style="accent-color:lime;margin-top:240px;margin-left:-67px;position:absolute;height:20px;width:20px;" id="tetrissquarecheck">
+<img src="TetrisItems/tetrisll.jpg" width="100" height="100" style="margin-left:10px;border:white 2px solid;">
+<input type="checkbox" style="accent-color:lime;margin-top:240px;margin-left:-67px;position:absolute;height:20px;width:20px;" id="tetrisllcheck">
+<img src="TetrisItems/tetrisrl.jpg" width="100" height="100" style="margin-left:10px;border:white 2px solid;">
+<input type="checkbox" style="accent-color:lime;margin-top:240px;margin-left:-65px;position:absolute;height:20px;width:20px;" id="tetrisrlcheck">
+<img src="TetrisItems/tetriss.jpg" width="100" height="100" style="margin-left:10px;border:white 2px solid;">
+<input type="checkbox" style="accent-color:lime;margin-top:240px;margin-left:-66px;position:absolute;height:20px;width:20px;" id="tetrisscheck">
+<img src="TetrisItems/tetriszz.jpg" width="100" height="100" style="margin-left:10px;border:white 2px solid;">
+<input type="checkbox" style="accent-color:lime;margin-top:240px;margin-left:-61px;position:absolute;height:20px;width:20px;" id="tetriszzcheck">
+<img src="TetrisItems/tetrist.jpg" width="100" height="100" style="margin-top:40px;margin-left:12px;border:white 2px solid;">
+<input type="checkbox" style="accent-color:lime;margin-top:150px;margin-left:-67px;position:absolute;height:20px;width:20px;" id="tetristcheck">
+<img src="TetrisItems/tetrisi.jpg" width="100" height="100" style="margin-left:10px;border:white 2px solid;">
+<input type="checkbox" style="accent-color:lime;margin-top:150px;margin-left:-67px;position:absolute;height:20px;width:20px;" id="tetrisicheck">
+<img src="TetrisItems/tetris-.jpg" width="100" height="100" style="margin-left:10px;border:white 2px solid;">
+<input type="checkbox" style="accent-color:lime;margin-top:150px;margin-left:-65px;position:absolute;height:20px;width:20px;" id="tetris-check">
+<img src="TetrisItems/tetrisdot.jpg" width="100" height="100" style="margin-left:10px;border:white 2px solid;">
+<input type="checkbox" style="accent-color:lime;margin-top:150px;margin-left:-67px;position:absolute;height:20px;width:20px;" id="tetrisdotcheck">
+<img src="TetrisItems/tetrisii.jpg" width="100" height="100" style="margin-left:10px;border:white 2px solid;">
+<input type="checkbox" style="accent-color:lime;margin-top:150px;margin-left:-63px;position:absolute;height:20px;width:20px;" id="tetrisiicheck">
+<img src="TetrisItems/tetrisiii.jpg" width="100" height="100" style="margin-left:12px;margin-top:40px;border:white 2px solid;">
+<input type="checkbox" style="accent-color:lime;margin-top:150px;margin-left:-67px;position:absolute;height:20px;width:20px;" id="tetrisiiicheck">
+<img src="TetrisItems/tetrisC.jpg" width="100" height="100" style="margin-left:10px;border:white 2px solid;">
+<input type="checkbox" style="accent-color:lime;margin-top:150px;margin-left:-67px;position:absolute;height:20px;width:20px;" id="tetrisCcheck">
+<img src="TetrisItems/tetristt.jpg" width="100" height="100" style="margin-left:10px;border:white 2px solid;">
+<input type="checkbox" style="accent-color:lime;margin-top:150px;margin-left:-65px;position:absolute;height:20px;width:20px;" id="tetristtcheck">
+<img src="TetrisItems/tetriscc.jpg" width="100" height="100" style="margin-left:10px;border:white 2px solid;">
+<input type="checkbox" style="accent-color:lime;margin-top:150px;margin-left:-67px;position:absolute;height:20px;width:20px;" id="tetriscccheck">
+<img src="TetrisItems/tetrisplus.jpg" width="100" height="100" style="margin-left:10px;border:white 2px solid;">
+<input type="checkbox" style="accent-color:lime;margin-top:150px;margin-left:-61px;position:absolute;height:20px;width:20px;" id="tetrispluscheck">
+<button style="color:white;font-size:28px;background-color:green;margin-top:200px;margin-left:-330px;padding-left:20px;padding-right:20px;position:absolute;" onclick="customtypeviewback()">OK</button>
+</div>
+<div id="disptetrissetting" style="display:none;border:solid 2px white;height:640px;width:600px;background-image:url('TetrisItems/tetris.jpg');background-size:600px 640px;border-radius:5%;">
+<p style="color:white;font-size:80px;margin-left:70px;margin-top:30px;position:absolute;text-shadow:3px 3px black;">Tetris Settings</p>
+<button style="color:white;font-size:28px;background-color:green;margin-left:25px;margin-top:135px;padding-left:10px;padding-right:10px;position:absolute;" onclick="disptetrissettingsback()"><i>< </i>Back</button>
+<fieldset style="border:5px white double;margin-top:194px;margin-left:20px;width:316px;">
+<legend style="color:white;font-size:20px;">Tetromino Speed</legend>
+<button style="background-color:green;border:black 2px solid;color:white;font-size:30px;padding-left:12px;padding-right:12px;margin-left:10px;margin-top:3px;" onclick="tsauto()" id="tsauto">Auto</button>
+<button style="background-color:lime;border:white 2px solid;color:white;font-size:30px;padding-left:12px;padding-right:12px;margin-left:4px;" onclick="ts1()" id="ts1">1</button>
+<button style="background-color:green;border:black 2px solid;color:white;font-size:30px;padding-left:12px;padding-right:12px;margin-left:3px;" onclick="ts2()" id="ts2">2</button>
+<button style="background-color:green;border:black 2px solid;color:white;font-size:30px;padding-left:12px;padding-right:12px;margin-left:3px;" onclick="ts3()" id="ts3">3</button>
+<button style="background-color:green;border:black 2px solid;color:white;font-size:30px;padding-left:12px;padding-right:12px;margin-left:3px;" onclick="ts4()" id="ts4">4</button><br>
+<button style="background-color:green;border:black 2px solid;color:white;font-size:30px;padding-left:12px;padding-right:12px;margin-left:10px;margin-top:9px;" onclick="ts5()" id="ts5">5</button>
+<button style="background-color:green;border:black 2px solid;color:white;font-size:30px;padding-left:12px;padding-right:12px;margin-left:2px;" onclick="ts6()" id="ts6">6</button>
+<button style="background-color:green;border:black 2px solid;color:white;font-size:30px;padding-left:12px;padding-right:12px;margin-left:2px;" onclick="ts7()" id="ts7">7</button>
+<button style="background-color:green;border:black 2px solid;color:white;font-size:30px;padding-left:12px;padding-right:12px;margin-left:2px;" onclick="ts8()" id="ts8">8</button>
+<button style="background-color:green;border:black 2px solid;color:white;font-size:30px;padding-left:12px;padding-right:12px;margin-left:2px;" onclick="ts9()" id="ts9">9</button>
+<button style="background-color:green;border:black 2px solid;color:white;font-size:30px;padding-left:2px;padding-right:4px;margin-left:2px;margin-bottom:7px;" onclick="ts10()" id="ts10">10</button>
+</fieldset>
+<fieldset style="border:5px white double;margin-top:-141px;margin-left:390px;width:135px;height:101px;font-size:30px;color:white;">
+<legend style="color:white;font-size:20px;">Sound</legend>
+<div style="margin-top:-1px">
+<input type="radio" checked name="sound" style="margin-left:31px;margin-top:16px;accent-color:black;" onclick="soundon()" id="soundon">On<br>
+<input type="radio" name="sound" style="margin-left:31px;margin-top:25px;accent-color:black;" onclick="soundoff()" id="soundoff">Off
+</div>
+</fieldset>
+<fieldset style="border:5px white double;margin-top:18px;margin-left:20px;width:526px;">
+<legend style="color:white;font-size:20px;">Background</legend>
+<button style="border:white 2px solid;color:white;font-size:33px;margin-left:14px;margin-top:3px;background-color:black;background-size:200px 200px;height:80px;width:80px;box-shadow:none;" onclick="bgblack()" id="bgblack"></button>
+<button style="border:white 2px solid;color:white;font-size:33px;margin-left:20px;background:url('TetrisItems/brick.jpg');background-size:200px 200px;height:80px;width:80px;box-shadow:none;" onclick="bgbrick()" id="bgbrick"></button>
+<button style="border:white 2px solid;color:white;font-size:33px;margin-left:20px;background:url('TetrisItems/cool.jpg');background-size:200px 200px;height:80px;width:80px;box-shadow:none;" onclick="bgcool()" id="bgcool"></button>
+<button style="border:white 2px solid;color:white;font-size:33px;margin-left:20px;background:url('TetrisItems/woody.gif');background-size:120px 120px;height:80px;width:80px;box-shadow:none;" onclick="bgwoody()" id="bgwoody"></button>
+<button style="border:white 2px solid;color:white;font-size:33px;margin-left:20px;background:url('TetrisItems/star.gif');background-size:200px 200px;height:80px;width:80px;box-shadow:none;" onclick="bgstar()" id="bgstar"></button>
+</fieldset>
+<fieldset style="border:5px white double;margin-top:18px;margin-left:20px;margin-right:20px;">
+<legend style="color:white;font-size:20px;">Tetromino Type</legend>
+<button style="background-color:lime;border:white 2px solid;color:white;font-size:26px;padding-left:32px;padding-right:32px;margin-left:5px;margin-top:10px;" onclick="ttA()" id="ttA">Type A</button>
+<button style="background-color:green;border:black 2px solid;color:white;font-size:26px;padding-left:32px;padding-right:32px;margin-left:12px;" onclick="ttB()" id="ttB">Type B</button>
+<button style="background-color:green;border:black 2px solid;color:white;font-size:26px;padding-left:15px;padding-right:15px;margin-left:12px;margin-bottom:10px;" onclick="ttct()" id="ttct">Custom Type</button>
+</fieldset>
+</div>
+<div id="tetrisgameview" style="display:none;border:solid 2px white;height:640px;width:600px;background-image:url('TetrisItems/tetris.jpg');background-size:600px 640px;border-radius:5%;">
+<canvas width="320" height="640" id="game"></canvas>
+<p style="color:white;font-size:50px;margin-left:10px;margin-top:-610px;position:absolute;text-shadow:2px 2px black;">Tetris</p>
+<p style="color:white;font-size:30px;margin-left:20px;margin-top:-500px;">Score:</p>
+<p id="score" style="color:white;font-size:30px;margin-left:30px;margin-top:-25px;"></p>
+<p style="color:white;font-size:30px;margin-left:20px;margin-top:30px;">Lines:</p>
+<p id="linescore" style="color:white;font-size:30px;margin-left:30px;margin-top:-25px;"></p>
+<p style="color:white;font-size:30px;margin-left:20px;margin-top:30px;">Time:</p>
+<p id="timescore" style="color:white;font-size:30px;margin-left:23px;margin-top:-25px;"></p>
+<p style="color:white;font-size:30px;margin-left:20px;margin-top:30px;">Speed:</p>
+<p id="speedscore" style="color:white;font-size:30px;margin-left:30px;margin-top:-25px;"></p>
+<p id="speedscore2" style="color:white;font-size:17px;margin-left:48px;margin-top:-54px;display:none;">Auto</p>
+<button style="border-radius:100%;border:2px solid black;background-image:url('TetrisItems/home.png');background-size:63px 59px;margin-left:498px;margin-top:-510px;position:absolute;" onclick="quithomee()" id="tetrishome100" title="Home"><p style="height:35px;width:50px;"></p></button>
+<button style="border-radius:100%;border:2px solid black;background-image:url('TetrisItems/pause.jpg');background-size:63px 63px;margin-left:500px;margin-top:-420px;margin-bottom:132px;position:absolute;" onclick="pausegame();stopCount();" id="pausegame" title="Pause Game"><p style="height:35px;width:50px;"></p></button>
+<button style="border-radius:100%;border:2px solid black;background-image:url('TetrisItems/resume.jpg');background-size:66px 66px;margin-left:500px;margin-top:-420px;margin-bottom:132px;display:none;position:absolute;" onclick="resumegame();startCount();" id="resumegame" title="Resume Game"><p style="height:35px;width:50px;"></p></button>
+<button style="border-radius:100%;border:2px solid black;background-image:url('TetrisItems/rotate2.jpg');background-size:62px 64px;margin-left:500px;margin-top:-290px;position:absolute;" onclick="rotategame()" id="rotategame"><p style="height:35px;width:50px;"></p></button>
+<button style="border-radius:100%;border:2px solid black;background-image:url('TetrisItems/left.jpg');background-size:55px 59px;margin-left:467px;margin-top:-220px;position:absolute;" onclick="leftgame()" id="leftgame"><p style="height:30px;width:45px;"></p></button>
+<button style="border-radius:100%;border:2px solid black;background-image:url('TetrisItems/right.jpg');background-size:60px 59px;margin-left:535px;margin-top:-220px;position:absolute;" onclick="rightgame()" id="rightgame"><p style="height:30px;width:45px;"></p></button>
+<button style="border-radius:100%;border:2px solid black;background-image:url('TetrisItems/down.jpg');background-size:63px 70px;margin-left:500px;margin-top:-160px;position:absolute;" onclick="downgame()" id="downgame"><p style="height:35px;width:50px;"></p></button>
+<button style="border-radius:100%;border:2px solid black;margin-left:496px;margin-top:-30px;position:absolute;background-color:orange;font-size:20px;filter:brightness(1.15);font-size:45px;padding-bottom:10px;padding-left:15px;padding-right:15px;color:black;" id="replaygame" onclick="replaygamedisp()" title="Restart Game">⮌</button>
+<p style="font-size:55px;text-align:center;margin-top:-300px;color:white;display:none;" id="gamepaused">Game Paused</p>
+</div>
+
+<script src="TetrisItems/tetris js.js"></script>
+
+</body>
+</html>
