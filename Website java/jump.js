@@ -489,7 +489,7 @@ document.getElementById('supersneakers').style.backgroundSize="80px 76px";
 else if(document.getElementById('supersneakers').disabled==false)
 {
 document.getElementById('supersneakers').style.border="2px lime solid";
-document.getElementById('supersneakers').style.background="url('supersneakers.jpg')";
+document.getElementById('supersneakers').style.background="url('supersneakers.JPG')";
 document.getElementById('supersneakers').style.backgroundSize="80px 76px";
 }
 },10);
