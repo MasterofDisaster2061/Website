@@ -130,7 +130,7 @@ greentile.src="greentile2.png";
 yellowtile= new Image();
 yellowtile.src="yellowtile.png";
 bluetile= new Image();
-bluetile.src="tile.png";
+bluetile.src="tile.PNG";
 redtile= new Image();
 redtile.src="redtile.png";
 
