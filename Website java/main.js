@@ -3671,9 +3671,6 @@ document.getElementById('formdata').innerHTML=JSON.parse(localStorage.getItem('f
 formdata999=document.getElementById('formdata').innerHTML+=formdata99;
 localStorage.setItem('formdata99',JSON.stringify(formdata999));
 formnumber=localStorage.setItem('formnumber',formnumber);
-
-document.getElementById('form1').style.display="block";
-document.getElementById('form2').style.display="none";
 }
 
 function formreviewdown()
