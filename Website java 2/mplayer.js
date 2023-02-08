@@ -21,7 +21,7 @@ track_list = [
   {
     name: "Counting Stars",
     artist: "One Republic",
-    image: "headphone.png",
+    image: "headphone.PNG",
     path: "Music/countingstars.mp3"
   },
   {
@@ -39,7 +39,7 @@ track_list = [
    {
     name: "Skyfall",
     artist: "Adele",
-    image: "headphone.png",
+    image: "headphone.PNG",
     path: "Music/Skyfall.mp3"
   },
   {
@@ -57,7 +57,7 @@ track_list = [
   {
     name: "Do I Wanna Know",
     artist: "Arctic Monkeys",
-    image: "headphone.png",
+    image: "headphone.PNG",
     path: "Music/Arctic Monkeys - Do I Wanna Know_ (Official Video)_256k.mp3"
   },
   {
@@ -75,7 +75,7 @@ track_list = [
   {
     name: "Summer",
     artist: "Calvin Harris",
-    image: "headphone.png",
+    image: "headphone.PNG",
     path: "Music/Calvin Harris - Summer (Official Video)_256k.mp3"
   },
   {
@@ -93,7 +93,7 @@ track_list = [
   {
     name: "Rap God",
     artist: "Eminem",
-    image: "headphone.png",
+    image: "headphone.PNG",
     path: "Music/Eminem - Rap God (Explicit).m4a"
   },
   {
@@ -111,7 +111,7 @@ track_list = [
   {
     name: "Shape of You",
     artist: "Ed Sheeran",
-    image: "headphone.png",
+    image: "headphone.PNG",
     path: "Music/Ed Sheeran - Shape of You (Official Music Video)_256k.mp3"
   },
   {
@@ -129,7 +129,7 @@ track_list = [
   {
     name: "Till I Collapse",
     artist: "Eminem",
-    image: "headphone.png",
+    image: "headphone.PNG",
     path: "Music/Eminem Till I Collapse Remix (Karate Kid Music Video) - OFFICIAL_256k.mp3"
   },
   {
@@ -147,7 +147,7 @@ track_list = [
   {
     name: "Animals",
     artist: "Martin Garrix",
-    image: "headphone.png",
+    image: "headphone.PNG",
     path: "Music/Martin Garrix - Animals (Official Video)_256k.mp3"
   },
   {
@@ -165,7 +165,7 @@ track_list = [
   {
     name: "Love Me Again",
     artist: "John Newman",
-    image: "headphone.png",
+    image: "headphone.PNG",
     path: "Music/John Newman - Love Me Again_256k.mp3"
   },
   {
@@ -183,7 +183,7 @@ track_list = [
   {
     name: "Summertime Sadness",
     artist: "Lana Del Rey",
-    image: "headphone.png",
+    image: "headphone.PNG",
     path: "Music/Lana Del Rey - Summertime Sadness (Official Music Video)_256k.mp3"
   },
   {
