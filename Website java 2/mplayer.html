@@ -1,0 +1,160 @@
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Music Player</title>
+  <!-- Load FontAwesome icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css">
+
+  <!-- Load the custom CSS style file -->
+  <link rel="stylesheet" type="text/css" href="mplayer.css">
+</head>
+<body>
+ 
+<div id="defaultmusic">
+ <div class="div">
+ <p style="font-size:70px;margin-top:-10px;">Music Player</p>
+      <label for="inputTag" onclick="custommusic()">
+           Play Your Music<br/>
+        <img src="music2.png" height=50 width=50>
+        <br/>
+      </label>
+ </div>
+ <div class="div3">
+      <div style="margin-left:-150px;">
+	  <img src="musiclist.png" height=50 width=50 onclick="listfunc()" id="mlisttag"><br>
+      <label for="mlisttag">
+      Music List
+      </label>
+      </div>
+	  
+	  <div style="margin-left:135px;margin-top:-70px;">
+	  <img src="playspeed.png" height=50 width=50 id="musicspeedtagtag" onclick="dispspeed()"><br>
+	  <label for="musicspeedtag">
+      Playback Speed
+      </label>
+	  </div>
+	  <br>
+	  <div style="margin-left:-150px;">
+	  <a id="adownload"><img src="download.png" height=50 width=50 id="downloadtag"></a><br>
+	  <label for="downloadtag">	  
+       Download
+      </label>
+	  </div>
+	  
+	  <div style="margin-left:135px;margin-top:-70px;">
+	  <img src="repeat.png" height=50 width=50 onclick="repeatfunc()" id="repeattag"><br>
+	  <label for="repeattag">	 
+      <font id="repeat">Repeat:no</font>
+      </label>
+	  </div>
+</div>
+
+<div style="width:200px;background-color:white;border:1px solid;z-index:200;position:absolute;top:420px;left:370px;display:none;" id="speedlist">
+<pre style="font-size:15px;"><button style="background-color:white;border:none;color:red;font-size:15px;" onclick="dispspeedback()"><pre> <</pre></button>  Playback Speed</pre>
+<div class="btn-group" style="width:100%;overflow-y:scroll;height:168px;">
+<button style="width:100%;" onclick="sb1()" id="sb1">0.25</button>
+<button style="width:100%;" onclick="sb2()" id="sb2">0.5</button>
+<button style="width:100%;" onclick="sb3()" id="sb3">0.75</button>
+<button style="width:100%;" onclick="sb4()" id="sb4">1<b style="color:blue"> ✓</b></button>
+<button style="width:100%;" onclick="sb5()" id="sb5">1.25</button>
+<button style="width:100%;" onclick="sb6()" id="sb6">1.5</button>
+<button style="width:100%;" onclick="sb7()" id="sb7">1.75</button>
+<button style="width:100%;" onclick="sb8()" id="sb8">2</button>
+</div>
+</div>
+
+<div style="width:600px;background-color:#414141;border:1px solid;z-index:200;position:absolute;top:45px;left:380px;display:none;" id="musiclist">
+<pre style="font-size:25px;color:white;"><button style="background-color:#414141;border:none;color:white;font-size:15px;" onclick="dispmusiclistback()"><pre style="font-size:25px;color:white;"> <</pre></button>  Music List</pre>
+<div class="btn-group2" style="width:100%;overflow-y:scroll;height:480px;">
+<button style="width:100%;" onclick="smb1()" id="smb1"><pre style="margin-left:10px;"> 1.  Counting Stars - One Republic</pre><div style="background:url('visualizer2.gif');background-size:80px 70px;height:60px;width:65px;margin-left:500px;margin-top:-63px;display:none;"  id="vc1"></div></button>
+<button style="width:100%;" onclick="smb2()" id="smb2"><pre style="margin-left:10px;"> 2.  I Took a Pill in Ibiza - Mike Posner</pre><div style="background:url('visualizer2.gif');background-size:80px 70px;height:60px;width:65px;margin-left:500px;margin-top:-63px;display:none;"  id="vc2"></div></button>
+<button style="width:100%;" onclick="smb3()" id="smb3"><pre style="margin-left:10px;"> 3.  Dancing - Aaron Smith</pre><div style="background:url('visualizer2.gif');background-size:80px 70px;height:60px;width:65px;margin-left:500px;margin-top:-63px;display:none;"  id="vc3"></div></button>
+<button style="width:100%;" onclick="smb4()" id="smb4"><pre style="margin-left:10px;"> 4.  Skyfall - Adele</pre><div style="background:url('visualizer2.gif');background-size:80px 70px;height:60px;width:65px;margin-left:500px;margin-top:-63px;display:none;"  id="vc4"></div></button>
+<button style="width:100%;" onclick="smb5()" id="smb5"><pre style="margin-left:10px;"> 5.  Faded - Alan Walker</pre><div style="background:url('visualizer2.gif');background-size:80px 70px;height:60px;width:65px;margin-left:500px;margin-top:-63px;display:none;"  id="vc5"></div></button>
+
+<button style="width:100%;" onclick="smb6()" id="smb6"><pre style="margin-left:10px;"> 6.  All of Me - John Legend</pre><div style="background:url('visualizer2.gif');background-size:80px 70px;height:60px;width:65px;margin-left:500px;margin-top:-63px;display:none;"  id="vc6"></div></button>
+<button style="width:100%;" onclick="smb7()" id="smb7"><pre style="margin-left:10px;"> 7.  Do I Wanna Know - Arctic Monkeys</pre><div style="background:url('visualizer2.gif');background-size:80px 70px;height:60px;width:65px;margin-left:500px;margin-top:-63px;display:none;"  id="vc7"></div></button>
+<button style="width:100%;" onclick="smb8()" id="smb8"><pre style="margin-left:10px;"> 8.  As Long As You Love Me - Justin Bieber</pre><div style="background:url('visualizer2.gif');background-size:80px 70px;height:60px;width:65px;margin-left:500px;margin-top:-63px;display:none;"  id="vc8"></div></button>
+<button style="width:100%;" onclick="smb9()" id="smb9"><pre style="margin-left:10px;"> 9.  Lying from You - Linkin Park</pre><div style="background:url('visualizer2.gif');background-size:80px 70px;height:60px;width:65px;margin-left:500px;margin-top:-63px;display:none;"  id="vc9"></div></button>
+<button style="width:100%;" onclick="smb10()" id="smb10"><pre style="margin-left:10px;"> 10. Summer - Calvin Harris</pre><div style="background:url('visualizer2.gif');background-size:80px 70px;height:60px;width:65px;margin-left:500px;margin-top:-63px;display:none;"  id="vc10"></div></button>
+
+<button style="width:100%;" onclick="smb11()" id="smb11"><pre style="margin-left:10px;"> 11. Safe and Sound - Capital Cities</pre><div style="background:url('visualizer2.gif');background-size:80px 70px;height:60px;width:65px;margin-left:500px;margin-top:-63px;display:none;"  id="vc11"></div></button>
+<button style="width:100%;" onclick="smb12()" id="smb12"><pre style="margin-left:10px;"> 12. The King of The Highlands - Celtic</pre><div style="background:url('visualizer2.gif');background-size:80px 70px;height:60px;width:65px;margin-left:500px;margin-top:-63px;display:none;"  id="vc12"></div></button>
+<button style="width:100%;" onclick="smb13()" id="smb13"><pre style="margin-left:10px;"> 13. Rap God - Eminem</pre><div style="background:url('visualizer2.gif');background-size:80px 70px;height:60px;width:65px;margin-left:500px;margin-top:-63px;display:none;"  id="vc13"></div></button>
+<button style="width:100%;" onclick="smb14()" id="smb14"><pre style="margin-left:10px;"> 14. Adventure of a Lifetime - Coldplay</pre><div style="background:url('visualizer2.gif');background-size:80px 70px;height:60px;width:65px;margin-left:500px;margin-top:-63px;display:none;"  id="vc14"></div></button>
+<button style="width:100%;" onclick="smb15()" id="smb15"><pre style="margin-left:10px;"> 15. E.T - Katy Perry</pre><div style="background:url('visualizer2.gif');background-size:80px 70px;height:60px;width:65px;margin-left:500px;margin-top:-63px;display:none;"  id="vc15"></div></button>
+
+<button style="width:100%;" onclick="smb16()" id="smb16"><pre style="margin-left:10px;"> 16. Shape of You - Ed Sheeran</pre><div style="background:url('visualizer2.gif');background-size:80px 70px;height:60px;width:65px;margin-left:500px;margin-top:-63px;display:none;"  id="vc16"></div></button>
+<button style="width:100%;" onclick="smb17()" id="smb17"><pre style="margin-left:10px;"> 17. Sandstrom - Darube</pre><div style="background:url('visualizer2.gif');background-size:80px 70px;height:60px;width:65px;margin-left:500px;margin-top:-63px;display:none;"  id="vc17"></div></button>
+<button style="width:100%;" onclick="smb18()" id="smb18"><pre style="margin-left:10px;"> 18. Paris - Else</pre><div style="background:url('visualizer2.gif');background-size:80px 70px;height:60px;width:65px;margin-left:500px;margin-top:-63px;display:none;"  id="vc18"></div></button>
+<button style="width:100%;" onclick="smb19()" id="smb19"><pre style="margin-left:10px;"> 19. Till I Collapse - Eminem</pre><div style="background:url('visualizer2.gif');background-size:80px 70px;height:60px;width:65px;margin-left:500px;margin-top:-63px;display:none;"  id="vc19"></div></button>
+<button style="width:100%;" onclick="smb20()" id="smb20"><pre style="margin-left:10px;"> 20. Centuries - Fall Out Boy</pre><div style="background:url('visualizer2.gif');background-size:80px 70px;height:60px;width:65px;margin-left:500px;margin-top:-63px;display:none;"  id="vc20"></div></button>
+
+<button style="width:100%;" onclick="smb21()" id="smb21"><pre style="margin-left:10px;"> 21. Unforgettable - French Montana</pre><div style="background:url('visualizer2.gif');background-size:80px 70px;height:60px;width:65px;margin-left:500px;margin-top:-63px;display:none;"  id="vc21"></div></button>
+<button style="width:100%;" onclick="smb22()" id="smb22"><pre style="margin-left:10px;"> 22. Animals - Martin Garrix</pre><div style="background:url('visualizer2.gif');background-size:80px 70px;height:60px;width:65px;margin-left:500px;margin-top:-63px;display:none;"  id="vc22"></div></button>
+<button style="width:100%;" onclick="smb23()" id="smb23"><pre style="margin-left:10px;"> 23. Radioactive - Imagine Dragons</pre><div style="background:url('visualizer2.gif');background-size:80px 70px;height:60px;width:65px;margin-left:500px;margin-top:-63px;display:none;"  id="vc23"></div></button>
+<button style="width:100%;" onclick="smb24()" id="smb24"><pre style="margin-left:10px;"> 24. Take Me To Church - Hozier</pre><div style="background:url('visualizer2.gif');background-size:80px 70px;height:60px;width:65px;margin-left:500px;margin-top:-63px;display:none;"  id="vc24"></div></button>
+<button style="width:100%;" onclick="smb25()" id="smb25"><pre style="margin-left:10px;"> 25. Love Me Again - John Newman</pre><div style="background:url('visualizer2.gif');background-size:80px 70px;height:60px;width:65px;margin-left:500px;margin-top:-63px;display:none;"  id="vc25"></div></button>
+
+<button style="width:100%;" onclick="smb26()" id="smb26"><pre style="margin-left:10px;"> 26. Uptown Funk - Bruno Mars</pre><div style="background:url('visualizer2.gif');background-size:80px 70px;height:60px;width:65px;margin-left:500px;margin-top:-63px;display:none;"  id="vc26"></div></button>
+<button style="width:100%;" onclick="smb27()" id="smb27"><pre style="margin-left:10px;"> 27. Firestone - Kygo</pre><div style="background:url('visualizer2.gif');background-size:80px 70px;height:60px;width:65px;margin-left:500px;margin-top:-63px;display:none;"  id="vc27"></div></button>
+<button style="width:100%;" onclick="smb28()" id="smb28"><pre style="margin-left:10px;"> 28. Summertime Sadness - Lana Del Rey</pre><div style="background:url('visualizer2.gif');background-size:80px 70px;height:60px;width:65px;margin-left:500px;margin-top:-63px;display:none;"  id="vc28"></div></button>
+<button style="width:100%;" onclick="smb29()" id="smb29"><pre style="margin-left:10px;"> 29. In The End (Remix) - Linkin Park</pre><div style="background:url('visualizer2.gif');background-size:80px 70px;height:60px;width:65px;margin-left:500px;margin-top:-63px;display:none;"  id="vc29"></div></button>
+<button style="width:100%;" onclick="smb30()" id="smb30"><pre style="margin-left:10px;"> 30. Despacito - Luis Fonsi</pre><div style="background:url('visualizer2.gif');background-size:80px 70px;height:60px;width:65px;margin-left:500px;margin-top:-63px;display:none;"  id="vc30"></div></button>
+</div>
+</div>
+ 
+<div style="position:absolute;top:-10px;left:390px;width:900px;text-align:center;">
+  <div class="player">
+    <div class="details">
+      <div class="now-playing">PLAYING x OF y</div>
+      <div class="track-art" onclick="playpause2()"></div>
+      <div class="track-name">Track Name</div>
+      <div class="track-artist">Track Artist</div>
+    </div>
+    <div class="buttons">
+      <div class="prev-track" onclick="prevTrack()"><i class="fa fa-step-backward fa-2x"></i></div>
+      <div class="playpause-track" onclick="playpauseTrack()"><i class="fa fa-play-circle fa-5x"></i></div>
+      <div class="next-track" onclick="nextTrack()"><i class="fa fa-step-forward fa-2x"></i></div>
+    </div>
+    <div class="slider_container" style="background-color:black;">
+	
+      <audio controls controlsList="nodownload noplaybackrate" id="audiop" onended="nextmusic()"></audio>
+	  
+    </div>
+	
+    <div class="slider_container" style="background-color:white;border:2px solid #5a5a5a;border-top-left-radius:60%;border-top-right-radius:60%;">
+      <i class="fa fa-volume-down"></i>
+      <input type="range" min="1" max="100" value="100" class="volume_slider" onchange="setVolume()">
+      <i class="fa fa-volume-up"></i>
+    </div>
+  </div>
+</div>
+</div>
+
+<div style="display:none;" id="custommusic">
+<div class="div2">
+ <p style="font-size:70px;margin-top:-10px;">Music Player</p>
+      <label for="inputTag" class="label" onclick="musicfunc()">
+           Select Your Music<br/>
+        <img src="music.png" height=50 width=50>
+		<input class="input" type="file" accept="audio/*" id="inputTag" oninput="random_bg_color();trackname();">
+        <br/>
+      </label>
+ </div>
+ 
+ <div id="content">
+  <canvas id="canvas"></canvas>
+  <audio id="audio" controls loop></audio>
+ </div>
+  
+  <div style="position:absolute;top:10px;left:390px;width:900px;text-align:center;z-index:100px;" class="details">
+   <button style="text-align:center;font-size:20px;background:transparent;border:none;left:5px;top:-10px;position:absolute;cursor:pointer;" onclick="customback();"><img src="redo.png" height=60 width=60><br>Back</button>
+   <div class="track-art2" onclick="playpause()"></div>
+   <div class="track-name" style="font-size:40px;" id="trackname">Track Name</div>
+  </div>
+   
+</div> 
+<script src="mplayer.js"></script>
+</body>
+</html>
