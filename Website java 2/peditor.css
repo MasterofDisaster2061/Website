@@ -1,0 +1,43 @@
+
+.row {
+    margin-bottom: 0;
+}
+  
+#sourceImage,
+.image-controls,
+.image-save,
+.preset-filters {
+    display: none;
+}
+  
+.image-preview {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+}
+  
+#canvas {
+    object-fit: contain;
+	border:1px solid;
+}
+
+/* width */
+::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: #f1f1f1; 
+}
+ 
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #888; 
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #3792cb; 
+}
