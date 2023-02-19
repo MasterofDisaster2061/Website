@@ -1,0 +1,171 @@
+<html>
+<head>
+  <title>Video Player</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" integrity="sha512-Fo3rlrZj/k7ujTnHg4CGR2D7kSs0v4LLanw2qksYuRlEzO+tcaEPQogQ0KaoGN26/zrn20ImR1DfuLWnOo7aBA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+  <link rel="stylesheet" href="vplayer.css">
+  <script defer src=
+"https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js">
+    </script>
+</head>
+
+<body>
+    <nav style="background:#ff6600;">
+        <div class="nav-wrapper container">
+            <span style="text-align:center;font-size:40px;font-family:cursive;">
+             Video Player
+            </span>
+			
+			 <div class="file-field input-field" style="margin-top:20px;margin-left:50px;">
+                <div class="btn green" style="width:150px;">
+                    <span id="changetext">Browse Video</span>
+                    <input type="file" accept="video/*"
+                           onchange="uploadvideo(event)" id="vidinput">
+                </div>
+            </div>
+           
+        </div>
+    </nav>
+	
+   <div class="container" style="border:1px solid;width:1080px;height:580px;margin-top:20px;" id="videocontainer">
+   <div style="height:50px;position:absolute;top:0px;width:100%;background:rgb(0,0,0,0.5);display:none;" class="controls" id="vidnav">
+   <input readonly style="font-size:20px;font-family:cursive;color:white;margin-top:2px;margin-left:15px;width:85%;border:none;" id="vidname">	
+   <img src="imageset.png" height=43 width=45 style="filter:invert(100%);position:absolute;right:6.5%;margin-top:3px;cursor:pointer;" title="Image Filters" id="imageset">
+   <img src="fullscreen.jpg" height=43 width=45 style="filter:invert(100%);position:absolute;right:1%;margin-top:3px;cursor:pointer;border-radius:100%;" title="Full-screen" id="display">
+   </div>
+   
+   <div style="height:90px;position:absolute;top:42%;left:10%;width:90px;display:none;cursor:pointer;background:rgb(0,0,0,.8);border-radius:100%;" class="controls" id="rewindvid" onclick="rewind()">
+   <img src="rewind.png" height=50 width=70 style="margin-top:20%;margin-left:10%;">
+   </div>
+   
+   <div style="height:90px;position:absolute;top:42%;right:10%;width:90px;display:none;cursor:pointer;background:rgb(0,0,0,.8);border-radius:100%;" class="controls" id="forwardvid" onclick="forward()">
+   <img src="forward.png" height=50 width=70 style="margin-top:20%;margin-left:12%;">
+   </div>
+   
+  <div class="playback-animation" id="playback-animation">
+  <img src="pause.png" class="playback-icons" height=50 width=50 id="p1">
+  <img src="play.png" class="playback-icons" height=50 width=50 id="p2">
+  </div>
+   
+        <video onclick="playpause()" ondblclick="fullmin()" poster="v.jpg" id="video" controls controlsList="nodownload nofullscreen"></video>
+		
+		<div id="initialtext" style="position:absolute;">
+		<p style="font-size:30px;font-family:cursive;color:white;">Please Browse your video to play it</p>		
+		</div>
+		
+<div style="position:absolute;background-color:white;border:5px double;height:500px;width:400px;vertical-align:middle;align-items:center;z-index:2;text-align:center;font-size:20px;display:none;" id="imagesetbox">
+			<h3 style="text-align:center;">Image Filters</h3><br>
+			
+			   <div class="row">
+                <div class="col s6">
+				<label style="color:black;" for="brightnessSlider">
+                          Brightness
+                        </label>
+                    <span class="range-field">
+                        <input id="brightnessSlider"
+                               type="range" value="100"
+                               min="0" max="300"
+                               oninput="applyFilter()">
+                    </span>			
+                </div>
+                <div class="col s6">
+				 <label style="color:black;" for="contrastSlider">
+                          Contrast
+                        </label>
+                    <span class="range-field">                     
+                        <input id="contrastSlider"
+                               type="range" value="100"
+                               min="0" max="200" 
+                               oninput="applyFilter()">
+                    </span>
+                </div>
+            </div>
+  
+            <div class="row">
+                <div class="col s6">
+				<label style="color:black;" for="grayscaleSlider">
+                          Grayscale
+                        </label>
+                    <span class="range-field">
+                        <input id="grayscaleSlider" 
+                               type="range" value="0"
+                               min="0" max="100" 
+                               oninput="applyFilter()">
+                    </span>
+                </div>
+                <div class="col s6">
+				<label style="color:black;" for="saturationSlider">
+                          Saturation
+                        </label>
+                    <span class="range-field">
+                        <input id="saturationSlider"
+                               type="range" value="100"
+                               min="0" max="300"
+                               oninput="applyFilter()">
+                    </span>
+                </div>
+            </div>
+  
+            <div class="row">
+                <div class="col s6">
+				 <label style="color:black;" for="sepiaSlider">
+                          Sepia
+                        </label>
+                    <span class="range-field">
+                        <input id="sepiaSlider" 
+                               type="range" value="0" 
+                               min="0" max="200" 
+                               oninput="applyFilter()">
+                    </span>
+                </div>
+                <div class="col s6">
+				<label style="color:black;" for="hueRotateSlider">
+                          Hue
+                        </label>
+                    <span class="range-field">
+                        <input id="hueRotateSlider"
+                               type="range" value="0"
+                               min="0" max="360"
+                               oninput="applyFilter()">
+                    </span>
+                </div>
+				</div>
+				
+				<div class="row">
+				 <div class="col s6">
+				 <label style="color:black;" for="blurSlider">
+                          Blur
+                        </label>
+                    <span class="range-field">
+                        <input id="blurSlider"
+                               type="range" value="0"
+                               min="0" max="100"
+                               oninput="applyFilter()">
+                    </span>
+                </div>
+				<div class="col s6">
+				<label style="color:black;" for="invertSlider">
+                          Invert Color
+                        </label>
+                    <span class="range-field">
+                        <input id="invertSlider"
+                               type="range" value="0"
+                               min="0" max="100"
+                               oninput="applyFilter()">
+                    </span>
+                </div>
+				</div>
+			
+			<button class="btn green"
+                        onclick="resetImage()">
+                  Reset
+            </button>
+			<button class="btn btn-flat red white-text" onclick="imagesetback()">Close</button>
+</div>
+		
+    </div>
+
+<script src="vplayer.js"></script>
+</body>
+</html>

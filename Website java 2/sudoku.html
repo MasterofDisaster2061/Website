@@ -1,0 +1,169 @@
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Sudoku</title>
+  <link rel="stylesheet" href="sudoku.css">
+</head>
+<body>
+<div style="position:absolute;top:0%;height:80px;width:100%;background:purple;left:0%;">
+<font style="font-family:cursive;font-size:55px;color:white;margin-left:12%;">Sudoku</font>
+
+<button onclick="dispsolution()" class="button" style="position:absolute;top:20%;left:66%;background:url('bulb.png') no-repeat;background-size:50px 45px;background-color:transparent;border-radius:5%;height:50px;width:50px;cursor:pointer;font-size:15px;color:white;font-family:cursive;border:none;display:none;" id="solutionbutton" title="View Solution"><pre> </pre></button>
+
+<div style="position:absolute;top:18%;left:72%;">
+<button onclick="resetgame()" class="button" style="background:#00ab41;border-radius:5%;height:50px;width:120px;color:white;font-family:cursive;font-size:20px;cursor:pointer;" id="resetgame">Reset</button>
+<button onclick="newgame()" class="button" style="background:#00ab41;border-radius:5%;height:50px;width:120px;color:white;font-family:cursive;font-size:20px;cursor:pointer;">New Game</button>
+</div>
+<div style="position:absolute;top:5%;left:45.5%;">
+<font style="font-size:25px;color:white;font-family:cursive;">Time:</font><br>
+<font style="font-size:25px;color:white;font-family:cursive;" id="timedisplay">00:00</font>
+</div>
+</div>
+
+  <div style="position:absolute;margin-top:8%;margin-left:31%;">
+  <table id="table" style="background:url('paper.jpg');background-size:100px 200px;border:2px solid;margin:auto;" cellspacing=0>
+  
+  <tr id="tr1">
+  <td style="text-align:center;font-size:25px;font-family:cursive;cursor:pointer;border:1px solid black;height:40px;width:40px;" id="td11"></td>
+  <td style="text-align:center;font-size:25px;font-family:cursive;cursor:pointer;border:1px solid black;height:40px;width:40px;" id="td12"></td>
+  <td style="text-align:center;font-size:25px;font-family:cursive;cursor:pointer;border:1px solid black;height:40px;width:40px;border-right:2px solid black;" id="td13"></td>
+  <td style="text-align:center;font-size:25px;font-family:cursive;cursor:pointer;border:1px solid black;height:40px;width:40px;border-left:2px solid black;" id="td14"></td>
+  <td style="text-align:center;font-size:25px;font-family:cursive;cursor:pointer;border:1px solid black;height:40px;width:40px;" id="td15"></td>
+  <td style="text-align:center;font-size:25px;font-family:cursive;cursor:pointer;border:1px solid black;height:40px;width:40px;border-right:2px solid black;" id="td16"></td>
+  <td style="text-align:center;font-size:25px;font-family:cursive;cursor:pointer;border:1px solid black;height:40px;width:40px;border-left:2px solid black;" id="td17"></td>
+  <td style="text-align:center;font-size:25px;font-family:cursive;cursor:pointer;border:1px solid black;height:40px;width:40px;" id="td18"></td>
+  <td style="text-align:center;font-size:25px;font-family:cursive;cursor:pointer;border:1px solid black;height:40px;width:40px;" id="td19"></td>
+  </tr>
+  
+  <tr id="tr2">
+  <td style="text-align:center;font-size:25px;font-family:cursive;cursor:pointer;border:1px solid black;height:40px;width:40px;" id="td21"></td>
+  <td style="text-align:center;font-size:25px;font-family:cursive;cursor:pointer;border:1px solid black;height:40px;width:40px;" id="td22"></td>
+  <td style="text-align:center;font-size:25px;font-family:cursive;cursor:pointer;border:1px solid black;height:40px;width:40px;border-right:2px solid black;" id="td23"></td>
+  <td style="text-align:center;font-size:25px;font-family:cursive;cursor:pointer;border:1px solid black;height:40px;width:40px;border-left:2px solid black;" id="td24"></td>
+  <td style="text-align:center;font-size:25px;font-family:cursive;cursor:pointer;border:1px solid black;height:40px;width:40px;" id="td25"></td>
+  <td style="text-align:center;font-size:25px;font-family:cursive;cursor:pointer;border:1px solid black;height:40px;width:40px;border-right:2px solid black;" id="td26"></td>
+  <td style="text-align:center;font-size:25px;font-family:cursive;cursor:pointer;border:1px solid black;height:40px;width:40px;border-left:2px solid black;" id="td27"></td>
+  <td style="text-align:center;font-size:25px;font-family:cursive;cursor:pointer;border:1px solid black;height:40px;width:40px;" id="td28"></td>
+  <td style="text-align:center;font-size:25px;font-family:cursive;cursor:pointer;border:1px solid black;height:40px;width:40px;" id="td29"></td>
+  </tr>
+  
+  <tr id="tr3">
+  <td style="text-align:center;font-size:25px;font-family:cursive;cursor:pointer;border:1px solid black;height:40px;width:40px;border-bottom:2px solid black;" id="td31"></td>
+  <td style="text-align:center;font-size:25px;font-family:cursive;cursor:pointer;border:1px solid black;height:40px;width:40px;border-bottom:2px solid black;" id="td32"></td>
+  <td style="text-align:center;font-size:25px;font-family:cursive;cursor:pointer;border:1px solid black;height:40px;width:40px;border-bottom:2px solid black;border-right:2px solid black;" id="td33"></td>
+  <td style="text-align:center;font-size:25px;font-family:cursive;cursor:pointer;border:1px solid black;height:40px;width:40px;border-bottom:2px solid black;border-left:2px solid black;" id="td34"></td>
+  <td style="text-align:center;font-size:25px;font-family:cursive;cursor:pointer;border:1px solid black;height:40px;width:40px;border-bottom:2px solid black;" id="td35"></td>
+  <td style="text-align:center;font-size:25px;font-family:cursive;cursor:pointer;border:1px solid black;height:40px;width:40px;border-bottom:2px solid black;border-right:2px solid black;" id="td36"></td>
+  <td style="text-align:center;font-size:25px;font-family:cursive;cursor:pointer;border:1px solid black;height:40px;width:40px;border-bottom:2px solid black;border-left:2px solid black;" id="td37"></td>
+  <td style="text-align:center;font-size:25px;font-family:cursive;cursor:pointer;border:1px solid black;height:40px;width:40px;border-bottom:2px solid black;" id="td38"></td>
+  <td style="text-align:center;font-size:25px;font-family:cursive;cursor:pointer;border:1px solid black;height:40px;width:40px;border-bottom:2px solid black;" id="td39"></td>
+  </tr>
+  
+  <tr id="tr4">
+  <td style="text-align:center;font-size:25px;font-family:cursive;cursor:pointer;border:1px solid black;height:40px;width:40px;border-top:2px solid black;" id="td41"></td>
+  <td style="text-align:center;font-size:25px;font-family:cursive;cursor:pointer;border:1px solid black;height:40px;width:40px;border-top:2px solid black;" id="td42"></td>
+  <td style="text-align:center;font-size:25px;font-family:cursive;cursor:pointer;border:1px solid black;height:40px;width:40px;border-top:2px solid black;border-right:2px solid black;" id="td43"></td>
+  <td style="text-align:center;font-size:25px;font-family:cursive;cursor:pointer;border:1px solid black;height:40px;width:40px;border-top:2px solid black;border-left:2px solid black;" id="td44"></td>
+  <td style="text-align:center;font-size:25px;font-family:cursive;cursor:pointer;border:1px solid black;height:40px;width:40px;border-top:2px solid black;" id="td45"></td>
+  <td style="text-align:center;font-size:25px;font-family:cursive;cursor:pointer;border:1px solid black;height:40px;width:40px;border-top:2px solid black;border-right:2px solid black;" id="td46"></td>
+  <td style="text-align:center;font-size:25px;font-family:cursive;cursor:pointer;border:1px solid black;height:40px;width:40px;border-top:2px solid black;border-left:2px solid black;" id="td47"></td>
+  <td style="text-align:center;font-size:25px;font-family:cursive;cursor:pointer;border:1px solid black;height:40px;width:40px;border-top:2px solid black;" id="td48"></td>
+  <td style="text-align:center;font-size:25px;font-family:cursive;cursor:pointer;border:1px solid black;height:40px;width:40px;border-top:2px solid black;" id="td49"></td>
+  </tr>
+  
+  <tr id="tr5">
+  <td style="text-align:center;font-size:25px;font-family:cursive;cursor:pointer;border:1px solid black;height:40px;width:40px;" id="td51"></td>
+  <td style="text-align:center;font-size:25px;font-family:cursive;cursor:pointer;border:1px solid black;height:40px;width:40px;" id="td52"></td>
+  <td style="text-align:center;font-size:25px;font-family:cursive;cursor:pointer;border:1px solid black;height:40px;width:40px;border-right:2px solid black;" id="td53"></td>
+  <td style="text-align:center;font-size:25px;font-family:cursive;cursor:pointer;border:1px solid black;height:40px;width:40px;border-left:2px solid black;" id="td54"></td>
+  <td style="text-align:center;font-size:25px;font-family:cursive;cursor:pointer;border:1px solid black;height:40px;width:40px;" id="td55"></td>
+  <td style="text-align:center;font-size:25px;font-family:cursive;cursor:pointer;border:1px solid black;height:40px;width:40px;border-right:2px solid black;" id="td56"></td>
+  <td style="text-align:center;font-size:25px;font-family:cursive;cursor:pointer;border:1px solid black;height:40px;width:40px;border-left:2px solid black;" id="td57"></td>
+  <td style="text-align:center;font-size:25px;font-family:cursive;cursor:pointer;border:1px solid black;height:40px;width:40px;" id="td58"></td>
+  <td style="text-align:center;font-size:25px;font-family:cursive;cursor:pointer;border:1px solid black;height:40px;width:40px;" id="td59"></td>
+  </tr>
+  
+  <tr id="tr6">
+  <td style="text-align:center;font-size:25px;font-family:cursive;cursor:pointer;border:1px solid black;height:40px;width:40px;border-bottom:2px solid black;" id="td61"></td>
+  <td style="text-align:center;font-size:25px;font-family:cursive;cursor:pointer;border:1px solid black;height:40px;width:40px;border-bottom:2px solid black;" id="td62"></td>
+  <td style="text-align:center;font-size:25px;font-family:cursive;cursor:pointer;border:1px solid black;height:40px;width:40px;border-bottom:2px solid black;border-right:2px solid black;" id="td63"></td>
+  <td style="text-align:center;font-size:25px;font-family:cursive;cursor:pointer;border:1px solid black;height:40px;width:40px;border-bottom:2px solid black;border-left:2px solid black;" id="td64"></td>
+  <td style="text-align:center;font-size:25px;font-family:cursive;cursor:pointer;border:1px solid black;height:40px;width:40px;border-bottom:2px solid black;" id="td65"></td>
+  <td style="text-align:center;font-size:25px;font-family:cursive;cursor:pointer;border:1px solid black;height:40px;width:40px;border-bottom:2px solid black;border-right:2px solid black;" id="td66"></td>
+  <td style="text-align:center;font-size:25px;font-family:cursive;cursor:pointer;border:1px solid black;height:40px;width:40px;border-bottom:2px solid black;border-left:2px solid black;" id="td67"></td>
+  <td style="text-align:center;font-size:25px;font-family:cursive;cursor:pointer;border:1px solid black;height:40px;width:40px;border-bottom:2px solid black;" id="td68"></td>
+  <td style="text-align:center;font-size:25px;font-family:cursive;cursor:pointer;border:1px solid black;height:40px;width:40px;border-bottom:2px solid black;" id="td69"></td>
+  </tr>
+  
+  <tr id="tr7">
+  <td style="text-align:center;font-size:25px;font-family:cursive;cursor:pointer;border:1px solid black;height:40px;width:40px;border-top:2px solid black;" id="td71"></td>
+  <td style="text-align:center;font-size:25px;font-family:cursive;cursor:pointer;border:1px solid black;height:40px;width:40px;border-top:2px solid black;" id="td72"></td>
+  <td style="text-align:center;font-size:25px;font-family:cursive;cursor:pointer;border:1px solid black;height:40px;width:40px;border-top:2px solid black;border-right:2px solid black;" id="td73"></td>
+  <td style="text-align:center;font-size:25px;font-family:cursive;cursor:pointer;border:1px solid black;height:40px;width:40px;border-top:2px solid black;border-left:2px solid black;" id="td74"></td>
+  <td style="text-align:center;font-size:25px;font-family:cursive;cursor:pointer;border:1px solid black;height:40px;width:40px;border-top:2px solid black;" id="td75"></td>
+  <td style="text-align:center;font-size:25px;font-family:cursive;cursor:pointer;border:1px solid black;height:40px;width:40px;border-top:2px solid black;border-right:2px solid black;" id="td76"></td>
+  <td style="text-align:center;font-size:25px;font-family:cursive;cursor:pointer;border:1px solid black;height:40px;width:40px;border-top:2px solid black;border-left:2px solid black;" id="td77"></td>
+  <td style="text-align:center;font-size:25px;font-family:cursive;cursor:pointer;border:1px solid black;height:40px;width:40px;border-top:2px solid black;" id="td78"></td>
+  <td style="text-align:center;font-size:25px;font-family:cursive;cursor:pointer;border:1px solid black;height:40px;width:40px;border-top:2px solid black;" id="td79"></td>
+  </tr>
+  
+  <tr id="tr8">
+  <td style="text-align:center;font-size:25px;font-family:cursive;cursor:pointer;border:1px solid black;height:40px;width:40px;" id="td81"></td>
+  <td style="text-align:center;font-size:25px;font-family:cursive;cursor:pointer;border:1px solid black;height:40px;width:40px;" id="td82"></td>
+  <td style="text-align:center;font-size:25px;font-family:cursive;cursor:pointer;border:1px solid black;height:40px;width:40px;border-right:2px solid black;" id="td83"></td>
+  <td style="text-align:center;font-size:25px;font-family:cursive;cursor:pointer;border:1px solid black;height:40px;width:40px;border-left:2px solid black;" id="td84"></td>
+  <td style="text-align:center;font-size:25px;font-family:cursive;cursor:pointer;border:1px solid black;height:40px;width:40px;" id="td85"></td>
+  <td style="text-align:center;font-size:25px;font-family:cursive;cursor:pointer;border:1px solid black;height:40px;width:40px;border-right:2px solid black;" id="td86"></td>
+  <td style="text-align:center;font-size:25px;font-family:cursive;cursor:pointer;border:1px solid black;height:40px;width:40px;border-left:2px solid black;" id="td87"></td>
+  <td style="text-align:center;font-size:25px;font-family:cursive;cursor:pointer;border:1px solid black;height:40px;width:40px;" id="td88"></td>
+  <td style="text-align:center;font-size:25px;font-family:cursive;cursor:pointer;border:1px solid black;height:40px;width:40px;" id="td89"></td>
+  </tr>
+  
+  <tr id="tr9">
+  <td style="text-align:center;font-size:25px;font-family:cursive;cursor:pointer;border:1px solid black;height:40px;width:40px;" id="td91"></td>
+  <td style="text-align:center;font-size:25px;font-family:cursive;cursor:pointer;border:1px solid black;height:40px;width:40px;" id="td92"></td>
+  <td style="text-align:center;font-size:25px;font-family:cursive;cursor:pointer;border:1px solid black;height:40px;width:40px;border-right:2px solid black;" id="td93"></td>
+  <td style="text-align:center;font-size:25px;font-family:cursive;cursor:pointer;border:1px solid black;height:40px;width:40px;border-left:2px solid black;" id="td94"></td>
+  <td style="text-align:center;font-size:25px;font-family:cursive;cursor:pointer;border:1px solid black;height:40px;width:40px;" id="td95"></td>
+  <td style="text-align:center;font-size:25px;font-family:cursive;cursor:pointer;border:1px solid black;height:40px;width:40px;border-right:2px solid black;" id="td96"></td>
+  <td style="text-align:center;font-size:25px;font-family:cursive;cursor:pointer;border:1px solid black;height:40px;width:40px;border-left:2px solid black;" id="td97"></td>
+  <td style="text-align:center;font-size:25px;font-family:cursive;cursor:pointer;border:1px solid black;height:40px;width:40px;" id="td98"></td>
+  <td style="text-align:center;font-size:25px;font-family:cursive;cursor:pointer;border:1px solid black;height:40px;width:40px;" id="td99"></td>
+  </tr>
+  
+  </table><br>
+  
+  <div style="border:2px solid;margin:auto;">
+  <table class="selector">
+  <tr id="tr10">
+  <td style="border:1px solid;height:40px;width:40px;text-align:center;font-size:30px;font-family:cursive;cursor:pointer;" id="td101">1</td>
+  <td style="border:1px solid;height:40px;width:40px;text-align:center;font-size:30px;font-family:cursive;cursor:pointer;" id="td102">2</td>
+  <td style="border:1px solid;height:40px;width:40px;text-align:center;font-size:30px;font-family:cursive;cursor:pointer;" id="td103">3</td>
+  <td style="border:1px solid;height:40px;width:40px;text-align:center;font-size:30px;font-family:cursive;cursor:pointer;" id="td104">4</td>
+  <td style="border:1px solid;height:40px;width:40px;text-align:center;font-size:30px;font-family:cursive;cursor:pointer;" id="td105">5</td>
+  <td style="border:1px solid;height:40px;width:40px;text-align:center;font-size:30px;font-family:cursive;cursor:pointer;" id="td106">6</td>
+  <td style="border:1px solid;height:40px;width:40px;text-align:center;font-size:30px;font-family:cursive;cursor:pointer;" id="td107">7</td>
+  <td style="border:1px solid;height:40px;width:40px;text-align:center;font-size:30px;font-family:cursive;cursor:pointer;" id="td108">8</td>
+  <td style="border:1px solid;height:40px;width:40px;text-align:center;font-size:30px;font-family:cursive;cursor:pointer;" id="td109">9</td>
+  </tr>
+  </table>
+  </div>
+  
+  </div>
+  
+  <div style="height:500px;width:500px;position:absolute;z-index:1;top:13%;left:28.6%;text-align:center;font-size:30px;font-family:cursive;color:white;background:rgb(0,0,0,0.4);cursor:default;" id="demo">
+  <br><br><br>Press "New Game" button to start the Game.<br>Choose the number from number box given below and then tap on a cell to fill the number in the gaps.
+  </div>
+  
+  <div style="height:555px;width:1000px;position:absolute;z-index:1;top:13%;left:13%;text-align:center;font-size:30px;font-family:cursive;background:white;cursor:default;border:5px double black;display:none;" id="solution">
+  <br><font style="font-family:cursive;font-size:50px;color:black;">Sudoku Solution</font><br><br>
+  <img src="sudoku1.png" height=300 width=300>
+  <img src="sudoku2.png" height=300 width=300 style="margin-left:15px;">
+  <img src="sudoku3.png" height=300 width=300 style="margin-left:15px;">
+  <button onclick="solutionback()" class="button" style="background:green;border-radius:5%;height:40px;width:120px;color:white;font-family:cursive;font-size:20px;cursor:pointer;margin-top:10px;">Close</button>
+  </div>
+  
+<script src="https://code.jquery.com/jquery-1.11.0.min.js" type="text/javascript" charset="utf-8"></script>
+<script src="sudoku.js"></script>
+</body>
+</html>
