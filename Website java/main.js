@@ -609,7 +609,10 @@ document.getElementById('disp').value+="";
 }
 function set()
 {
+if(document.getElementById('setting').style.display=="none")
 document.getElementById('setting').style.display="block";
+else
+closedd();
 }
 function closedd()
 {
@@ -2019,39 +2022,15 @@ document.getElementById('ticstats42').innerHTML="Games played= "+kk+" time(s)<br
 }
 
 j=0;
-
-jj=localStorage.getItem('ticgameplayed');
-if(jj==null)
 jj=0;
-
-jjj=localStorage.getItem('ticxwins');
-if(jjj==null)
 jjj=0;
-
-jjjj=localStorage.getItem('ticowins');
-if(jjjj==null)
 jjjj=0;
-
-jjjjj=localStorage.getItem('ticdraws');
-if(jjjjj==null)
 jjjjj=0;
 
 k=0;
-
-kk=localStorage.getItem('ticgameplayed4');
-if(kk==null)
 kk=0;
-
-kkk=localStorage.getItem('ticxwins4');
-if(kkk==null)
 kkk=0;
-
-kkkk=localStorage.getItem('ticowins4');
-if(kkkk==null)
 kkkk=0;
-
-kkkkk=localStorage.getItem('ticdraws4');
-if(kkkkk==null)
 kkkkk=0;
 
 function clear33stats()
@@ -2060,10 +2039,6 @@ jj=0;
 jjj=0;
 jjjj=0;
 jjjjj=0;
-localStorage.setItem('ticgameplayed',0);
-localStorage.setItem('ticxwins',0);
-localStorage.setItem('ticowins',0);
-localStorage.setItem('ticdraws',0);
 
 ticstats();
 }
@@ -2073,10 +2048,6 @@ kk=0;
 kkk=0;
 kkkk=0;
 kkkkk=0;
-localStorage.setItem('ticgameplayed4',0);
-localStorage.setItem('ticxwins4',0);
-localStorage.setItem('ticowins4',0);
-localStorage.setItem('ticdraws4',0);
 
 ticstats4();
 }
@@ -2111,9 +2082,6 @@ document.getElementById('t8').disabled=true;
 document.getElementById('t9').disabled=true;
 jjj++;
 jj++;
-
-localStorage.setItem('ticgameplayed',jj);
-localStorage.setItem('ticxwins',jjj);
 }
 else if(t4=='X' && t5=='X' && t6=='X')
 {
@@ -2132,9 +2100,6 @@ document.getElementById('t8').disabled=true;
 document.getElementById('t9').disabled=true;
 jjj++;
 jj++;
-
-localStorage.setItem('ticgameplayed',jj);
-localStorage.setItem('ticxwins',jjj);
 }
 else if(t7=='X' && t8=='X' && t9=='X')
 {
@@ -2153,9 +2118,6 @@ document.getElementById('t8').disabled=true;
 document.getElementById('t9').disabled=true;
 jjj++;
 jj++;
-
-localStorage.setItem('ticgameplayed',jj);
-localStorage.setItem('ticxwins',jjj);
 }
 else if(t1=='X' && t5=='X' && t9=='X')
 {
@@ -2174,9 +2136,6 @@ document.getElementById('t8').disabled=true;
 document.getElementById('t9').disabled=true;
 jjj++;
 jj++;
-
-localStorage.setItem('ticgameplayed',jj);
-localStorage.setItem('ticxwins',jjj);
 }
 else if(t3=='X' && t5=='X' && t7=='X')
 {
@@ -2195,9 +2154,6 @@ document.getElementById('t8').disabled=true;
 document.getElementById('t9').disabled=true;
 jjj++;
 jj++;
-
-localStorage.setItem('ticgameplayed',jj);
-localStorage.setItem('ticxwins',jjj);
 }
 else if(t1=='X' && t4=='X' && t7=='X')
 {
@@ -2216,9 +2172,6 @@ document.getElementById('t8').disabled=true;
 document.getElementById('t9').disabled=true;
 jjj++;
 jj++;
-
-localStorage.setItem('ticgameplayed',jj);
-localStorage.setItem('ticxwins',jjj);
 }
 else if(t2=='X' && t5=='X' && t8=='X')
 {
@@ -2237,9 +2190,6 @@ document.getElementById('t8').disabled=true;
 document.getElementById('t9').disabled=true;
 jjj++;
 jj++;
-
-localStorage.setItem('ticgameplayed',jj);
-localStorage.setItem('ticxwins',jjj);
 }
 else if(t3=='X' && t6=='X' && t9=='X')
 {
@@ -2258,9 +2208,6 @@ document.getElementById('t8').disabled=true;
 document.getElementById('t9').disabled=true;
 jjj++;
 jj++;
-
-localStorage.setItem('ticgameplayed',jj);
-localStorage.setItem('ticxwins',jjj);
 }
 }
 else if((t1=='◯' && t2=='◯' && t3=='◯')||(t4=='◯' && t5=='◯' && t6=='◯')||(t7=='◯' && t8=='◯' && t9=='◯')||(t1=='◯' && t5=='◯' && t9=='◯')||(t3=='◯' && t5=='◯' && t7=='◯')||(t1=='◯' && t4=='◯' && t7=='◯')||(t2=='◯' && t5=='◯' && t8=='◯')||(t3=='◯' && t6=='◯' && t9=='◯'))
@@ -2282,9 +2229,6 @@ document.getElementById('t8').disabled=true;
 document.getElementById('t9').disabled=true;
 jjjj++;
 jj++;
-
-localStorage.setItem('ticgameplayed',jj);
-localStorage.setItem('ticowins',jjjj);
 }
 else if(t4=='◯' && t5=='◯' && t6=='◯')
 {
@@ -2303,9 +2247,6 @@ document.getElementById('t8').disabled=true;
 document.getElementById('t9').disabled=true;
 jjjj++;
 jj++;
-
-localStorage.setItem('ticgameplayed',jj);
-localStorage.setItem('ticowins',jjjj);
 }
 else if(t7=='◯' && t8=='◯' && t9=='◯')
 {
@@ -2324,9 +2265,6 @@ document.getElementById('t8').disabled=true;
 document.getElementById('t9').disabled=true;
 jjjj++;
 jj++;
-
-localStorage.setItem('ticgameplayed',jj);
-localStorage.setItem('ticowins',jjjj);
 }
 else if(t1=='◯' && t5=='◯' && t9=='◯')
 {
@@ -2345,9 +2283,6 @@ document.getElementById('t8').disabled=true;
 document.getElementById('t9').disabled=true;
 jjjj++;
 jj++;
-
-localStorage.setItem('ticgameplayed',jj);
-localStorage.setItem('ticowins',jjjj);
 }
 else if(t3=='◯' && t5=='◯' && t7=='◯')
 {
@@ -2366,9 +2301,6 @@ document.getElementById('t8').disabled=true;
 document.getElementById('t9').disabled=true;
 jjjj++;
 jj++;
-
-localStorage.setItem('ticgameplayed',jj);
-localStorage.setItem('ticowins',jjjj);
 }
 else if(t1=='◯' && t4=='◯' && t7=='◯')
 {
@@ -2387,9 +2319,6 @@ document.getElementById('t8').disabled=true;
 document.getElementById('t9').disabled=true;
 jjjj++;
 jj++;
-
-localStorage.setItem('ticgameplayed',jj);
-localStorage.setItem('ticowins',jjjj);
 }
 else if(t2=='◯' && t5=='◯' && t8=='◯')
 {
@@ -2408,9 +2337,6 @@ document.getElementById('t8').disabled=true;
 document.getElementById('t9').disabled=true;
 jjjj++;
 jj++;
-
-localStorage.setItem('ticgameplayed',jj);
-localStorage.setItem('ticowins',jjjj);
 }
 else if(t3=='◯' && t6=='◯' && t9=='◯')
 {
@@ -2429,9 +2355,6 @@ document.getElementById('t8').disabled=true;
 document.getElementById('t9').disabled=true;
 jjjj++;
 jj++;
-
-localStorage.setItem('ticgameplayed',jj);
-localStorage.setItem('ticowins',jjjj);
 }
 }
 else if((t1=='◯' || t1=='X') && (t2=='◯' || t2=='X') && (t3=='◯' || t3=='X') && (t4=='◯' || t4=='X') && (t5=='◯' || t5=='X') && (t6=='◯' || t6=='X') && (t7=='◯' || t7=='X') && (t8=='◯' || t8=='X') && (t9=='◯' || t9=='X'))
@@ -2448,9 +2371,6 @@ document.getElementById('t8').disabled=true;
 document.getElementById('t9').disabled=true;
 jjjjj++;
 jj++;
-
-localStorage.setItem('ticgameplayed',jj);
-localStorage.setItem('ticdraws',jjjjj);
 }
 }
 function func4()
@@ -2495,9 +2415,6 @@ document.getElementById('t416').disabled=true;
 kkk++;
 kk++;
 
-localStorage.setItem('ticgameplayed4',kk);
-localStorage.setItem('ticxwins4',kkk);
-
 document.getElementById('t41').style.color="red";
 document.getElementById('t42').style.color="red";
 document.getElementById('t43').style.color="red";
@@ -2524,9 +2441,6 @@ document.getElementById('t415').disabled=true;
 document.getElementById('t416').disabled=true;
 kkk++;
 kk++;
-
-localStorage.setItem('ticgameplayed4',kk);
-localStorage.setItem('ticxwins4',kkk);
 
 document.getElementById('t45').style.color="red";
 document.getElementById('t46').style.color="red";
@@ -2555,9 +2469,6 @@ document.getElementById('t416').disabled=true;
 kkk++;
 kk++;
 
-localStorage.setItem('ticgameplayed4',kk);
-localStorage.setItem('ticxwins4',kkk);
-
 document.getElementById('t49').style.color="red";
 document.getElementById('t410').style.color="red";
 document.getElementById('t411').style.color="red";
@@ -2584,9 +2495,6 @@ document.getElementById('t415').disabled=true;
 document.getElementById('t416').disabled=true;
 kkk++;
 kk++;
-
-localStorage.setItem('ticgameplayed4',kk);
-localStorage.setItem('ticxwins4',kkk);
 
 document.getElementById('t413').style.color="red";
 document.getElementById('t414').style.color="red";
@@ -2615,9 +2523,6 @@ document.getElementById('t416').disabled=true;
 kkk++;
 kk++;
 
-localStorage.setItem('ticgameplayed4',kk);
-localStorage.setItem('ticxwins4',kkk);
-
 document.getElementById('t41').style.color="red";
 document.getElementById('t46').style.color="red";
 document.getElementById('t411').style.color="red";
@@ -2644,9 +2549,6 @@ document.getElementById('t415').disabled=true;
 document.getElementById('t416').disabled=true;
 kkk++;
 kk++;
-
-localStorage.setItem('ticgameplayed4',kk);
-localStorage.setItem('ticxwins4',kkk);
 
 document.getElementById('t44').style.color="red";
 document.getElementById('t47').style.color="red";
@@ -2675,9 +2577,6 @@ document.getElementById('t416').disabled=true;
 kkk++;
 kk++;
 
-localStorage.setItem('ticgameplayed4',kk);
-localStorage.setItem('ticxwins4',kkk);
-
 document.getElementById('t41').style.color="red";
 document.getElementById('t45').style.color="red";
 document.getElementById('t49').style.color="red";
@@ -2704,9 +2603,6 @@ document.getElementById('t415').disabled=true;
 document.getElementById('t416').disabled=true;
 kkk++;
 kk++;
-
-localStorage.setItem('ticgameplayed4',kk);
-localStorage.setItem('ticxwins4',kkk);
 
 document.getElementById('t42').style.color="red";
 document.getElementById('t46').style.color="red";
@@ -2735,9 +2631,6 @@ document.getElementById('t416').disabled=true;
 kkk++;
 kk++;
 
-localStorage.setItem('ticgameplayed4',kk);
-localStorage.setItem('ticxwins4',kkk);
-
 document.getElementById('t43').style.color="red";
 document.getElementById('t47').style.color="red";
 document.getElementById('t411').style.color="red";
@@ -2764,9 +2657,6 @@ document.getElementById('t415').disabled=true;
 document.getElementById('t416').disabled=true;
 kkk++;
 kk++;
-
-localStorage.setItem('ticgameplayed4',kk);
-localStorage.setItem('ticxwins4',kkk);
 
 document.getElementById('t44').style.color="red";
 document.getElementById('t48').style.color="red";
@@ -2798,9 +2688,6 @@ document.getElementById('t416').disabled=true;
 kkkk++;
 kk++;
 
-localStorage.setItem('ticgameplayed4',kk);
-localStorage.setItem('ticowins4',kkkk);
-
 document.getElementById('t41').style.color="red";
 document.getElementById('t42').style.color="red";
 document.getElementById('t43').style.color="red";
@@ -2827,9 +2714,6 @@ document.getElementById('t415').disabled=true;
 document.getElementById('t416').disabled=true;
 kkkk++;
 kk++;
-
-localStorage.setItem('ticgameplayed4',kk);
-localStorage.setItem('ticowins4',kkkk);
 
 document.getElementById('t45').style.color="red";
 document.getElementById('t46').style.color="red";
@@ -2858,9 +2742,6 @@ document.getElementById('t416').disabled=true;
 kkkk++;
 kk++;
 
-localStorage.setItem('ticgameplayed4',kk);
-localStorage.setItem('ticowins4',kkkk);
-
 document.getElementById('t49').style.color="red";
 document.getElementById('t410').style.color="red";
 document.getElementById('t411').style.color="red";
@@ -2887,9 +2768,6 @@ document.getElementById('t415').disabled=true;
 document.getElementById('t416').disabled=true;
 kkkk++;
 kk++;
-
-localStorage.setItem('ticgameplayed4',kk);
-localStorage.setItem('ticowins4',kkkk);
 
 document.getElementById('t413').style.color="red";
 document.getElementById('t414').style.color="red";
@@ -2918,9 +2796,6 @@ document.getElementById('t416').disabled=true;
 kkkk++;
 kk++;
 
-localStorage.setItem('ticgameplayed4',kk);
-localStorage.setItem('ticowins4',kkkk);
-
 document.getElementById('t41').style.color="red";
 document.getElementById('t46').style.color="red";
 document.getElementById('t411').style.color="red";
@@ -2947,9 +2822,6 @@ document.getElementById('t415').disabled=true;
 document.getElementById('t416').disabled=true;
 kkkk++;
 kk++;
-
-localStorage.setItem('ticgameplayed4',kk);
-localStorage.setItem('ticowins4',kkkk);
 
 document.getElementById('t44').style.color="red";
 document.getElementById('t47').style.color="red";
@@ -2978,9 +2850,6 @@ document.getElementById('t416').disabled=true;
 kkkk++;
 kk++;
 
-localStorage.setItem('ticgameplayed4',kk);
-localStorage.setItem('ticowins4',kkkk);
-
 document.getElementById('t41').style.color="red";
 document.getElementById('t45').style.color="red";
 document.getElementById('t49').style.color="red";
@@ -3007,9 +2876,6 @@ document.getElementById('t415').disabled=true;
 document.getElementById('t416').disabled=true;
 kkkk++;
 kk++;
-
-localStorage.setItem('ticgameplayed4',kk);
-localStorage.setItem('ticowins4',kkkk);
 
 document.getElementById('t42').style.color="red";
 document.getElementById('t46').style.color="red";
@@ -3038,9 +2904,6 @@ document.getElementById('t416').disabled=true;
 kkkk++;
 kk++;
 
-localStorage.setItem('ticgameplayed4',kk);
-localStorage.setItem('ticowins4',kkkk);
-
 document.getElementById('t43').style.color="red";
 document.getElementById('t47').style.color="red";
 document.getElementById('t411').style.color="red";
@@ -3067,9 +2930,6 @@ document.getElementById('t415').disabled=true;
 document.getElementById('t416').disabled=true;
 kkkk++;
 kk++;
-
-localStorage.setItem('ticgameplayed4',kk);
-localStorage.setItem('ticowins4',kkkk);
 
 document.getElementById('t44').style.color="red";
 document.getElementById('t48').style.color="red";
@@ -3098,9 +2958,6 @@ document.getElementById('t415').disabled=true;
 document.getElementById('t416').disabled=true;
 kkkkk++;
 kk++;
-
-localStorage.setItem('ticgameplayed4',kk);
-localStorage.setItem('ticdraws4',kkkkk);
 }
 }
 function tic1()
@@ -3671,7 +3528,7 @@ document.getElementById('formdata').innerHTML=JSON.parse(localStorage.getItem('f
 formdata999=document.getElementById('formdata').innerHTML+=formdata99;
 localStorage.setItem('formdata99',JSON.stringify(formdata999));
 formnumber=localStorage.setItem('formnumber',formnumber);
-	
+
 document.getElementById('form1').style.display="block";
 document.getElementById('form2').style.display="none";
 }
