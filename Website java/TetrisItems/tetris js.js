@@ -1105,7 +1105,8 @@ window.onload = function() {
 }
 function downgame()
 { 
-     const row = tetromino.row + 1;
+for(var i=1;i<=10;i++)
+{ const row = tetromino.row + 1;
 	
     if (!isValidMove(tetromino.matrix, row, tetromino.col)) {
       tetromino.row = row - 1;
@@ -1113,7 +1114,7 @@ function downgame()
       placeTetromino();
       return;
     }
-    tetromino.row = row;
+tetromino.row = row;}
 }
 function rotategame()
 { 
