@@ -1,0 +1,37 @@
+<html>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dino Rush</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+	  overflow:hidden;
+    }
+    canvas {
+      display: block;
+    }
+  </style>
+</head>
+<body>
+  <canvas id="game" width="640" height="400"></canvas>
+  <img src="dino.gif" style="position:absolute;height:80px;width:60px;bottom:0px;left:95px;" id="dino">
+  <img src="dinojump.png" style="position:absolute;height:80px;width:60px;bottom:0px;left:95px;display:none;" id="dinojump">
+  <img src="dinoslide.png" style="position:absolute;height:50px;width:60px;bottom:0px;left:95px;display:none;" id="dinoslide">
+  <img src="dinocrash.png" style="position:absolute;height:50px;width:60px;bottom:0px;left:95px;display:none;" id="dinocrash">
+  
+  <div style="position:absolute;top:200px;left:420px;height:200px;width:500px;background:white;border:5px double;font-size:60px;text-align:center;display:none;" id="gameoverbox">
+  <p style="margin-top:20px;">You Crashed!<p><br>
+  <button style="color:white;font-size:25px;background:black;padding-left:20px;padding-right:20px;margin-top:-40px;padding-top:5px;padding-bottom:5px;" onclick="restartgame()">Play Again</button>
+  </div>
+  
+  <div style="font-size:40px;position:absolute;position:absolute;top:150px;left:400px;height:200px;width:800px;" id="demo">
+  Press "SpaceBar" OR "↑" to Jump<br><br>
+  Press "Shift-Key" OR "↓" to Slide
+  </div>
+  
+  <script src="dino.js"></script>
+</body>
+</html>
