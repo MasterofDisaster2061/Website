@@ -158,7 +158,7 @@ function SpawnObstacle () {
   let obstacle = new Obstacle(canvas.width, canvas.height - size, size/3, size, '#333333');
 
   if (type == 1) {
-    obstacle.y -= player.originalHeight - 10;
+    obstacle.y -= player.originalHeight - 14;
   }
   obstacles.push(obstacle);
 }
@@ -194,8 +194,7 @@ function Start () {
 let initialSpawnTimer = 200;
 let spawnTimer = initialSpawnTimer;
 function Update () {
-	if(keycode==1)
-	{requestAnimationFrame(Update);
+  requestAnimationFrame(Update);
   ctx.clearRect(0, 0, canvas.width, canvas.height);
 
   spawnTimer--;
@@ -230,6 +229,7 @@ function Update () {
 	  document.getElementById('dinoslide').style.display="none";
 	  document.getElementById('dinojump').style.display="none";
       window.localStorage.setItem('highscoredino', highscoredino);
+	  player.h=500;
     }
 
     o.Update();
@@ -251,17 +251,17 @@ function Update () {
 
   gameSpeed += 0.003;
 }
-}
 
 Start();
 
 setInterval(function()
 	{
 	document.getElementById('dinojump').style.top=player.y;
+	document.getElementById('dino').style.top=player.y-12;
 	document.getElementById('dinoslide').style.top=player.y-12;
 	
 	if(groundcode==1)
-    {
+       {
 	  document.getElementById('dinojump').style.display="none";
 	  document.getElementById('dino').style.display="block";
 	  document.getElementById('dinoslide').style.display="none";
