@@ -194,7 +194,8 @@ function Start () {
 let initialSpawnTimer = 200;
 let spawnTimer = initialSpawnTimer;
 function Update () {
-  requestAnimationFrame(Update);
+	if(keycode==1)
+	{requestAnimationFrame(Update);
   ctx.clearRect(0, 0, canvas.width, canvas.height);
 
   spawnTimer--;
@@ -222,13 +223,12 @@ function Update () {
       player.y < o.y + o.h &&
       player.y + player.h > o.y
     ) {
-      spawnTimer = initialSpawnTimer;
+	  keycode=0;
       gameSpeed = 0;
 	  document.getElementById('dinocrash').style.display="block";
 	  document.getElementById('dino').style.display="none";
 	  document.getElementById('dinoslide').style.display="none";
 	  document.getElementById('dinojump').style.display="none";
-	  keycode=0;
       window.localStorage.setItem('highscoredino', highscoredino);
     }
 
@@ -250,6 +250,7 @@ function Update () {
   highscoreText.Draw();
 
   gameSpeed += 0.003;
+}
 }
 
 Start();
