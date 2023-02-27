@@ -1,0 +1,111 @@
+<html>
+<head>
+  <meta charset="UTF-8">
+  <meta name="author" content="Rimesh">
+  <title>Sticky Notes</title> 
+<link rel="stylesheet" href="notes.css"> 
+</head>
+<body>
+
+  <div style="z-index:2;height:100%;width:100%;background-image:url('woodbg.jpg');background-size:100% 100%;background-color:white;position:absolute;top:0px;left:0px;text-align:center;display:none;" id="passdiv">
+  <p style="font-size:48px;margin-top:150px;color:white;">Sticky Notes is Encrypted! Please Type Password to Enter</p><br><br><br>
+  <input type="password" style="height:30px;width:250px;font-size:25px;" id="passwordtype" placeholder="Type your password here"><br><br><br>
+  <button style="background:green;border:2px solid white;color:white;width:100px;font-size:28px;height:50px;cursor:pointer;" onclick="enternotes()">OK</button>
+  </div>
+  
+<div style="height:10%;width:100%;font-family:cursive;background:#e74c3c;">
+<font style="font-size:45px;color:white;margin-left:10%;">Sticky Notes</font>
+<div style="position:absolute;top:1.7%;left:60%;">
+<button style="height:50px;width:50px;background:url('text.png') no-repeat;background-size:48px 48px;border:none;cursor:pointer;" onclick="fontsetdisp()" title="Font Settings"></button>
+<button style="height:50px;width:65px;background:url('background.png') no-repeat;background-size:60px 48px;border:none;cursor:pointer;margin-left:40px;" onclick="backgroundboxdisp()" title="Background"></button>
+<button style="height:50px;width:50px;background:url('trash.png') no-repeat;background-size:46px 46px;border:none;cursor:pointer;margin-left:40px;" onclick="deleteboxdisp()" title="Delete Notes"></button>
+<button style="height:50px;width:50px;background:url('lock.png') no-repeat;background-size:46px 46px;border:none;cursor:pointer;margin-left:40px;" onclick="passwordboxdisp()" title="Encrypt Notes"></button>
+</div>
+</div>
+
+  <div id="container" style="overflow-y:auto;overflow-x:hidden;">
+      <button class="btn-add">+Add Note</button>
+  </div>
+  
+  <div style="position:absolute;top:200px;left:420px;border:5px double;background:white;text-align:center;width:500px;height:270px;box-shadow:0px 0px 100px 5px gray;font-family:Arial;display:none;" id="deletebox">
+  <p style="font-size:50px;margin-top:25px;">Delete Notes</p><br>
+  <p style="font-size:22px;margin-top:10px;">Double Tap on individual note to delete it.<br>Tap "Delete All" button to Remove All Notes.</p><br>
+  <button style="background:red;border:none;color:white;width:200px;font-size:28px;height:50px;cursor:pointer;" onclick="deleteall()">Delete All</button>
+  <button style="background:green;border:none;color:white;width:200px;font-size:28px;height:50px;cursor:pointer;" onclick="deleteboxback()">Close</button>
+  </div>
+  
+  <div style="position:absolute;top:200px;left:420px;border:5px double;background:white;text-align:center;width:500px;height:265px;box-shadow:0px 0px 100px 5px gray;font-family:Arial;display:none;" id="passwordbox">
+  <div id="pass1">
+  <p style="font-size:45px;margin-top:25px;">Encrypt Sticky Notes</p><br><br>
+  <p>After you set the Password, you are asked to type your Password before entering Sticky Notes. Don't forget your Password!</p><br>
+  <button style="background:green;border:none;color:white;width:300px;font-size:28px;height:50px;cursor:pointer;margin-top:10px;" onclick="setnewpassdisp()">Set Password</button>
+  <button style="background:green;border:none;color:white;width:100px;font-size:28px;height:50px;cursor:pointer;" onclick="passwordboxback()">Close</button><br><br>
+  </div>
+  
+  <div style="display:none;" id="pass2">
+  <p style="font-size:45px;margin-top:25px;">Set New Password</p><br><br>
+  <input type="text" style="height:30px;width:295px;font-size:25px;" id="passwordtypenew" placeholder=" Type new password here"><br><br><br>
+  <button style="background:green;border:none;color:white;width:120px;font-size:28px;height:50px;cursor:pointer;" onclick="setnewpassback()">Back</button>
+  <button style="background:green;border:none;color:white;width:150px;font-size:28px;height:50px;cursor:pointer;" onclick="setnewpass()">Set</button>
+  <button style="background:blue;border:none;color:white;width:120px;font-size:28px;height:50px;cursor:pointer;" onclick="removepass()">Remove</button><br><br>
+  </div>
+  </div>
+  
+  <div style="position:absolute;top:100px;left:420px;border:5px double;background:white;text-align:center;width:500px;height:500px;box-shadow:0px 0px 100px 5px gray;font-family:Arial;display:none;" id="fontbox">
+  <p style="font-size:50px;margin-top:25px;">Font Settings</p><br>
+  <p style="font-size:22px;margin-top:10px;">Font Style:</p><br>
+  <select id="fontstylevalue" style="width:300px;font-size:20px;height:30px;" onchange="fontstylechoose()">
+  <option style="font-family:arial;">Arial</option>
+  <option style="font-family:times new roman;">Times New Roman</option>
+  <option style="font-family:monospace;">Monospace</option>
+  <option style="font-family:cursive;">Cursive</option>
+  <option style="font-family:fantasy;">Fantasy</option>
+  </select>
+  
+  <p style="font-size:22px;margin-top:30px;">Font Size:</p><br>
+  <input type="range" min=10 max=50 value=18 id="fontsizevalue" oninput="fontsizechange()" style="width:300px;"><font id="fontvaluedisp" style="margin-left:10px;font-size:20px;">18</font>
+  
+  <p style="font-size:22px;margin-top:30px;">Font Color:</p><br>
+  <div id="fcolor">
+  <button style="height:30px;width:30px;border-radius:100%;background:black;" id="fblack"></button>
+  <button style="height:30px;width:30px;border-radius:100%;background:white;" id="fwhite"></button>
+  <button style="height:30px;width:30px;border-radius:100%;background:red;" id="fred"></button>
+  <button style="height:30px;width:30px;border-radius:100%;background:blue;" id="fblue"></button>
+  <button style="height:30px;width:30px;border-radius:100%;background:green;" id="fgreen"></button>
+  <button style="height:30px;width:30px;border-radius:100%;background:#ff6600;" id="forange"></button>
+  <button style="height:30px;width:30px;border-radius:100%;background:gray;" id="fgray"></button>
+  <button style="height:30px;width:30px;border-radius:100%;background:yellow;" id="fyellow"></button>
+  <button style="height:30px;width:30px;border-radius:100%;background:purple;" id="fpurple"></button>
+  <button style="height:30px;width:30px;border-radius:100%;background:brown;" id="fbrown"></button>
+  </div>
+  <br> 
+  <button style="background:green;border:none;color:white;width:180px;font-size:28px;height:45px;cursor:pointer;margin-top:10px;" onclick="fontboxback()">Close</button>
+  </div>
+  
+  <div style="position:absolute;top:100px;left:420px;border:5px double;background:white;text-align:center;width:500px;height:490px;box-shadow:0px 0px 100px 5px gray;font-family:Arial;display:none;" id="backgroundbox">
+  <p style="font-size:45px;margin-top:25px;">Background</p><br><br>
+  <div id="bgcolor">
+  <button style="height:70px;width:70px;background:white;" id="bgwhite"></button>
+  <button style="height:70px;width:70px;background:black;" id="bgblack"></button>
+  <button style="height:70px;width:70px;background:red;" id="bgred"></button>
+  <button style="height:70px;width:70px;background:blue;" id="bgblue"></button>
+  <button style="height:70px;width:70px;background:green;" id="bggreen"></button><br><br>
+  <button style="height:70px;width:70px;background:#ff6600;" id="bgorange"></button>
+  <button style="height:70px;width:70px;background:gray;" id="bggray"></button>
+  <button style="height:70px;width:70px;background:yellow;" id="bgyellow"></button>
+  <button style="height:70px;width:70px;background:purple;" id="bgpurple"></button>
+  <button style="height:70px;width:70px;background:brown;" id="bgbrown"></button><br><br>
+  <button style="height:70px;width:70px;background:url('old.jpg');background-size:70px 70px;color:transparent;" id="bgold">1</button>
+  <button style="height:70px;width:70px;background:url('paper2.jpg');background-size:165px 130px;color:transparent;" id="bgpaper">2</button>
+  <button style="height:70px;width:70px;background:url('v.jpg');background-size:120px 70px;color:transparent;" id="bgv">3</button>
+  <button style="height:70px;width:70px;background:url('stone.jpg');background-size:70px 80px;color:transparent;" id="bgstone">4</button>
+  <button style="height:70px;width:70px;background:url('grass.jpg');background-size:120px 70px;color:transparent;" id="bggrass">5</button><br><br><br>
+  </div>
+  
+  <button style="background:green;border:none;color:white;width:180px;font-size:28px;height:50px;cursor:pointer;" onclick="backgroundboxback()">Close</button><br><br>
+  </div>
+
+  <script src="https://code.jquery.com/jquery-1.11.0.min.js" type="text/javascript" charset="utf-8"></script>
+  <script src="notes.js"></script>
+</body>
+</html>
