@@ -28,10 +28,10 @@ getAppStorage().forEach(element => {
 
 fontcolor=JSON.parse(localStorage.getItem('fontcolorn'));
 if(fontcolor==undefined)
-	fontcolor="black";
+	fontcolor="rgb(0, 0, 0)";
 notebg=JSON.parse(localStorage.getItem('backgroundn'));
 if(notebg==undefined)
-	notebg="white";
+	notebg="rgb(255, 255, 255) none repeat scroll 0% 0% / auto padding-box border-box";
 notebg2=localStorage.getItem('backgroundn2');
 if(notebg2==undefined)
 	notebg2=0;
@@ -117,21 +117,6 @@ textElement.placeholder='Enter Your Notes';
 setInterval(function()
 {
   updateNote(id,textElement.value);
-  document.getElementById('fontvaluedisp').innerHTML=document.getElementById('fontsizevalue').value;
-  
-$("textarea").css("background",notebg);
-$("textarea").css("background-size","333px 200px");
-$("textarea").css("color",fontcolor);
-$("textarea").css("font-size",fontsize);
-$("textarea").css("font-family",fontstyle);
-
-localStorage.setItem('backgroundn',JSON.stringify(notebg));
-localStorage.setItem('backgroundn2',notebg2);
-localStorage.setItem('fontsizen',fontsize);
-localStorage.setItem('fontcolorn',JSON.stringify(fontcolor));
-localStorage.setItem('fontfamilyn',JSON.stringify(fontstyle));
-
-document.getElementById('fontstylevalue').style.fontFamily=fontstyle;
 },1);
 
 textElement.addEventListener("dblclick",()=>{
@@ -326,3 +311,22 @@ $("#bgcolor").on("click", "button", function() {
 	notebg=$(this).css("background");
 	notebg2=$(this).html();
 });
+
+setInterval(function()
+{
+document.getElementById('fontvaluedisp').innerHTML=document.getElementById('fontsizevalue').value;
+  
+$("textarea").css("background",notebg);
+$("textarea").css("background-size","333px 200px");
+$("textarea").css("color",fontcolor);
+$("textarea").css("font-size",fontsize);
+$("textarea").css("font-family",fontstyle);
+
+localStorage.setItem('backgroundn',JSON.stringify(notebg));
+localStorage.setItem('backgroundn2',notebg2);
+localStorage.setItem('fontsizen',fontsize);
+localStorage.setItem('fontcolorn',JSON.stringify(fontcolor));
+localStorage.setItem('fontfamilyn',JSON.stringify(fontstyle));
+
+document.getElementById('fontstylevalue').style.fontFamily=fontstyle;
+},1);
