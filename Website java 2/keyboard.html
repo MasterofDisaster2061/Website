@@ -1,0 +1,454 @@
+<html>
+  <head>
+    <title>Stylish Keyboard</title>
+    <meta charset="UTF-8">
+	<meta name="author" content="Rimesh">
+	
+	<style>
+	
+	button
+	{
+	box-shadow:0px 3px black;
+	border-radius:10%;
+	font-size:22px;
+	color:white;
+	background:#333333;
+	overflow:hidden;
+	}
+	
+	button:active
+	{
+	box-shadow:0px 1px black;
+	border-radius:10%;
+	transform:translateY(2px);
+	}
+	
+	.selected
+	{background-color:green;
+	}
+
+	</style>
+
+	</head>
+	<body style="overflow-y:hidden;">
+	<p style="font-size:40px;font-family:cursive;top:-3%;left:10%;position:absolute;color:#333333;">Stylish Keyboard</p>
+	<button id="copytext" style="position:absolute;right:10%;box-shadow:none;border-radius:1%;top:10.2%;">Copy Text</button>
+	<button id="cleartext" style="position:absolute;right:6.5%;box-shadow:none;border-radius:1%;top:10.2%;height:32px;background:red;font-size:25px;">×</button>
+	
+	<textarea id="textarea" style="width:90%;height:25%;font-size:22px;left:4.74%;resize:none;top:15%;position:absolute;font-family:arial;" placeholder="Please Type your Text here"></textarea>
+	
+	<div style="width:89%;height:52.5%;bottom:3%;position:absolute;border:3px solid;margin-left:4.5%;background:#555555;" id="main">
+	
+	<button style="height:60px;width:90px;margin-top:11px;margin-left:18px;" onclick="keydown('1')">1</button>
+	<button style="height:60px;width:90px;margin-left:5px;" onclick="keydown('2')">2</button>
+	<button style="height:60px;width:90px;margin-left:5px;" onclick="keydown('3')">3</button>
+	<button style="height:60px;width:90px;margin-left:5px;" onclick="keydown('4')">4</button>
+	<button style="height:60px;width:90px;margin-left:5px;" onclick="keydown('5')">5</button>
+	<button style="height:60px;width:90px;margin-left:5px;" onclick="keydown('6')">6</button>
+	<button style="height:60px;width:90px;margin-left:5px;" onclick="keydown('7')">7</button>
+	<button style="height:60px;width:90px;margin-left:5px;" onclick="keydown('8')">8</button>
+	<button style="height:60px;width:90px;margin-left:5px;" onclick="keydown('9')">9</button>
+	<button style="height:60px;width:90px;margin-left:5px;" onclick="keydown('0')">0</button>
+	<button style="height:60px;width:90px;margin-left:5px;" onclick="keydown('(')">(</button>
+	<button style="height:60px;width:90px;margin-left:5px;" onclick="keydown(')')">)</button>
+	
+	<button style="height:60px;width:90px;margin-top:11px;margin-left:18px;color:transparent;background-image:url('keydown.png');background-size:100px 58px;" onclick="keyboarddown()">keydown</button>
+	<button style="height:60px;width:90px;margin-left:5px;" onclick="keydownt('qⓠbＱq𝕢𝗤𝖖𝕼')">Q</button>
+	<button style="height:60px;width:90px;margin-left:5px;" onclick="keydownt('wⓦʍ山ω𝕨𝗪𝖜𝖂')">W</button>
+	<button style="height:60px;width:90px;margin-left:5px;" onclick="keydownt('eⓔəモє𝕖𝗘𝖊𝕰')">E</button>
+	<button style="height:60px;width:90px;margin-left:5px;" onclick="keydownt('rⓡɹ尺r𝕣𝗥𝖗𝕽')">R</button>
+	<button style="height:60px;width:90px;margin-left:5px;" onclick="keydownt('tⓣʇ匕τ𝕥𝗧𝖙𝕿')">T</button>
+	<button style="height:60px;width:90px;margin-left:5px;" onclick="keydownt('yⓨʎㄚy𝕪𝗬𝖞𝖄')">Y</button>
+	<button style="height:60px;width:90px;margin-left:5px;" onclick="keydownt('uⓤnUυ𝕦𝗨𝖚𝖀')">U</button>
+	<button style="height:60px;width:90px;margin-left:5px;" onclick="keydownt('iⓘı工i𝕚𝗜𝖎𝕴')">I</button>
+	<button style="height:60px;width:90px;margin-left:5px;" onclick="keydownt('oⓞo口σ𝕠𝗢𝖔𝕺')">O</button>
+	<button style="height:60px;width:90px;margin-left:5px;" onclick="keydownt('pⓟdㄗρ𝕡𝗣𝖕𝕻')">P</button>
+	<button style="height:60px;width:90px;margin-left:5px;color:transparent;background-image:url('backspace.png');background-size:80px 56px;" onclick="backspace()">clear</button>
+	
+	<button style="height:60px;width:90px;margin-top:10px;margin-left:18px;" onclick="capslock()"><div style="width:10px;height:10px;background:gray;border-radius:100%;margin-left:80%;margin-top:-5%;" id="capsglow"></div><div style="margin-top:-10%;">Caps</div></button>
+	<button style="height:60px;width:90px;margin-left:5px;" onclick="keydownt('aⓐɐ丹α𝕒𝗔𝖆𝕬')">A</button>
+	<button style="height:60px;width:90px;margin-left:5px;" onclick="keydownt('sⓢsちs𝕤𝗦𝖘𝕾')">S</button>
+	<button style="height:60px;width:90px;margin-left:5px;" onclick="keydownt('dⓓρ刀∂𝕕𝗗𝖉𝕯')">D</button>
+	<button style="height:60px;width:90px;margin-left:5px;" onclick="keydownt('fⓕɟ下ƒ𝕗𝗙𝖋𝕱')">F</button>
+	<button style="height:60px;width:90px;margin-left:5px;" onclick="keydownt('gⓖɓムg𝕘𝗚𝖌𝕲')">G</button>
+	<button style="height:60px;width:90px;margin-left:5px;" onclick="keydownt('hⓗɥ卄н𝕙𝗛𝖍𝕳')">H</button>
+	<button style="height:60px;width:90px;margin-left:5px;" onclick="keydownt('jⓙɾＪj𝕛𝗝𝖏𝕵')">J</button>
+	<button style="height:60px;width:90px;margin-left:5px;" onclick="keydownt('kⓚʞＫк𝕜𝗞𝖐𝕶')">K</button>
+	<button style="height:60px;width:90px;margin-left:5px;" onclick="keydownt('lⓛןㄥℓ𝕝𝗟𝖑𝕷')">L</button>
+	<button style="height:60px;width:90px;margin-left:5px;" onclick="keydown(';')">;</button>
+	<button style="height:60px;width:90px;margin-left:5px;" onclick="keydown(':')">:</button>
+	
+	<button style="height:60px;width:90px;margin-top:10px;margin-left:18px;" onclick="shift()">Shift</button>
+	<button style="height:60px;width:90px;margin-left:5px;" onclick="keydownt('zⓩz乙ʑ𝕫𝗭𝖟𝖅')">Z</button>
+	<button style="height:60px;width:90px;margin-left:5px;" onclick="keydownt('xⓧxメx𝕩𝗫𝖝𝖃')">X</button>
+	<button style="height:60px;width:90px;margin-left:5px;" onclick="keydownt('cⓒɔ匚c𝕔𝗖𝖈𝕮')">C</button>
+	<button style="height:60px;width:90px;margin-left:5px;" onclick="keydownt('vⓥʌVv𝕧𝗩𝖛𝖁')">V</button>
+	<button style="height:60px;width:90px;margin-left:5px;" onclick="keydownt('bⓑq乃в𝕓𝗕𝖇𝕭')">B</button>
+	<button style="height:60px;width:90px;margin-left:5px;" onclick="keydownt('nⓝʋれท𝕟𝗡𝖓𝕹')">N</button>
+	<button style="height:60px;width:90px;margin-left:5px;" onclick="keydownt('mⓜɯ爪м𝕞𝗠𝖒𝕸')">M</button>
+	<button style="height:60px;width:90px;margin-left:5px;" onclick="keydown(',')">,</button>
+	<button style="height:60px;width:90px;margin-left:5px;" onclick="keydown('.')">.</button>
+	<button style="height:60px;width:90px;margin-left:5px;" onclick="keydown('?')">?</button>
+	<button style="height:60px;width:90px;margin-left:5px;" onclick="keydown2()">" "</button>
+	
+	<button style="height:60px;width:90px;margin-top:10px;margin-left:18px;font-size:18px;" onclick="Symbolsdisp()">Symbols</button>
+	<button style="height:60px;width:90px;margin-left:5px;font-size:18px;" onclick="specialdisp()">Special</button>
+	<button style="height:60px;width:90px;margin-left:5px;font-size:18px;" onclick="emojidisp()">Emoji</button>
+	<button style="height:60px;width:90px;margin-left:5px;font-size:18px;" onclick="fontdisp()">Font</button>
+	<button style="height:60px;width:387px;margin-left:5px;" onclick="keydown(' ')">Space</button>
+	<button style="height:60px;width:90px;margin-left:5px;font-size:18px;" onclick="textartdisp()">Text Art</button>
+	<button style="height:60px;width:90px;margin-left:5px;font-size:18px;" onclick="decordisp()">Decor</button>
+	<button style="height:60px;width:90px;margin-left:5px;font-size:18px;" onclick="textpicdisp()">Text Pic</button>
+	<button style="height:60px;width:90px;margin-left:5px;font-size:18px;" onclick="keyenter()">Enter</button>
+	
+	</div>
+	
+	<div style="width:89%;height:52.5%;bottom:3%;position:absolute;border:3px solid;margin-left:4.5%;background:#555555;display:none;" id="symbol">
+	<button style="height:60px;width:90px;margin-top:10px;margin-left:18px;" onclick="Symbolsback()">< Back</button>
+	<font style="color:white;font-size:38px;margin-left:34.4%;font-family:cursive;">Symbols</font><br>
+	
+	<button style="height:60px;width:90px;margin-top:10px;margin-left:18px;" onclick="keydown('`')">`</button>
+	<button style="height:60px;width:90px;margin-left:5px;" onclick="keydown('~')">~</button>
+	<button style="height:60px;width:90px;margin-left:5px;" onclick="keydown('!')">!</button>
+	<button style="height:60px;width:90px;margin-left:5px;" onclick="keydown('@')">@</button>
+	<button style="height:60px;width:90px;margin-left:5px;" onclick="keydown('#')">#</button>
+	<button style="height:60px;width:90px;margin-left:5px;" onclick="keydown('$')">$</button>
+	<button style="height:60px;width:90px;margin-left:5px;" onclick="keydown('%')">%</button>
+	<button style="height:60px;width:90px;margin-left:5px;" onclick="keydown('^')">^</button>
+	<button style="height:60px;width:90px;margin-left:5px;" onclick="keydown('&')">&</button>
+	<button style="height:60px;width:90px;margin-left:5px;" onclick="keydown('*')">*</button>
+	<button style="height:60px;width:90px;margin-left:5px;" onclick="keydown('?')">?</button>
+	<button style="height:60px;width:90px;margin-left:5px;color:transparent;background-image:url('backspace.png');background-size:80px 56px;" onclick="backspace()">clear</button>
+	
+	<button style="height:60px;width:90px;margin-top:10px;margin-left:18px;" onclick="keydown('(')">(</button>
+	<button style="height:60px;width:90px;margin-left:5px;" onclick="keydown(')')">)</button>
+	<button style="height:60px;width:90px;margin-left:5px;" onclick="keydown('{')">{</button>
+	<button style="height:60px;width:90px;margin-left:5px;" onclick="keydown('}')">}</button>
+	<button style="height:60px;width:90px;margin-left:5px;" onclick="keydown('[')">[</button>
+	<button style="height:60px;width:90px;margin-left:5px;" onclick="keydown(']')">]</button>
+	<button style="height:60px;width:90px;margin-left:5px;" onclick="keydown('<')"><</button>
+	<button style="height:60px;width:90px;margin-left:5px;" onclick="keydown('>')">></button>
+	<button style="height:60px;width:90px;margin-left:5px;" onclick="keydown(',')">,</button>
+	<button style="height:60px;width:90px;margin-left:5px;" onclick="keydown('.')">.</button>
+	<button style="height:60px;width:90px;margin-left:5px;" onclick="keydown(':')">:</button>
+	<button style="height:60px;width:90px;margin-left:5px;" onclick="keydown(';')">;</button>
+	
+	<button style="height:60px;width:90px;margin-top:10px;margin-left:18px;" onclick="keydown('+')">+</button>
+	<button style="height:60px;width:90px;margin-left:5px;" onclick="keydown('-')">-</button>
+	<button style="height:60px;width:90px;margin-left:5px;" onclick="keydown('*')">*</button>
+	<button style="height:60px;width:90px;margin-left:5px;" onclick="keydown('/')">/</button>
+	<button style="height:60px;width:90px;margin-left:5px;" onclick="keydown('×')">×</button>
+	<button style="height:60px;width:90px;margin-left:5px;" onclick="keydown('÷')">÷</button>
+	<button style="height:60px;width:90px;margin-left:5px;" onclick="keydown('=')">=</button>
+	<button style="height:60px;width:90px;margin-left:5px;" onclick="keydown('_')">≈</button>
+	<button style="height:60px;width:90px;margin-left:5px;" onclick="keydown3()">' '</button>
+	<button style="height:60px;width:90px;margin-left:5px;" onclick="keydown2()">" "</button>
+	<button style="height:60px;width:90px;margin-left:5px;" onclick="keydown('|')">|</button>
+	<button style="height:60px;width:90px;margin-left:5px;" onclick="keydown('\\')">\</button>
+	
+	<button style="height:60px;width:90px;margin-top:10px;margin-left:18px;" onclick="keydown('∴')">∴</button>
+	<button style="height:60px;width:90px;margin-left:5px;" onclick="keydown('∵')">∵</button>
+	<button style="height:60px;width:90px;margin-left:5px;" onclick="keydown('°')">°</button>
+	<button style="height:60px;width:90px;margin-left:5px;" onclick="keydown('∘')">∘</button>
+	<button style="height:60px;width:90px;margin-left:5px;" onclick="keydown('∞')">∞</button>
+	<button style="height:60px;width:90px;margin-left:5px;" onclick="keydown('∢')">∢</button>
+	<button style="height:60px;width:90px;margin-left:5px;" onclick="keydown('←')">←</button>
+	<button style="height:60px;width:90px;margin-left:5px;" onclick="keydown('→')">→</button>
+	<button style="height:60px;width:90px;margin-left:5px;" onclick="keydown('↑')">↑</button>
+	<button style="height:60px;width:90px;margin-left:5px;" onclick="keydown('↓')">↓</button>
+	<button style="height:60px;width:90px;margin-left:5px;" onclick="keydown('_')">_</button>	
+	<button style="height:60px;width:90px;margin-left:5px;" onclick="keyenter()">Enter</button>
+	</div>
+	
+	<div style="width:89%;height:52.5%;bottom:3%;position:absolute;border:3px solid;margin-left:4.5%;background:#555555;display:none;" id="special">
+	<button style="height:60px;width:90px;margin-top:10px;margin-left:18px;position:absolute;" onclick="specialback()">< Back</button>
+	<font style="color:white;font-size:38px;margin-left:36.1%;position:absolute;margin-top:8px;font-family:cursive;">Special Characters</font><br>
+	
+	<button style="height:60px;width:90px;margin-top:63px;margin-left:18px;position:absolute;" onclick="keydown('꧁')">꧁</button>
+	<button style="height:60px;width:90px;margin-top:63px;margin-left:117px;position:absolute;" onclick="keydown('꧂')">꧂</button>
+	<button style="height:60px;width:90px;margin-top:63px;margin-left:216px;position:absolute;" onclick="keydown('Ӂ')">Ӂ</button>
+	<button style="height:60px;width:90px;margin-top:63px;margin-left:315px;position:absolute;" onclick="keydown('༻')">༻</button>
+	<button style="height:60px;width:90px;margin-top:63px;margin-left:414px;position:absolute;" onclick="keydown('༺')">༺</button>
+	<button style="height:60px;width:90px;margin-top:63px;margin-left:513px;position:absolute;" onclick="keydown('☬')">☬</button>
+	<button style="height:60px;width:90px;margin-top:63px;margin-left:612px;position:absolute;" onclick="keydown('༒')">༒</button>
+	<button style="height:60px;width:90px;margin-top:63px;margin-left:711px;position:absolute;" onclick="keydown('࿐')">࿐</button>
+	<button style="height:60px;width:90px;margin-top:63px;margin-left:810px;position:absolute;" onclick="keydown('៚')">៚</button>
+	<button style="height:60px;width:90px;margin-top:63px;margin-left:909px;position:absolute;" onclick="keydown('༆')">༆</button>
+	<button style="height:60px;width:90px;margin-top:63px;margin-left:1008px;position:absolute;" onclick="keydown('乡')">乡</button>
+	<button style="height:60px;width:90px;margin-top:63px;margin-left:1107px;color:transparent;background-image:url('backspace.png');background-size:80px 56px;position:absolute;" onclick="backspace()">clear</button>
+	
+	<button style="height:60px;width:90px;margin-top:133px;margin-left:18px;position:absolute;" onclick="keydown('⎠')">⎠</button>
+	<button style="height:60px;width:90px;margin-top:133px;margin-left:117px;position:absolute;" onclick="keydown('⎝')">⎝</button>
+	<button style="height:60px;width:90px;margin-top:133px;margin-left:216px;position:absolute;" onclick="keydown('░')">░</button>
+	<button style="height:60px;width:90px;margin-top:133px;margin-left:315px;position:absolute;" onclick="keydown('⫷')">⫷</button>
+	<button style="height:60px;width:90px;margin-top:133px;margin-left:414px;position:absolute;" onclick="keydown('⫸')">⫸</button>
+	<button style="height:60px;width:90px;margin-top:133px;margin-left:513px;position:absolute;" onclick="keydown('෴')">෴</button>
+	<button style="height:60px;width:90px;margin-top:133px;margin-left:612px;position:absolute;" onclick="keydown('⚔')">⚔</button>
+	<button style="height:60px;width:90px;margin-top:133px;margin-left:711px;position:absolute;" onclick="keydown('⚒')">⚒</button>
+	<button style="height:60px;width:90px;margin-top:133px;margin-left:810px;position:absolute;" onclick="keydown('⨳')">⨳</button>
+	<button style="height:60px;width:90px;margin-top:133px;margin-left:909px;position:absolute;" onclick="keydown('⚛')">⚛</button>
+	<button style="height:60px;width:90px;margin-top:133px;margin-left:1008px;position:absolute;" onclick="keydown('「')">「</button>
+	<button style="height:60px;width:90px;margin-top:133px;margin-left:1107px;position:absolute;" onclick="keydown('」')">」</button>
+	
+	<button style="height:60px;width:90px;margin-top:203px;margin-left:18px;position:absolute;" onclick="keydown('◤')">◤</button>
+	<button style="height:60px;width:90px;margin-top:203px;margin-left:117px;position:absolute;" onclick="keydown('◢')">◢</button>
+	<button style="height:60px;width:90px;margin-top:203px;margin-left:216px;position:absolute;" onclick="keydown('ｯ')">ｯ</button>
+	<button style="height:60px;width:90px;margin-top:203px;margin-left:315px;position:absolute;" onclick="keydown('シ')">シ</button>
+	<button style="height:60px;width:90px;margin-top:203px;margin-left:414px;position:absolute;" onclick="keydown('ﭢ')">ﭢ</button>
+	<button style="height:60px;width:90px;margin-top:203px;margin-left:513px;position:absolute;" onclick="keydown('㋡')">㋡</button>
+	<button style="height:60px;width:90px;margin-top:203px;margin-left:612px;position:absolute;" onclick="keydown('〲')">〲</button>
+	<button style="height:60px;width:90px;margin-top:203px;margin-left:711px;position:absolute;" onclick="keydown('ᐇ')">ᐇ</button>
+	<button style="height:60px;width:90px;margin-top:203px;margin-left:810px;position:absolute;" onclick="keydown('⍨')">⍨</button>
+	<button style="height:60px;width:90px;margin-top:203px;margin-left:909px;position:absolute;" onclick="keydown('웃')">웃</button>
+	<button style="height:60px;width:90px;margin-top:203px;margin-left:1008px;position:absolute;" onclick="keydown('♬')">♬</button>
+	<button style="height:60px;width:90px;margin-top:203px;margin-left:1107px;position:absolute;" onclick="keydown('❀')">❀</button>
+	
+	<button style="height:60px;width:90px;margin-top:273px;margin-left:18px;position:absolute;" onclick="keydown('❦')">❦</button>
+	<button style="height:60px;width:90px;margin-top:273px;margin-left:117px;position:absolute;" onclick="keydown('✮')">✮</button>
+	<button style="height:60px;width:90px;margin-top:273px;margin-left:216px;position:absolute;" onclick="keydown('♛')">♛</button>
+	<button style="height:60px;width:90px;margin-top:273px;margin-left:315px;position:absolute;" onclick="keydown('♞')">♞</button>
+	<button style="height:60px;width:90px;margin-top:273px;margin-left:414px;position:absolute;" onclick="keydown('♜')">♜</button>
+	<button style="height:60px;width:90px;margin-top:273px;margin-left:513px;position:absolute;" onclick="keydown('▀▄')">▀▄</button>
+	<button style="height:60px;width:90px;margin-top:273px;margin-left:612px;position:absolute;" onclick="keydown('▄▀')">▄▀</button>
+	<button style="height:60px;width:90px;margin-top:273px;margin-left:711px;position:absolute;" onclick="keydown('█')">█</button>
+	<button style="height:60px;width:90px;margin-top:273px;margin-left:810px;position:absolute;" onclick="keydown('彡')">彡</button>
+	<button style="height:60px;width:90px;margin-top:273px;margin-left:909px;position:absolute;" onclick="keydown('⊶')">⊶</button>
+	<button style="height:60px;width:90px;margin-top:273px;margin-left:1008px;position:absolute;" onclick="keydown('𒆜')">𒆜</button>
+	<button style="height:60px;width:90px;margin-top:273px;margin-left:1107px;position:absolute;" onclick="keyenter()">Enter</button>
+	</div>
+	
+	<div style="width:89%;height:52.5%;bottom:3%;position:absolute;border:3px solid;margin-left:4.5%;background:#555555;display:none;" id="fontstyle">
+	<button style="height:60px;width:90px;margin-top:10px;margin-left:18px;position:absolute;" onclick="fontback()">< Back</button>
+	<font style="color:white;font-size:38px;margin-left:42%;position:absolute;margin-top:8px;font-family:cursive;">Font Style</font><br>
+	<div id="fontbutton">
+	<button style="height:60px;width:250px;margin-top:80px;margin-left:18px;position:absolute;" class="selected" onclick="fontstyle1()">Default</button>
+	<button style="height:60px;width:250px;margin-top:80px;margin-left:318px;position:absolute;" onclick="fontstyle2()">Ⓔⓝⓒⓘⓡⓒⓛⓔⓓ</button>
+	<button style="height:60px;width:250px;margin-top:80px;margin-left:618px;position:absolute;" onclick="fontstyle3()">ρəʇɹəʌʋı</button>
+	<button style="height:60px;width:250px;margin-top:80px;margin-left:918px;position:absolute;" onclick="fontstyle4()">ㄖ爪乇Ꮆ卂</button>
+	<button style="height:60px;width:250px;margin-top:180px;margin-left:18px;position:absolute;" onclick="fontstyle5()">cυrvє∂</button>
+	<button style="height:60px;width:250px;margin-top:180px;margin-left:318px;position:absolute;" onclick="fontstyle6()">𝕕𝕠𝕦𝕓𝕝𝕖-𝕤𝕥𝕣𝕦𝕔𝕜</button>
+	<button style="height:60px;width:250px;margin-top:180px;margin-left:618px;position:absolute;" onclick="fontstyle7()">𝗕𝗢𝗟𝗗</button>
+	<button style="height:60px;width:250px;margin-top:180px;margin-left:918px;position:absolute;" onclick="fontstyle8()">𝕸𝖊𝖉𝖎𝖊𝖛𝖆𝖑</button>
+	</div>
+	</div>
+	
+	<div style="width:89%;height:52.5%;bottom:3%;position:absolute;border:3px solid;margin-left:4.5%;background:#555555;display:none;" id="emoji">
+	<button style="height:60px;width:90px;margin-top:10px;margin-left:18px;" onclick="emojiback()">< Back</button>
+	<font style="color:white;font-size:38px;margin-left:36.5%;font-family:cursive;">Emoji</font><br>
+	
+	<button style="height:45px;width:50px;margin-top:11px;margin-left:23px;" onclick="keydown('😀')">😀</button>
+	<button style="height:45px;width:50px;margin-left:5px;" onclick="keydown('😄')">😄</button>
+	<button style="height:45px;width:50px;margin-left:5px;" onclick="keydown('😁')">😁</button>
+	<button style="height:45px;width:50px;margin-left:5px;" onclick="keydown('😆')">😆</button>
+	<button style="height:45px;width:50px;margin-left:5px;" onclick="keydown('😅')">😅</button>
+	<button style="height:45px;width:50px;margin-left:5px;" onclick="keydown('😂')">😂</button>
+	<button style="height:45px;width:50px;margin-left:5px;" onclick="keydown('🤣')">🤣</button>
+	<button style="height:45px;width:50px;margin-left:5px;" onclick="keydown('😊')">😊</button>
+	<button style="height:45px;width:50px;margin-left:5px;" onclick="keydown('😇')">😇</button>
+	<button style="height:45px;width:50px;margin-left:5px;" onclick="keydown('🙂')">🙂</button>
+	<button style="height:45px;width:50px;margin-left:5px;" onclick="keydown('🙃')">🙃</button>
+	<button style="height:45px;width:50px;margin-left:5px;" onclick="keydown('😉')">😉</button>
+	<button style="height:45px;width:50px;margin-left:5px;" onclick="keydown('😍')">😍</button>
+	<button style="height:45px;width:50px;margin-left:5px;" onclick="keydown('🥰')">🥰</button>
+	<button style="height:45px;width:50px;margin-left:5px;" onclick="keydown('😘')">😘</button>
+	<button style="height:45px;width:50px;margin-left:5px;" onclick="keydown('😗')">😗</button>
+	<button style="height:45px;width:50px;margin-left:5px;" onclick="keydown('😋')">😋</button>
+	<button style="height:45px;width:50px;margin-left:5px;" onclick="keydown('😝')">😝</button>
+	<button style="height:45px;width:50px;margin-left:5px;" onclick="keydown('🤪')">🤪</button>
+	<button style="height:45px;width:50px;margin-left:5px;" onclick="keydown('🤨')">🤨</button>
+	
+	<button style="height:45px;width:50px;margin-top:11px;margin-left:23px;" onclick="keydown('🧐')">🧐</button>
+	<button style="height:45px;width:50px;margin-left:5px;" onclick="keydown('🤓')">🤓</button>
+	<button style="height:45px;width:50px;margin-left:5px;" onclick="keydown('😎')">😎</button>
+	<button style="height:45px;width:50px;margin-left:5px;" onclick="keydown('🤩')">🤩</button>
+	<button style="height:45px;width:50px;margin-left:5px;" onclick="keydown('🥳')">🥳</button>
+	<button style="height:45px;width:50px;margin-left:5px;" onclick="keydown('😒')">😒</button>
+	<button style="height:45px;width:50px;margin-left:5px;" onclick="keydown('😔')">😔</button>
+	<button style="height:45px;width:50px;margin-left:5px;" onclick="keydown('🙁')">🙁</button>
+	<button style="height:45px;width:50px;margin-left:5px;" onclick="keydown('😖')">😖</button>
+	<button style="height:45px;width:50px;margin-left:5px;" onclick="keydown('😫')">😫</button>
+	<button style="height:45px;width:50px;margin-left:5px;" onclick="keydown('😢')">😢</button>
+	<button style="height:45px;width:50px;margin-left:5px;" onclick="keydown('😭')">😭</button>
+	<button style="height:45px;width:50px;margin-left:5px;" onclick="keydown('😮‍')">😮‍</button>
+	<button style="height:45px;width:50px;margin-left:5px;" onclick="keydown('😤')">😤</button>
+	<button style="height:45px;width:50px;margin-left:5px;" onclick="keydown('😠')">😠</button>
+	<button style="height:45px;width:50px;margin-left:5px;" onclick="keydown('😡')">😡</button>
+	<button style="height:45px;width:50px;margin-left:5px;" onclick="keydown('🤬')">🤬</button>
+	<button style="height:45px;width:50px;margin-left:5px;" onclick="keydown('🤯')">🤯</button>
+	<button style="height:45px;width:50px;margin-left:5px;" onclick="keydown('😳')">😳</button>
+	<button style="height:45px;width:50px;margin-left:5px;" onclick="keydown('🥵')">🥵</button>
+	
+	<button style="height:45px;width:50px;margin-top:11px;margin-left:23px;" onclick="keydown('🥶')">🥶</button>
+	<button style="height:45px;width:50px;margin-left:5px;" onclick="keydown('😱')">😱</button>
+	<button style="height:45px;width:50px;margin-left:5px;" onclick="keydown('😓')">😓</button>
+	<button style="height:45px;width:50px;margin-left:5px;" onclick="keydown('🤗')">🤗</button>
+	<button style="height:45px;width:50px;margin-left:5px;" onclick="keydown('🤔')">🤔</button>
+	<button style="height:45px;width:50px;margin-left:5px;" onclick="keydown('🤭')">🤭</button>
+	<button style="height:45px;width:50px;margin-left:5px;" onclick="keydown('🤫')">🤫</button>
+	<button style="height:45px;width:50px;margin-left:5px;" onclick="keydown('😶')">😶</button>
+	<button style="height:45px;width:50px;margin-left:5px;" onclick="keydown('😑')">😑</button>
+	<button style="height:45px;width:50px;margin-left:5px;" onclick="keydown('😬')">😬</button>
+	<button style="height:45px;width:50px;margin-left:5px;" onclick="keydown('🙄')">🙄</button>
+	<button style="height:45px;width:50px;margin-left:5px;" onclick="keydown('😲')">😲</button>
+	<button style="height:45px;width:50px;margin-left:5px;" onclick="keydown('😧')">😧</button>
+	<button style="height:45px;width:50px;margin-left:5px;" onclick="keydown('🥱')">🥱</button>
+	<button style="height:45px;width:50px;margin-left:5px;" onclick="keydown('😴')">😴</button>
+	<button style="height:45px;width:50px;margin-left:5px;" onclick="keydown('😵')">😵</button>
+	<button style="height:45px;width:50px;margin-left:5px;" onclick="keydown('🤐')">🤐</button>
+	<button style="height:45px;width:50px;margin-left:5px;" onclick="keydown('🤢')">🤢</button>
+	<button style="height:45px;width:50px;margin-left:5px;" onclick="keydown('🤮')">🤮</button>
+	<button style="height:45px;width:50px;margin-left:5px;" onclick="keydown('🤒')">🤒</button>
+	
+	<button style="height:45px;width:50px;margin-top:11px;margin-left:23px;" onclick="keydown('🤑')">🤑</button>
+	<button style="height:45px;width:50px;margin-left:5px;" onclick="keydown('🤠')">🤠</button>
+	<button style="height:45px;width:50px;margin-left:5px;" onclick="keydown('🤤')">🤤</button>
+	<button style="height:45px;width:50px;margin-left:5px;" onclick="keydown('🤕')">🤕</button>
+	<button style="height:45px;width:50px;margin-left:5px;" onclick="keydown('🥺')">🥺</button>
+	<button style="height:45px;width:50px;margin-left:5px;" onclick="keydown('😈')">😈</button>
+	<button style="height:45px;width:50px;margin-left:5px;" onclick="keydown('🤡')">🤡</button>
+	<button style="height:45px;width:50px;margin-left:5px;" onclick="keydown('👻')">👻</button>
+	<button style="height:45px;width:50px;margin-left:5px;" onclick="keydown('💩')">💩</button>
+	<button style="height:45px;width:50px;margin-left:5px;" onclick="keydown('💀')">💀</button>
+	<button style="height:45px;width:50px;margin-left:5px;" onclick="keydown('👋')">👋</button>
+	<button style="height:45px;width:50px;margin-left:5px;" onclick="keydown('👍')">👍</button>
+	<button style="height:45px;width:50px;margin-left:5px;" onclick="keydown('👎')">👎</button>
+	<button style="height:45px;width:50px;margin-left:5px;" onclick="keydown('👊')">👊</button>
+	<button style="height:45px;width:50px;margin-left:5px;" onclick="keydown('💪')">💪</button>
+	<button style="height:45px;width:50px;margin-left:5px;" onclick="keydown('🖕')">🖕</button>
+	<button style="height:45px;width:50px;margin-left:5px;" onclick="keydown('✋')">✋</button>
+	<button style="height:45px;width:50px;margin-left:5px;" onclick="keydown('👌')">👌</button>
+	<button style="height:45px;width:50px;margin-left:5px;" onclick="keydown('✌')">✌</button>
+	<button style="height:45px;width:50px;margin-left:5px;" onclick="keydown('🙏')">🙏</button>
+	
+	
+	<button style="height:45px;width:50px;margin-top:11px;margin-left:23px;" onclick="keydown('🔥')">🔥</button>
+	<button style="height:45px;width:50px;margin-left:5px;" onclick="keydown('💥')">💥</button>
+	<button style="height:45px;width:50px;margin-left:5px;" onclick="keydown('❤️')">❤️</button>
+	<button style="height:45px;width:50px;margin-left:5px;" onclick="keydown('💙')">💙</button>
+	<button style="height:45px;width:50px;margin-left:5px;" onclick="keydown('💔')">💔</button>
+	<button style="height:45px;width:50px;margin-left:5px;" onclick="keydown('💕')">💕</button>
+	<button style="height:45px;width:50px;margin-left:5px;" onclick="keydown('❌')">❌</button>
+	<button style="height:45px;width:50px;margin-left:5px;" onclick="keydown('✔️')">✔️</button>
+	<button style="height:45px;width:50px;margin-left:5px;" onclick="keydown('💯')">💯</button>
+	<button style="height:45px;width:50px;margin-left:5px;" onclick="keydown('🍎')">🍎</button>
+	<button style="height:45px;width:50px;margin-left:5px;" onclick="keydown('🎂')">🎂</button>
+	<button style="height:45px;width:50px;margin-left:5px;" onclick="keydown('👽')">👽</button>
+	<button style="height:45px;width:50px;margin-left:5px;" onclick="keydown('🤖')">🤖</button>
+	<button style="height:45px;width:50px;margin-left:5px;" onclick="keydown('👀')">👀</button>
+	<button style="height:45px;width:50px;margin-left:5px;" onclick="keydown('👁️')">👁️</button>
+	<button style="height:45px;width:50px;margin-left:5px;" onclick="keydown('👄')">👄</button>
+	<button style="height:45px;width:50px;margin-left:5px;" onclick="keydown('👅')">👅</button>
+	<button style="height:45px;width:50px;margin-left:5px;" onclick="keydown('💋')">💋</button>
+	<button style="height:45px;width:50px;margin-left:5px;" onclick="keydown('⭐️')">⭐️</button>
+	<button style="height:45px;width:50px;margin-left:5px;" onclick="keydown('⚡️')">⚡️</button>
+	</div>
+	
+	<div style="width:89%;height:52.5%;bottom:3%;position:absolute;border:3px solid;margin-left:4.5%;background:#555555;display:none;" id="textart">
+	<button style="height:60px;width:90px;margin-top:10px;margin-left:18px;" onclick="textartback()">< Back</button>
+	<font style="color:white;font-size:38px;margin-left:33.8%;font-family:cursive;">Text Art</font><br>
+	
+	<button style="height:60px;width:123px;margin-top:10px;margin-left:18px;font-size:16px;" onclick="keydown('¯\\_(ツ)_/¯')">¯\_(ツ)_/¯</button>
+	<button style="height:60px;width:123px;margin-left:5px;font-size:16px;" onclick="keydown('╰‿╯')">╰‿╯</button>
+	<button style="height:60px;width:123px;margin-left:5px;font-size:16px;" onclick="keydown('¬_¬')">¬_¬</button>
+	<button style="height:60px;width:123px;margin-left:5px;font-size:16px;" onclick="keydown('( ͡° ͜ʖ ͡°)')">( ͡° ͜ʖ ͡°)</button>
+	<button style="height:60px;width:123px;margin-left:5px;font-size:16px;" onclick="keydown('( ͡ʘ ͜ʖ ͡ʘ)')">( ͡ʘ ͜ʖ ͡ʘ)</button>
+	<button style="height:60px;width:123px;margin-left:5px;font-size:16px;" onclick="keydown('( ‾ʖ̫‾)')">( ‾ʖ̫‾)</button>
+	<button style="height:60px;width:123px;margin-left:5px;font-size:16px;" onclick="keydown('【ツ】')">【ツ】</button>
+	<button style="height:60px;width:123px;margin-left:5px;font-size:16px;" onclick="keydown('(●‿●✿)')">(●‿●✿)</button>
+	<button style="height:60px;width:123px;margin-left:5px;font-size:16px;" onclick="keydown('｡●‿●｡')">｡●‿●｡</button>
+	
+	<button style="height:60px;width:123px;margin-top:10px;margin-left:18px;font-size:16px;" onclick="keydown('(O_o)')">(O_o)</button>
+	<button style="height:60px;width:123px;margin-left:5px;font-size:16px;" onclick="keydown('(´・_・`)')">(´・_・`)</button>
+	<button style="height:60px;width:123px;margin-left:5px;font-size:16px;" onclick="keydown('(⊙.⊙)')">(⊙.⊙)</button>
+	<button style="height:60px;width:123px;margin-left:5px;font-size:16px;" onclick="keydown('┗(^o^　)┓三')">┗(^o^　)┓三</button>
+	<button style="height:60px;width:123px;margin-left:5px;font-size:16px;" onclick="keydown('(/•ิ_•ิ)/')">(/•ิ_•ิ)/</button>
+	<button style="height:60px;width:123px;margin-left:5px;font-size:16px;" onclick="keydown('ʕ•ٹ•ʔ')">ʕ•ٹ•ʔ</button>
+	<button style="height:60px;width:123px;margin-left:5px;font-size:16px;" onclick="keydown('╰(◣﹏◢)╯')">╰(◣﹏◢)╯</button>
+	<button style="height:60px;width:123px;margin-left:5px;font-size:16px;" onclick="keydown('(。♡‿♡。)')">(。♡‿♡。)</button>
+	<button style="height:60px;width:123px;margin-left:5px;font-size:16px;" onclick="keydown('( ՞ਊ ՞)')">( ՞ਊ ՞)</button>
+	
+	<button style="height:60px;width:123px;margin-top:10px;margin-left:18px;font-size:16px;" onclick="keydown('(◑‿◐)')">(◑‿◐)</button>
+	<button style="height:60px;width:123px;margin-left:5px;font-size:16px;" onclick="keydown('ಥ‿ಥ')">ಥ‿ಥ</button>
+	<button style="height:60px;width:123px;margin-left:5px;font-size:16px;" onclick="keydown('٩(◕‿◕)۶')">٩(◕‿◕)۶</button>
+	<button style="height:60px;width:123px;margin-left:5px;font-size:16px;" onclick="keydown('(づ ◕‿◕ )づ')">(づ ◕‿◕ )づ</button>
+	<button style="height:60px;width:123px;margin-left:5px;font-size:16px;" onclick="keydown('( ˇ෴ˇ )')">( ˇ෴ˇ )</button>
+	<button style="height:60px;width:123px;margin-left:5px;font-size:16px;" onclick="keydown('٩꒰ʘʚʘ๑꒱۶')">٩꒰ʘʚʘ๑꒱۶</button>
+	<button style="height:60px;width:123px;margin-left:5px;font-size:16px;" onclick="keydown('(✪㉨✪)')">(✪㉨✪)</button>
+	<button style="height:60px;width:123px;margin-left:5px;font-size:16px;" onclick="keydown('=＾● ⋏ ●＾=')">=＾● ⋏ ●＾=</button>
+	<button style="height:60px;width:123px;margin-left:5px;font-size:16px;" onclick="keydown('(●´⌓`●)')">(●´⌓`●)</button>
+	
+	<button style="height:60px;width:123px;margin-top:10px;margin-left:18px;font-size:16px;" onclick="keydown('(╬⁽⁽ ⁰ ⁾⁾ Д ⁽⁽ ⁰ ⁾⁾)')">(╬⁽⁽ ⁰ ⁾⁾ Д ⁽⁽ ⁰ ⁾⁾)</button>
+	<button style="height:60px;width:123px;margin-left:5px;font-size:16px;" onclick="keydown('(ᗒᗣᗕ)՞')">(ᗒᗣᗕ)՞</button>
+	<button style="height:60px;width:123px;margin-left:5px;font-size:16px;" onclick="keydown('⊙▂⊙')">⊙▂⊙</button>
+	<button style="height:60px;width:123px;margin-left:5px;font-size:16px;" onclick="keydown('ε=(っ≧ω≦)っ')">ε=(っ≧ω≦)っ</button>
+	<button style="height:60px;width:123px;margin-left:5px;font-size:16px;" onclick="keydown('(－_－) zzZ')">(－_－) zzZ</button>
+	<button style="height:60px;width:123px;margin-left:5px;font-size:16px;" onclick="keydown('(≖ ͜ʖ≖)')">(≖ ͜ʖ≖)</button>
+	<button style="height:60px;width:123px;margin-left:5px;font-size:16px;" onclick="keydown('(˘ε˘˶ )')">(˘ε˘˶ )</button>
+	<button style="height:60px;width:123px;margin-left:5px;font-size:16px;" onclick="keydown('▄︻┻┳═一一')">▄︻┻┳═一一</button>
+	<button style="height:60px;width:123px;margin-left:5px;font-size:16px;" onclick="keydown('一一═┳┻︻▄')">一一═┳┻︻▄</button>
+	</div>
+	
+	<div style="width:89%;height:52.5%;bottom:3%;position:absolute;border:3px solid;margin-left:4.5%;background:#555555;display:none;" id="decor">
+	<button style="height:60px;width:90px;margin-top:10px;margin-left:18px;" onclick="decorback()">< Back</button>
+	<font style="color:white;font-size:38px;margin-left:28%;font-family:cursive;">Text Decoration</font><br>
+	
+	<button style="height:60px;width:228px;margin-top:10px;margin-left:18px;font-size:16px;" onclick="keydown('╔══════════╗')">╔══════════╗</button>
+	<button style="height:60px;width:228px;margin-left:5px;font-size:16px;" onclick="keydown('╚════════════╝')">╚════════════╝</button>
+	<button style="height:60px;width:232px;margin-left:5px;font-size:16px;" onclick="keydown('▣▣▣▣▣▣▣▣▣▣▣▣▣▣▣▣▣▣')">▣▣▣▣▣▣▣▣▣▣▣▣▣</button>
+	<button style="height:60px;width:228px;margin-left:5px;font-size:16px;" onclick="keydown('╔═══❖••❖═══╗')">╔═══❖••❖═══╗</button>
+	<button style="height:60px;width:228px;margin-left:5px;font-size:16px;" onclick="keydown('╚═══❖••❖═══╝')">╚═══❖••❖═══╝</button>
+	
+	<button style="height:60px;width:228px;margin-top:10px;margin-left:18px;font-size:16px;" onclick="keydown('࿇ ══━━━━✥◈✥━━━━══ ࿇')">══━━━━✥◈✥━━━━══</button>
+	<button style="height:60px;width:228px;margin-left:5px;font-size:16px;" onclick="keydown('━━━━━━━༺༻━━━━━━━')">━━━━━༺༻━━━━━</button>
+	<button style="height:60px;width:232px;margin-left:5px;font-size:16px;" onclick="keydown('━━━━━━━━》❈《━━━━━━━━')">━━━━》❈《━━━━</button>
+	<button style="height:60px;width:228px;margin-left:5px;font-size:16px;" onclick="keydown('──────⊱◈◈◈⊰──────')">─────⊱◈◈◈⊰─────</button>
+	<button style="height:60px;width:228px;margin-left:5px;font-size:16px;" onclick="keydown('━━━━━ • ஜ • ❈ • ஜ • ━━━━━')">━━━ • ஜ • ❈ • ஜ • ━━━</button>
+	
+	<button style="height:60px;width:228px;margin-top:10px;margin-left:18px;font-size:16px;" onclick="keydown('─── ❖ ── ✦ ── ❖ ───')">─── ❖ ── ✦ ── ❖ ───</button>
+	<button style="height:60px;width:228px;margin-left:5px;font-size:16px;" onclick="keydown('◆━━━━━━▣✦▣━━━━━━◆')">◆━━━━▣✦▣━━━━◆</button>
+	<button style="height:60px;width:232px;margin-left:5px;font-size:16px;" onclick="keydown('◈ ━━━━━━━ ◆ ━━━━━━━ ◈')">◈ ━━━━ ◆ ━━━━ ◈</button>
+	<button style="height:60px;width:228px;margin-left:5px;font-size:16px;" onclick="keydown('◆ ▬▬▬▬▬▬ ❴✪❵ ▬▬▬▬▬▬ ◆')">◆ ▬▬▬ ❴✪❵ ▬▬▬ ◆</button>
+	<button style="height:60px;width:228px;margin-left:5px;font-size:16px;" onclick="keydown('▲───────◇◆◇───────▲')">▲───◇◆◇───▲</button>
+	
+	<button style="height:60px;width:228px;margin-top:10px;margin-left:18px;font-size:16px;" onclick="keydown('▩━━━━━━◈━━━━━━▩')">▩━━━━◈━━━━▩</button>
+	<button style="height:60px;width:228px;margin-left:5px;font-size:16px;" onclick="keydown('⊱∴━━━━━✿━━━━━∴⊰')">⊱∴━━━✿━━━∴⊰</button>
+	<button style="height:60px;width:232px;margin-left:5px;font-size:16px;" onclick="keydown('一═┳┻︻▄【Text】▄︻┻┳═一')">一═┳┻︻▄【Text】▄︻┻┳═一</button>
+	<button style="height:60px;width:228px;margin-left:5px;font-size:16px;" onclick="keydown('╔══ ≪ °❈° ≫ ══╗')">╔══ ≪ °❈° ≫ ══╗</button>
+	<button style="height:60px;width:228px;margin-left:5px;font-size:16px;" onclick="keydown('╚══ ≪ °❈° ≫ ══╝')">╚══ ≪ °❈° ≫ ══╝</button>
+    </div>
+	
+	<div style="width:89%;height:52.5%;bottom:3%;position:absolute;border:3px solid;margin-left:4.5%;background:#555555;display:none;" id="textpic">
+	<button style="height:60px;width:90px;margin-top:10px;margin-left:18px;" onclick="textpicback()">< Back</button>
+	<font style="color:white;font-size:38px;margin-left:31.2%;font-family:cursive;">Text Picture</font><br>
+	
+	<button style="height:60px;width:228px;margin-top:10px;margin-left:18px;font-size:22px;" onclick="welcomepic()">Welcome</button>
+	<button style="height:60px;width:228px;margin-left:5px;font-size:22px;" onclick="heartpic()">Heart</button>
+	<button style="height:60px;width:232px;margin-left:5px;font-size:22px;" onclick="laughpic()">Troll Face</button>
+	<button style="height:60px;width:228px;margin-left:5px;font-size:22px;" onclick="dogpic()">Doggo</button>
+	<button style="height:60px;width:228px;margin-left:5px;font-size:22px;" onclick="catpic()">Kitty</button>
+	
+	<button style="height:60px;width:228px;margin-top:10px;margin-left:18px;font-size:22px;" onclick="lovepic()">Love</button>
+	<button style="height:60px;width:228px;margin-left:5px;font-size:22px;" onclick="bunnypic()">Bunny</button>
+	<button style="height:60px;width:232px;margin-left:5px;font-size:22px;" onclick="surprisedpic()">Surprised</button>
+	<button style="height:60px;width:228px;margin-left:5px;font-size:22px;" onclick="godfatherpic()">Godfather</button>
+	<button style="height:60px;width:228px;margin-left:5px;font-size:22px;" onclick="hehepic()">Hehe</button>
+	
+	<button style="height:60px;width:228px;margin-top:10px;margin-left:18px;font-size:22px;" onclick="sussypic()">Sussy Baka</button>
+	<button style="height:60px;width:228px;margin-left:5px;font-size:22px;" onclick="cuppypic()">Cuppycake</button>
+	<button style="height:60px;width:232px;margin-left:5px;font-size:22px;" onclick="thumbsuppic()">Thumbs Up</button>
+	<button style="height:60px;width:228px;margin-left:5px;font-size:22px;" onclick="tankpic()">Tank</button>
+	<button style="height:60px;width:228px;margin-left:5px;font-size:22px;" onclick="monkeypic()">Confused</button>
+	
+	<button style="height:60px;width:228px;margin-top:10px;margin-left:18px;font-size:22px;" onclick="hackerpic()">Hacker</button>
+	<button style="height:60px;width:228px;margin-left:5px;font-size:22px;" onclick="rosepic()">Rose</button>
+	<button style="height:60px;width:232px;margin-left:5px;font-size:22px;" onclick="boopic()">Booooo</button>
+	<button style="height:60px;width:228px;margin-left:5px;font-size:22px;" onclick="kiddingpic()">Are you kidding</button>
+	<button style="height:60px;width:228px;margin-left:5px;font-size:22px;" onclick="skullpic()">Skull</button>
+	</div>
+	
+	<button style="position:absolute;bottom:4%;left:5%;height:60px;width:90px;color:transparent;background-image:url('keyup.png');background-size:100px 58px;display:none;" onclick="keyboardup()" id="keyboardupbut">keyup</button>
+
+	<script src="https://code.jquery.com/jquery-1.11.0.min.js" type="text/javascript" charset="utf-8"></script>
+	<script src="keyboard.js"></script>
+	</body>
+</html>
