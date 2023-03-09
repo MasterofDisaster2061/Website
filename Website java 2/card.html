@@ -1,0 +1,145 @@
+<html>
+<head>
+    <title>Inbetween</title>
+    <meta charset="UTF-8">
+	<meta name="author" content="Rimesh">
+    <link rel="stylesheet" href="card.css">
+    <script type="text/javascript" src="card.js"></script>
+</head>
+
+<body>
+       <div class="deck" style="float:left;width:25%;height:88%;background:url('cardbg.png');background-size:360px 625px;">
+        <h1 style="font-size:55px;margin-top:10px;">Inbetween <button style="background:transparent;height:40px;width:40px;border-radius:100%;font-size:35px;color:white;border:2px solid white;cursor:pointer;" title="How to Play" onclick="guidedisp()">?</button></h1>
+		
+		<h1 id="turndisp" style="margin-top:-20px;">Press "New Game" to</h1>
+	    <h1 id="rounddisp">Start</h1>
+	    <h1>Total Gamble:</h1>
+	    <h1 id="totalgamble" style="margin-top:-20px;">0$</h1>
+        
+        <button onclick="newgamedisp()" class="btn">New Game</button><br>
+		
+		<div id="drawncard">
+		<div class="cardback"></div>
+		</div>
+		
+		<button class="btn" onclick="drawcardinitial()" id="drawcardid" disabled>Draw Card</button>
+		
+        <div id="deck" style="display:none;"></div>
+    </div>
+	
+	<div style="display:flex;">
+	<div class="deck" style="float:left;width:460px;height:280px;margin-left:1%;">
+	<div>
+	<font style="font-size:40px;" id="p1">Player 1</font><br><br>
+	<font style="font-size:25px;">Balance: </font><font id="p1balance" style="font-size:25px;">250$</font>
+	</div><br>
+	<div style="display:flex;">
+	<div id="player1" style="float:left;margin-left:3%;margin-top:1.5%;"><div class="cardback"></div><div class="cardback"></div></div>
+	<div style="float:right;">
+	<button class="btn" disabled id="gamble1" onclick="gamble1()">Gamble</button><br>
+	<button class="btn" disabled id="xchange1" onclick="xchange()" style="margin-top:-6px;">Exchange</button><br>
+	<button class="btn" disabled id="withdraw1" onclick="withdraw1()" style="margin-top:-6px;">End Turn</button>
+	</div>
+	</div>
+	</div>
+	
+	<div class="deck" style="float:left;width:460px;height:280px;margin-left:0.5%;">
+	<div>
+	<font style="font-size:40px;" id="p2">Player 2</font><br><br>
+	<font style="font-size:25px;">Balance: </font><font id="p2balance" style="font-size:25px;">250$</font>
+	</div><br>
+	<div style="display:flex;">
+	<div id="player2" style="float:left;margin-left:3%;margin-top:1.5%;"><div class="cardback"></div><div class="cardback"></div></div>
+	<div style="float:right;">
+	<button class="btn" disabled id="gamble2" onclick="gamble2()">Gamble</button><br>
+	<button class="btn" disabled id="xchange2" onclick="xchange()" style="margin-top:-6px;">Exchange</button><br>
+	<button class="btn" disabled id="withdraw2" onclick="withdraw2()" style="margin-top:-6px;">End Turn</button>
+	</div>
+	</div>
+	</div>
+	</div>
+	
+	<div style="display:flex;margin-top:-28px;">
+	<div class="deck" style="float:left;width:460px;height:280px;margin-left:1%;" id="players3">
+	<div>
+	<font style="font-size:40px;" id="p3">Player 3</font><br><br>
+	<font style="font-size:25px;">Balance: </font><font id="p3balance" style="font-size:25px;">250$</font>
+	</div><br>
+	<div style="display:flex;">
+	<div id="player3" style="float:left;margin-left:3%;margin-top:1.5%;"><div class="cardback"></div><div class="cardback"></div></div>
+	<div style="float:right;">
+	<button class="btn" disabled id="gamble3" onclick="gamble3()">Gamble</button><br>
+	<button class="btn" disabled id="xchange3" onclick="xchange()" style="margin-top:-6px;">Exchange</button><br>
+	<button class="btn" disabled id="withdraw3" onclick="withdraw3()" style="margin-top:-6px;">End Turn</button>
+	</div>
+	</div>
+	</div>
+	
+	<div class="deck" style="float:left;width:460px;height:280px;margin-left:0.5%;" id="players4">
+	<div>
+	<font style="font-size:40px;" id="p4">Player 4</font><br><br>
+	<font style="font-size:25px;">Balance: </font><font id="p4balance" style="font-size:25px;">250$</font>
+	</div><br>
+	<div style="display:flex;">
+	<div id="player4" style="float:left;margin-left:3%;margin-top:1.5%;"><div class="cardback"></div><div class="cardback"></div></div>
+	<div style="float:right;">
+	<button class="btn" disabled id="gamble4" onclick="gamble4()">Gamble</button><br>
+	<button class="btn" disabled id="xchange4" onclick="xchange()" style="margin-top:-6px;">Exchange</button><br>
+	<button class="btn" disabled id="withdraw4" onclick="withdraw4()" style="margin-top:-6px;">End Turn</button>
+	</div>
+	</div>
+	</div>
+	</div>
+	
+	<div style="height:330px;width:500px;position:absolute;top:150px;left:440px;background:white;border:5px double;text-align:center;display:none;box-shadow:0px 0px 50px 10px gray;" id="gamblebox">
+	<h1 style="font-size:50px;" id="gamblename">Gamble</h1>
+	<p style="font-size:25px;">Gamble Amount:</p>
+	<input type="range" min=5 max=1000 value=5 id="gambleamount" style="width:250px;" oninput="gambleamtfunc()">
+	<font id="gambleamountdisp" style="font-size:30px;margin-left:10px;">5$</font><button style="background:orange;color:white;width:100px;" class="btn" onclick="maxgamble()">Max</button><br>
+	<button class="btn" style="background:red;color:white;" onclick="gambleback()">Cancel</button>
+	<button class="btn" style="background:green;color:white;" onclick="gambleconfirm()">Confirm</button>
+	</div>
+	
+	<div style="height:318px;width:500px;position:absolute;top:150px;left:440px;background:white;border:5px double;text-align:center;display:none;box-shadow:0px 0px 50px 10px gray;" id="xchangebox">
+	<h1 style="font-size:50px;" id="gamblename">Exchange a Card</h1>
+	<font style="font-size:20px;">Exchange a Card with a random Card by Paying 5$</font><br><br>
+	
+	<button class="btn" style="background:green;color:white;width:220px;font-size:15px;" onclick="xchangeconfirml()">Exchange Left Card</button>	
+	<button class="btn" style="background:green;color:white;width:220px;font-size:15px;" onclick="xchangeconfirmr()">Exchange Right Card</button><br>
+	<button class="btn" style="background:red;color:white;" onclick="xchangeback()">Cancel</button>
+	</div>
+	
+	<div style="height:320px;width:500px;position:absolute;top:150px;left:440px;background:white;border:5px double;text-align:center;box-shadow:0px 0px 50px 10px gray;display:none;" id="newgamebox">
+	<h1 style="font-size:50px;" id="gamblename">New Game</h1>
+	<font style="font-size:20px;">Choose Number of Players:</font><br><br>
+	
+	<button style="background:green;color:white;width:50px;height:50px;font-size:20px;border-radius:0%;border:black 4px solid;cursor:pointer;" onclick="ngplayer2()" id="ngplayer2">2</button>	
+	<button style="background:green;color:white;width:50px;height:50px;font-size:20px;border-radius:0%;border:none;cursor:pointer;" onclick="ngplayer3()" id="ngplayer3">3</button>
+	<button style="background:green;color:white;width:50px;height:50px;font-size:20px;border-radius:0%;border:none;cursor:pointer;" onclick="ngplayer4()" id="ngplayer4">4</button><br><br>
+	<a href="javascript:void(0)" onclick="newgame();newgameback();"><button class="btn" style="color:white;background:green;">Start</button></a>
+	<button class="btn" style="background:red;color:white;" onclick="newgameback()">Cancel</button>
+	</div>
+	
+	<div style="height:530px;width:600px;position:absolute;top:70px;left:390px;background:white;border:5px double;display:none;box-shadow:0px 0px 50px 10px gray;z-index:2;" id="guidebox">
+	<h1 style="font-size:50px;text-align:center;">How to Play</h1>
+	
+	<ol style="font-size:20px;width:550px;">
+	<li> Each Player will have 250$ balance in their account in each Game.</li>
+	<li> Start of each turn, 5$ will be deducted from each Player for Gamble.</li>
+    <li> Each Player will be given 2 random cards at the start of each round.</li>
+	<li> Player can specify the Gamble amount in their turn.</li>
+	<li> After specifying Gamble amount, the player can Draw the card.</li>
+	<li> If the Drawn card lies between of 2 given card, the players wins the specified amount of Gamble.</li>
+	<li> If the Player fails to get the card in between of those 2 cards, the same amount of Gamble has to be paid.</li>
+	<li> Each Player can Exchange one card with a random card by paying 5$ in each round.</li>
+	<li> The Player having 0$ balance will be Eliminated from the Game.</li>
+	<li> The last Player having none 0$ balance wins the Game.</li>
+	</ol>
+	
+	<div style="text-align:center;">
+	<button class="btn" style="background:red;color:white;" onclick="guideback()">Close</button>
+	</div>
+	</div>
+	
+</body>
+</html>

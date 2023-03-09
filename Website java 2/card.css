@@ -1,0 +1,93 @@
+.deck
+{
+	width:35%;
+	margin: 20px auto;
+	background:dodgerblue;
+	border:solid 3px black;
+	padding: 10px;
+	border-radius:10px;
+	text-align: center;
+	color:white;
+}
+
+.card
+{
+	padding: 10px;
+	border: solid 1px #808080;
+	background-color: white;
+	display: inline-block;
+	border-radius: 10px;
+	font-size: 14pt;
+	text-align: center;
+	color:black;
+	margin: 3px;
+}
+
+.btn
+{
+	background:white;
+	padding: 10px 20px;
+	border-radius:30px;
+	margin: 10px;
+	display:inline-block;
+	width:180px;
+	border:none;
+	font-family:cursive;
+	font-size:18px;
+	cursor:pointer;
+	height:45px;
+}
+
+.card .value{
+	font-size:15pt;
+	font-family:arial;
+}
+
+.card .suit
+{
+	height: 100px;
+	width: 90px;
+}
+
+.card .diamonds
+{
+	background-position-y: 100px;
+	background:url('diamond.png') no-repeat;
+	background-size:92px 100px;
+}
+
+.card .hearts
+{
+	background-position-y: 100px;
+	background:url('heart.png') no-repeat;
+	background-size:92px 100px;
+}
+
+.card .clubs
+{  
+    background-position-y: 100px;
+	background:url('club.png') no-repeat;
+	background-size:92px 100px;
+}
+
+.card .spades
+{  
+    background-position-y: 100px;
+	background:url('spade.png') no-repeat;
+	background-size:91px 100px;
+}
+
+.cardback
+{   height:123px;
+    width:90px;
+    padding: 10px;
+	border: solid 1px #808080;
+	display: inline-block;
+	border-radius: 10px;
+	font-size: 14pt;
+	text-align: center;
+	color:black;
+	margin: 3px;
+    background:url('cardback.jpg');
+    background-size:100% 100%;
+}
